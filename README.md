@@ -1,16 +1,56 @@
 # Natural_Language_Processing_TramitesAI
  Processamiento de Lenguaje Natural con TensorFlow en python, para BDT Global
 
-Se necesita tener python instalado
+## Requisitos
 
-Creación entorno virtual python
+- Python 3.x
+- pip (Administrador de paquetes de Python)
 
-En Windows:
+## Configuración del Entorno de Desarrollo
 
-Desde terminal command prompt :
+### Paso 1: Clonar el Repositorio
 
-py o python 3 -m venv venv (siendo el seguro el nombre del entorno virtual)
+```bash
+git clone https://github.com/tu-usuario/tu-proyecto.git
+cd tu-proyecto
+```
 
-Activamos entorno:  venv\Scripts\activate
+### Paso 2: Crear y Activar el Entorno Virtual
 
-Instalación dependencias: pip install -r requirements.txt
+En todos los sistemas operativos:
+
+```bash
+python -m venv venv
+```
+
+Para activar el entorno virtual en Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+Para activar el entorno virtual en macOS/Linux:
+
+```bash
+source venv/bin/activate
+```
+
+### Paso 3: Instalar Dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+## Ejecutar el Proyecto
+
+### Paso 1: Navegar al Directorio del Proyecto
+
+```bash
+cd ruta/a/tu/proyecto
+```
+
+### Paso 2: Ejecutar el Archivo `main.py`
+
+```bash
+python main.py
+```
