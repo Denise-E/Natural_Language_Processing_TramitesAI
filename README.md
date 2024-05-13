@@ -14,10 +14,12 @@ En todos los sistemas operativos:
 
 ``` command prompt
 python -m venv venv
+
 o
+
 py -m venv venv
 
-El segundo venv es el nombre que uno decide ponerle al entorno virtual
+El segundo "venv" es el nombre que uno decide ponerle al entorno virtual, se acostumbra a usar evnv o env.
 ```
 
 Para activar el entorno virtual en Windows:
@@ -43,13 +45,15 @@ pip install -r requirements.txt
 ### Paso 1: Navegar al Directorio del Proyecto
 
 ```bash
-cd ruta/a/tu/proyecto
+cd ruta/Natural_Language_Processing_TramitesAI
 ```
 
 ### Paso 2: Ejecutar el Archivo `main.py`
 
 ```bash
 python main.py 
+
 o
+
 py main.py
 ```
