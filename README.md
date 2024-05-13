@@ -19,7 +19,7 @@ o
 
 py -m venv venv
 
-El segundo "venv" es el nombre que uno decide ponerle al entorno virtual, se acostumbra a usar evnv o env.
+El segundo "venv" es el nombre que uno decide ponerle al entorno virtual, se acostumbra a usar venv o env.
 ```
 
 Para activar el entorno virtual en Windows:
