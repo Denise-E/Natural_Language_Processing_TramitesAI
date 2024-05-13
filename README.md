@@ -3,29 +3,26 @@
 
 ## Requisitos
 
-- Python 3.x
+- Python 3.11
 - pip (Administrador de paquetes de Python)
 
 ## Configuración del Entorno de Desarrollo
 
-### Paso 1: Clonar el Repositorio
-
-```bash
-git clone https://github.com/tu-usuario/tu-proyecto.git
-cd tu-proyecto
-```
-
-### Paso 2: Crear y Activar el Entorno Virtual
+### Paso 1: Crear y Activar el Entorno Virtual
 
 En todos los sistemas operativos:
 
-```bash
+``` command prompt
 python -m venv venv
+o
+py -m venv venv
+
+El segundo venv es el nombre que uno decide ponerle al entorno virtual
 ```
 
 Para activar el entorno virtual en Windows:
 
-```bash
+``` command propmt
 venv\Scripts\activate
 ```
 
@@ -34,8 +31,8 @@ Para activar el entorno virtual en macOS/Linux:
 ```bash
 source venv/bin/activate
 ```
-
-### Paso 3: Instalar Dependencias
+Una vez activado se debe ver (venv) o el nombre que le hayan puesto al enotorno a la izquierda de la ubicación de la carpeta
+### Paso 2: Instalar Dependencias
 
 ```bash
 pip install -r requirements.txt
@@ -52,5 +49,7 @@ cd ruta/a/tu/proyecto
 ### Paso 2: Ejecutar el Archivo `main.py`
 
 ```bash
-python main.py
+python main.py 
+o
+py main.py
 ```
