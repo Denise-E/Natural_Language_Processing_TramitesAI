@@ -1,14 +1,10 @@
 """
-Resultados esperados:  
+Definiciones:
 
-1 = se vincula a nuestros tramites:
-
-    * Denuncia Siniestro
-    * Cotización póliza de auto
-    * Cotización póliza del hogar
-    * Carga presupuestos
-
-0 = no se vincula a nignuno de ellos.
+1. Denuncia Siniestro = [1,0,0,0]
+2. Cotización póliza de auto = [0,1,0,0]
+3. Cotización póliza del hogar = [0,0,1,0]
+4. Carga presupuestos = [0,0,0,1]
 """
 
 # 169 datos - 80%
