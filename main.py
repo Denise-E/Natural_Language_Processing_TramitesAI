@@ -1,6 +1,8 @@
 from modelos.asuntos import ModeloAsuntos
+from modelos.asuntos_modelo2 import ModeloAsuntosDos
 
 MODELO_ASUNTOS =  ModeloAsuntos()
+#MODELO_ASUNTOS = ModeloAsuntosDos()
 
 def modelo_asuntor_prediccion(sentendes: list):
     return MODELO_ASUNTOS.model_prediction_tests(sentence=sentences)
@@ -25,12 +27,3 @@ prediccion = modelo_asuntor_prediccion(sentences)
 print("SENTENCES:",sentences)
 print("PREDICTION:", prediccion)
 print("**************************************************************")
-
-"""
-PREDICTION: [[[0.9999709129333496], [0.9994049072265625], [0.17926892638206482], [0.5865851640701294], [0.49521031975746155], [0.49521031975746155]], array([[1],
-       [1],
-       [0],
-       [0],
-       [0],
-       [0]])]
-"""
