@@ -1,4 +1,4 @@
-from modelos.asuntos import ModeloAsuntos
+from modelos.deprecado.asuntos import ModeloAsuntos
 from modelos.asuntos_multi_clases import ModeloAsuntosMultiClases
 
 #MODELO_ASUNTOS =  ModeloAsuntos()
@@ -22,7 +22,6 @@ print("Información modelo:" )
 print("Cantidad de iteraciones al momento de la capacitación del modelo: 3000")
 print("Cantidad datos de entrenamiento: 179")
 print("Cantidad datos de PRUEBA: 30")
-
 prediccion = modelo_asuntor_prediccion(sentences)
 print("SENTENCES:",sentences)
 print("PREDICTION:", prediccion)

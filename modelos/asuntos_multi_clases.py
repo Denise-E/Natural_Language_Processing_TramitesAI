@@ -84,7 +84,7 @@ class ModeloAsuntosMultiClases:
         testing_padded = np.array(testing_padded)
         testing_labels = np.array(testing_labels)
 
-        num_epochs = 2000 # Cantidad de iteraciones que hará el modelo durante el entrenameinto
+        num_epochs = 3000 # Cantidad de iteraciones que hará el modelo durante el entrenameinto
         print("TEST RESULTS")
         #Se le pasan inputs y outputs de los datos de capacitación y de testeo. Acá es entrenado el motor.
         history = model.fit(training_padded, training_labels, epochs=num_epochs, validation_data=(testing_padded, testing_labels), verbose=2)

@@ -3,7 +3,7 @@ import tensorflow as tf
 from tensorflow import keras
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
-from .data.data_asuntos import sentences as data_sentences, training_labels as data_training_labels, testing_sentences as data_testing_sentences, testing_labels as data_testing_labels
+from .data_asuntos import sentences as data_sentences, training_labels as data_training_labels, testing_sentences as data_testing_sentences, testing_labels as data_testing_labels
 
 
 class ModeloAsuntos:
@@ -57,7 +57,6 @@ class ModeloAsuntos:
         #print("PADDED SHAPE", training_padded.shape) #Filas x columns - Solo muestra cantidades
         
         # 3. Creación del Modelo
-        # TODO Documentar
         model = tf.keras.Sequential([
             tf.keras.layers.Embedding(cls.VOCAB_SIZE, cls.EMBEDDING_DIM, input_length=cls.MAX_LENGTH), 
             tf.keras.layers.GlobalAveragePooling1D(), 
