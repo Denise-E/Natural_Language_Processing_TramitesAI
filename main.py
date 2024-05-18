@@ -1,8 +1,10 @@
 from modelos.asuntos import ModeloAsuntos
+from modelos.asuntos2_hoy import ModeloAsuntos2
 from modelos.asuntos_modelo2 import ModeloAsuntosDos
 
-MODELO_ASUNTOS =  ModeloAsuntos()
+#MODELO_ASUNTOS =  ModeloAsuntos()
 #MODELO_ASUNTOS = ModeloAsuntosDos()
+MODELO_ASUNTOS = ModeloAsuntos2()
 
 def modelo_asuntor_prediccion(sentendes: list):
     return MODELO_ASUNTOS.model_prediction_tests(sentence=sentences)

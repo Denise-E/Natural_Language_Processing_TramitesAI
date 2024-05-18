@@ -7,8 +7,8 @@ import tensorflow as tf
 from tensorflow import keras
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
-from .data.data_asuntos_v2 import sentences as data_sentences, training_labels as data_training_labels, testing_sentences as data_testing_sentences, testing_labels as data_testing_labels
-
+from .data.data_asuntos_v3 import sentences as data_sentences, training_labels as data_training_labels, testing_sentences as data_testing_sentences, testing_labels as data_testing_labels
+from keras.utils import to_categorical
 
 class ModeloAsuntosDos:
     VOCAB_SIZE = 10000 #Máx num de palabras que se deben conservar, si se le pasan más va a guardar las 10000 más repetidas.
@@ -43,7 +43,7 @@ class ModeloAsuntosDos:
         tokenizer.fit_on_texts(sentences)
         cls.tokenizer = tokenizer
         word_indexed = tokenizer.word_index # Arma lista de las palabras tokenizadas
-        print("Indexed  WORDS", word_indexed)
+        #print("Indexed  WORDS", word_indexed)
 
         training_sentences = tokenizer.texts_to_sequences(sentences) #Crea la secuencia de tokens para cada oración. Lista de listas
         """
@@ -57,20 +57,28 @@ class ModeloAsuntosDos:
         5 palabras quedaría luego del este método formado de la siguiente manera: [1,2,3,<OOV>,<OOV>]
         """
         training_padded = pad_sequences(training_sentences,maxlen=cls.MAX_LENGTH, padding='post')  
-        print("PADDED", training_padded)
+        #print("PADDED", training_padded)
         #print("PADDED SHAPE", training_padded.shape) #Filas x columns - Solo muestra cantidades
         
+        training_padded = np.array(training_padded)
+        #print("LABELS", type(training_labels), training_labels)
+        training_labels = np.array(training_labels)
+        print("PADDED SHAPE", training_padded.shape, training_padded.max(), training_labels.shape, training_labels.max()) 
         # 3. Creación del Modelo
         # TODO Documentar
         model = tf.keras.Sequential([
             tf.keras.layers.Embedding(cls.VOCAB_SIZE, cls.EMBEDDING_DIM, input_length=cls.MAX_LENGTH), 
             tf.keras.layers.GlobalAveragePooling1D(), 
-            tf.keras.layers.Dense(24, activation='relu'), 
-            tf.keras.layers.Dense(1, activation='sigmoid')
+            tf.keras.layers.Dense(100, activation='relu'), #ex 24
+            #tf.keras.layers.Dense(1, activation='sigmoid')
+            tf.keras.layers.Dense(50, activation="relu"), 
+            tf.keras.layers.Dense(1, activation="softmax") # Labels length
         ])
 
+        labels = [0,1,2,3,4]
+        labels = to_categorical(labels, num_classes=5)
         # Configuración del modelo
-        model.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
+        model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy']) #loss='binary_crossentropy'
         model.summary()
         cls.model = model
 
@@ -81,15 +89,13 @@ class ModeloAsuntosDos:
         testing_labels = data_testing_labels
 
         # A partir de la versión 2 de tf (TensorFlow), el modelo debe recibir datos del tipo de numpy (np) y no tipos de datos nativos de python
-        training_padded = np.array(training_padded)
-        training_labels = np.array(training_labels)
         testing_padded = np.array(testing_padded)
         testing_labels = np.array(testing_labels)
 
-        num_epochs = 100 # Cantidad de iteraciones que hará el modelo durante el entrenameinto
+        num_epochs = 1000 # Cantidad de iteraciones que hará el modelo durante el entrenameinto
         print("TEST RESULTS")
         #Se le pasan inputs y outputs de los datos de capacitación y de testeo. Acá es entrenado el motor.
-        history = model.fit(training_padded, training_labels, epochs=num_epochs, validation_data=(testing_padded, testing_labels), verbose=2)
+        history = model.fit(training_padded, training_labels, epochs=num_epochs, validation_data=(testing_padded, testing_labels), verbose=0)
         """
         Resultados model.fit:
         
@@ -105,4 +111,4 @@ class ModeloAsuntosDos:
         # Con la sentencia recibida ya tokenizada, le pedimos al modelo que haga la predicción.
         prediction = cls.model.predict(padded)
         #, (prediction > 0.6).astype("int32")
-        return [prediction.tolist()] #Valor a ajustar una vez que vaya sumando casos para la capacitación del modelo
+        return [prediction.tolist(), (prediction > 0.6).astype("int32")] #Valor a ajustar una vez que vaya sumando casos para la capacitación del modelo

@@ -3,10 +3,10 @@ import tensorflow as tf
 from tensorflow import keras
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
-from .data.data_asuntos import sentences as data_sentences, training_labels as data_training_labels, testing_sentences as data_testing_sentences, testing_labels as data_testing_labels
+from .data.data_asuntos_v3 import sentences as data_sentences, training_labels as data_training_labels, testing_sentences as data_testing_sentences, testing_labels as data_testing_labels
 
 
-class ModeloAsuntos:
+class ModeloAsuntos2:
     VOCAB_SIZE = 10000 #Máx num de palabras que se deben conservar, si se le pasan más va a guardar las 10000 más repetidas.
     EMBEDDING_DIM = 16 
     MAX_LENGTH = 10000 
@@ -53,20 +53,21 @@ class ModeloAsuntos:
         5 palabras quedaría luego del este método formado de la siguiente manera: [1,2,3,<OOV>,<OOV>]
         """
         training_padded = pad_sequences(training_sentences,maxlen=cls.MAX_LENGTH, padding='post')  
+        training_labels = tf.keras.utils.to_categorical(training_labels, num_classes=5) #TODO
         print("PADDED", training_padded)
         #print("PADDED SHAPE", training_padded.shape) #Filas x columns - Solo muestra cantidades
         
         # 3. Creación del Modelo
         # TODO Documentar
         model = tf.keras.Sequential([
-            tf.keras.layers.Embedding(cls.VOCAB_SIZE, cls.EMBEDDING_DIM, input_length=cls.MAX_LENGTH), 
-            tf.keras.layers.GlobalAveragePooling1D(), 
-            tf.keras.layers.Dense(24, activation='relu'), 
-            tf.keras.layers.Dense(1, activation='sigmoid') # Para clasificación binaria
+            tf.keras.layers.Embedding(cls.VOCAB_SIZE, cls.EMBEDDING_DIM, input_length=cls.MAX_LENGTH),
+            tf.keras.layers.GlobalAveragePooling1D(),
+            tf.keras.layers.Dense(24, activation='relu'),
+            tf.keras.layers.Dense(5, activation='softmax')
         ])
 
         # Configuración del modelo
-        model.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
+        model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
         model.summary()
         cls.model = model
 
@@ -75,6 +76,7 @@ class ModeloAsuntos:
         testing_sentences = tokenizer.texts_to_sequences(testing_sentences)
         testing_padded = pad_sequences(testing_sentences, maxlen=cls.MAX_LENGTH, padding='post') 
         testing_labels = data_testing_labels
+        testing_labels = tf.keras.utils.to_categorical(testing_labels, num_classes=5)
 
         # A partir de la versión 2 de tf (TensorFlow), el modelo debe recibir datos del tipo de numpy (np) y no tipos de datos nativos de python
         training_padded = np.array(training_padded)
@@ -82,7 +84,7 @@ class ModeloAsuntos:
         testing_padded = np.array(testing_padded)
         testing_labels = np.array(testing_labels)
 
-        num_epochs = 3000 # Cantidad de iteraciones que hará el modelo durante el entrenameinto
+        num_epochs = 2000 # Cantidad de iteraciones que hará el modelo durante el entrenameinto
         print("TEST RESULTS")
         #Se le pasan inputs y outputs de los datos de capacitación y de testeo. Acá es entrenado el motor.
         history = model.fit(training_padded, training_labels, epochs=num_epochs, validation_data=(testing_padded, testing_labels), verbose=2)
@@ -100,4 +102,5 @@ class ModeloAsuntos:
         padded = pad_sequences(sequences, maxlen=cls.MAX_LENGTH, padding=cls.PADDING_TYPE, truncating=cls.TRUNC_TYPE)
         # Con la sentencia recibida ya tokenizada, le pedimos al modelo que haga la predicción.
         prediction = cls.model.predict(padded)
-        return [prediction.tolist() , (prediction > 0.6).astype("int32")] #Valor a ajustar una vez que vaya sumando casos para la capacitación del modelo
+        return [prediction.tolist() , np.argmax(prediction, axis=1)] #Valor a ajustar una vez que vaya sumando casos para la capacitación del modelo
+ 
