@@ -1,15 +1,16 @@
 """
-Definiciones:
+Salidas:
 
-0 = Trámite no redundante para nuestro sistema
+0 = Asunto redundante para nuestro sistema
 1 = Denuncia Siniestro
 2 = Cotización póliza de auto
 3 = Cotización póliza del hogar
 4 = Carga presupuestos
 """
+outcomes = [0,1,2,3,4,5]
 
 # 169 datos - 80%
-sentences = [
+training_sentences = [
     "denuncia de Siniestro",
     "denuncia de un siniestro",
     "siniestro",
