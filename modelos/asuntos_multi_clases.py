@@ -3,10 +3,10 @@ import tensorflow as tf
 from tensorflow import keras
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
-from .data.data_asuntos_v3 import sentences as data_sentences, training_labels as data_training_labels, testing_sentences as data_testing_sentences, testing_labels as data_testing_labels
+from .data.data_asuntos_mc import sentences as data_sentences, training_labels as data_training_labels, testing_sentences as data_testing_sentences, testing_labels as data_testing_labels
 
 
-class ModeloAsuntos2:
+class ModeloAsuntosMultiClases:
     VOCAB_SIZE = 10000 #Máx num de palabras que se deben conservar, si se le pasan más va a guardar las 10000 más repetidas.
     EMBEDDING_DIM = 16 
     MAX_LENGTH = 10000 
