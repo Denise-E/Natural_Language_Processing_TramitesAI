@@ -106,6 +106,6 @@ class ModeloAsuntosMultiClases:
         padded = pad_sequences(sequences, maxlen=cls.MAX_LENGTH, padding=cls.PADDING_TYPE, truncating=cls.TRUNC_TYPE)
         # Con la sentencia recibida ya tokenizada, le pedimos al modelo que haga la predicción.
         prediction = cls.model.predict(padded)
-        return [prediction.tolist() , np.argmax(prediction, axis=1)]
-        #return np.argmax(prediction, axis=1) # Devuelve la clase predicha con mayor probabilidad.
+        #return [prediction.tolist() , np.argmax(prediction, axis=1)]
+        return np.argmax(prediction, axis=1) # Devuelve la clase predicha con mayor probabilidad.
     

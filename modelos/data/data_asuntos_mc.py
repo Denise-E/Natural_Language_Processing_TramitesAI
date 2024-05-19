@@ -1,11 +1,11 @@
 """
 Salidas:
 
-0 = Asunto redundante para nuestro sistema
-1 = Denuncia Siniestro
-2 = Cotización póliza de auto
-3 = Cotización póliza del hogar
-4 = Carga presupuestos
+0 = Asunto redundante para nuestro sistema (53 casos de c)
+1 = Denuncia Siniestro (50 casos de c - agregué 35)
+2 = Cotización póliza de auto (60 casos de c - agregué 30)
+3 = Cotización póliza del hogar (60 casos de c)
+4 = Carga presupuestos (60 casos de c - agregué 49)
 """
 outcomes = [0,1,2,3,4,5]
 
@@ -179,15 +179,131 @@ training_sentences = [
     "¡descubre cómo ganar dinero desde casa!",
     "¡productos de belleza gratis solo por registrarte!",
     "¡tu cuenta ha sido seleccionada para recibir un premio especial!",
-    "solicitud Vacaciones"
+    "solicitud Vacaciones",
+     "presupuesto",
+    "envio presupuesto",
+    "presupuestación",
+    "pedido presupuestación",
+    "presupuestacion",
+    "pedido presupuestación",
+    "solicitud presupuestación",
+    "solicitud presupuestación",
+    "envio infromacion para presupuesto",
+    "envio infromacion para presupuestacion",
+    "envio infromación para presupuestación",
+    "infromacion presupuestos",
+    "infromación presupuestación",
+    "presupuestar",
+    "carga presupuestación",
+    "cargar presupuesto",
+    "cargar preuspuestacion",
+    "presupuestacion info",
+    "presupuestación solciitud",
+    "por favor presupuestar",
+    "presupuestar por favor",
+    "datos para presupuesto",
+    "infromación presupuestación",
+    "infromacion presupuestacion",
+    "necesito presupuesto",
+    "necesito presupuesto",
+    "necesito presupuestación",
+    "necesito presupuestacion",
+    "preusprestacion",
+    "carga presupuetso",
+    "carga presupuesto",
+    "carga presupuestacion",
+    "presupuesto charlado",
+    "presupuesto para analizar",
+    "análisis presupuesto",
+    "presupuesto urgentente",
+    "necesito este presupuesto",
+    "presupuesto seguro",
+    "presupuesto cobertura",
+    "seguro presupuesto",
+    "seguro presupuestación",
+    "seguro presupuestacion",
+    "cobertura presupuesto",
+    "cobertura presupuestación",
+    "cobertura presupuestacion",
+    "por favor presupuestar seguro",
+    "solciitud presupuesto seguro",
+    "presupuesto charlado",
+    "presupuesto solicitud",
+        "vehículo poliza",
+    "póliza vehículo",
+    "por favor cotizar poliza auto",
+    "porfavor cotizar poliza auto",
+    "por favor cotizar poliza vehiculo",
+    "cotizar auto",
+    "cotiazión vehículo póliza",
+    "cotiazión vehículo poliza",
+    "envio informacion poliza auto",
+    "envio informacion poliza vehiuclo",
+    "envio informacion póliza automóvil",
+    "informacion poliza auto",
+    "informacion poliza vehiuclo",
+    "informacion póliza automóvil",
+    "documentos poliza auto",
+    "documentos poliza vehiuclo",
+    "documentos póliza automóvil",
+    "documentación poliza auto",
+    "documentación poliza vehiuclo",
+    "documentación póliza automóvil",
+    "documentacion poliza auto",
+    "documentacion poliza vehiuclo",
+    "documentacion póliza automóvil",
+    "papeles poliza auto",
+    "papeles poliza vehiuclo",
+    "papeles póliza automóvil",
+    "papeles poliza auto",
+    "papeles poliza vehiuclo",
+    "papeles póliza automóvil",
+    "envio papeles poliza auto",
+    "siniestro denuncia",
+    "siniestro a denunciar",
+    "aviso denuncia de siniestro",
+    "reporte denuncia de siniestro",
+    "denuncio un siniestro",
+    "quiero hacer una denuncia de siniestro",
+    "informe siniestro a denunciar",
+    "detalle denuncia de sineistro",
+    "detalle siniestro a denunciar",
+    "detalles denuncia de sineistro",
+    "detalles siniestro a denunciar",
+    "siniestro denunciado detalles",
+    "documentación denuncia de siniestro",
+    "documentación siniestro denunciado",
+    "documentacion denuncia de siniestro",
+    "documentacion siniestro denunciado",
+    "pedido denuncia de siniestro",
+    "pedido denuncia de un siniestro",
+    "quiero denunciar un siniestro",
+    "denuncia incendio",
+    "denuncia incendio auto",
+    "denuncia incendio vehiculo",
+    "denuncia incendio hogar",
+    "denuncia choque",
+    "denuncia golpe",
+    "denuncia de daño ocasionado",
+    "denuncia de daño sufrido",
+    "denuncia daños",
+    "denuncia daños vehiculo",
+    "denuncia daños auto",
+    "denuncia accidente de circulación",
+    "denuncia accidente de circulacion",
+    "denuncia siniestro ocasionado",
+    "denuncia siniestro sucedido",
+    "pruebas denuncia siniestro"
 ]
 
 training_labels = [
     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-    4,4,4,4,4,4,4,4,4,4,4,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0
+    4,4,4,4,4,4,4,4,4,4,4,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,
+    4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 ]
 
-# 42 datos - 20%
+# 45 datos - 20%
 testing_sentences = [
     "denuncia siniestro",
     "solicitud Denuncia de un siniestro",
@@ -230,9 +346,12 @@ testing_sentences = [
     "conoce Datadog",
     "feliz cumpleaños",
     "conocé nuestras ofertas",
-    "solicitud Vacaciones Mar de las Pampas"
+    "solicitud Vacaciones Mar de las Pampas",
+    "un texto nuevo",
+    "cualquier cosa",
+    "simplemente otro string con palabras no tokenizadas"
 ]
 
 testing_labels = [
-    1, 1, 1,1,4,4,4,2,2,2,2,2,2,2,3, 3,3,3,3,3,3,3,3,3,3,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    1, 1, 1,1,4,4,4,2,2,2,2,2,2,2,3, 3,3,3,3,3,3,3,3,3,3,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0
 ]
