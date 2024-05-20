@@ -20,8 +20,9 @@ sentences = [
 
 print("Información modelo:" )
 print("Cantidad de iteraciones al momento de la capacitación del modelo: 3000")
-print("Cantidad datos de capacitación: 169")
-print("Cantidad datos de testeo: 42")
+print("Total de datos: 646")
+print("Cantidad datos de capacitación: 507 - 78%")
+print("Cantidad datos de testeo: 139 - 22%")
 print("********************* INICIO PREDICCIÓNES *************************")
 for sentence in sentences:
     prediccion = predecir([sentence])

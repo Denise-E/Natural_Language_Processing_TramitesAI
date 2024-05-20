@@ -38,6 +38,7 @@ class ModeloAsuntosMultiClases:
         df = pd.read_csv('modelos/data/asuntos.csv')
         #print(df)
         
+        # Es importante que no hayan espacios en lso títulos, para que puedan encontrarse las columnas. Por ejemplo "Uso" y no " Uso "
         # Filtra los datos de capacitación y testeo
         training_data = df[df['Uso'] == 'C']
         testing_data = df[df['Uso'] == 'T']
