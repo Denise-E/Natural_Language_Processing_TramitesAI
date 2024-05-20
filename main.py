@@ -12,7 +12,6 @@ sentences = [
     "envio presupuestos", #4
     "solicitud cotizacion póliza del hogar",  #3 
     "solicitud póliza del hogar",  #3
-    "que seas feliz", #0 
     "vacaciones en Mardel", #0
     "notificación membresia", #0 
     "notificación membresía", #0 
