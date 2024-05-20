@@ -1,21 +1,20 @@
 import numpy as np
 import pandas as pd
 import tensorflow as tf
+from keras.utils import to_categorical
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
-#from .deprecado.data_asuntos_mc import outcomes, training_sentences as training_sentences_sentences, training_labels as data_training_labels, testing_sentences as data_testing_sentences, testing_labels as data_testing_labels
-from keras.utils import to_categorical
 
 class ModeloAsuntosMultiClases:
     # Parámetros para la configuración del modelo
-    VOCAB_SIZE = 10000  # Máximo número de palabras que se deben conservar, si se le pasan más, guardará las 10000 más repetidas.
-    EMBEDDING_DIM = 16  # Dimensión del vector de características para cada palabra.
-    MAX_LENGTH = 10000  # Longitud máxima de las secuencias de entrada.
-    TRUNC_TYPE='post'  # Tipo de truncado de las secuencias (después de alcanzar MAX_LENGTH).
+    TRUNC_TYPE='post'  # Tipo de truncado de las secuencias (después de alcanzar max_length).
     PADDING_TYPE='post'  # Tipo de padding (agregado de tokens al final de la secuencia).
     OOV_TOKEN = "<OOV>"  # Token para palabras fuera del vocabulario (Out Of Vocabulary).
     tokenizer = None  # Tokenizer se inicializa como None y se configura posteriormente.
     model = None  # Modelo se inicializa como None y se configura posteriormente.
+    vocab_size: int = None  # Máximo número de palabras que se deben conservar, si se le pasan más, guardará las 10000 más repetidas.
+    embedding_dim:int = None  # Dimensión del vector de características para cada palabra.
+    max_length: int = None  # Longitud máxima de las secuencias de entrada.
     training_sentences: list = None # Sentencias de entrenamiento
     training_labels: list = None # Respuesta esperada para cada sentencia de entrenamiento
     testing_sentences: list = None # Sentencias de prueba
@@ -23,14 +22,17 @@ class ModeloAsuntosMultiClases:
     categories_quantity: int = None
 
     @classmethod
-    def __init__(cls):
+    def __init__(cls, vocab_size:int, embedding:int,max_length: int ):
+        cls.vocab_size = vocab_size
+        cls.embedding_dim = embedding
+        cls.max_length = max_length
         # Obtiene los datos de capacitación y entrenamiento a partir de los datos guardados en el archivo csv precargado
-        cls.get_training_data()
+        cls.get_data()
         # Inicializa la configuración y el entrenamiento del modelo al instanciarse la clase.
         cls.model_config_and_training()
         
     @classmethod
-    def get_training_data(cls):
+    def get_data(cls):
         # Este metodo trabaja con Pandas para la obtención de los datso de entrenameinto y de prueba a partir de archivo csv
         # Crea el dataframe a partir del csv
         df = pd.read_csv('modelos/data/asuntos.csv')
@@ -62,7 +64,7 @@ class ModeloAsuntosMultiClases:
         - El valor dado al parámetro oov_token es el identificador que se usará para luego para tokenizar palabras que no se encontraban, o no fueron tokenizados, al procesarse los datos de capacitación. 
         El token '0' guardará este valor, en nuetsro caso {0: "<OOV>"}
         """
-        tokenizer = Tokenizer(num_words=cls.VOCAB_SIZE, oov_token=cls.OOV_TOKEN) 
+        tokenizer = Tokenizer(num_words=cls.vocab_size, oov_token=cls.OOV_TOKEN) 
         tokenizer.fit_on_texts(cls.training_sentences)
         cls.tokenizer = tokenizer
         word_indexed = tokenizer.word_index # Genera la lista de las palabras tokenizadas
@@ -73,18 +75,18 @@ class ModeloAsuntosMultiClases:
         """
         pad_sequences:
         
-        - MAX_LENGTH debe definirse por concordancia con el resto del proceso.
+        - maxlen debe definirse por concordancia con el resto del proceso.
         - Todas las oraciones deben tener la misma cantidad de palabras, se resuelve completando con la cantidad de OOV_TOKEN necesarios en cada oración.
         - Se completará con el OOV_TOKEN al final, dado por el valor 'post' del parámetro padding.
         Por ejemplo, en una oración de 3 palabras que deba llevarse a una longitud de 5 palabras, quedará [1,2,3,<OOV>,<OOV>]
         """
-        training_padded = pad_sequences(training_sentences,maxlen=cls.MAX_LENGTH, padding='post')  
+        training_padded = pad_sequences(training_sentences,maxlen=cls.max_length, padding='post')  
         training_labels = to_categorical(cls.training_labels, num_classes=cls.categories_quantity)
         #print("PADDED SHAPE", training_padded.shape) #Filas x columns - muestra cantidades
         
         # 2. Creación y configuración del modelo de red neuronal
         model = tf.keras.Sequential([
-            tf.keras.layers.Embedding(cls.VOCAB_SIZE, cls.EMBEDDING_DIM, input_length=cls.MAX_LENGTH),
+            tf.keras.layers.Embedding(cls.vocab_size, cls.embedding_dim, input_length=cls.max_length),
             tf.keras.layers.GlobalAveragePooling1D(),
             tf.keras.layers.Dense(24, activation='relu'),
             tf.keras.layers.Dense(cls.categories_quantity, activation='softmax') # Para trabajar con múltiples clases
@@ -99,7 +101,7 @@ class ModeloAsuntosMultiClases:
 
         # Datos de prueba para el modelo
         testing_sentences = tokenizer.texts_to_sequences(cls.testing_sentences)
-        testing_padded = pad_sequences(testing_sentences, maxlen=cls.MAX_LENGTH, padding='post') 
+        testing_padded = pad_sequences(testing_sentences, maxlen=cls.max_length, padding='post') 
         testing_labels = to_categorical(cls.testing_labels, num_classes=cls.categories_quantity)
 
         # A partir de la versión 2 de tf (TensorFlow), el modelo debe recibir datos del tipo de numpy (np) y no tipos de datos nativos de python
@@ -123,7 +125,7 @@ class ModeloAsuntosMultiClases:
     def model_prediction_tests(cls, sentence: list) -> list[int]:
         # Procesamiento de los datos de entrada. Tokenización strings.
         sequences = cls.tokenizer.texts_to_sequences(sentence)
-        padded = pad_sequences(sequences, maxlen=cls.MAX_LENGTH, padding=cls.PADDING_TYPE, truncating=cls.TRUNC_TYPE)
+        padded = pad_sequences(sequences, maxlen=cls.max_length, padding=cls.PADDING_TYPE, truncating=cls.TRUNC_TYPE)
         # Con la sentencia recibida ya tokenizada, le pedimos al modelo que haga la predicción.
         prediction = cls.model.predict(padded)
         #return [prediction.tolist() , np.argmax(prediction, axis=1)]

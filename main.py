@@ -1,21 +1,21 @@
 from modelos.asuntos_multi_clases import ModeloAsuntosMultiClases
 
-MODELO_ASUNTOS = ModeloAsuntosMultiClases()
+MODELO_ASUNTOS = ModeloAsuntosMultiClases(vocab_size=10000,embedding=16,max_length=10000)
 
 def predecir(sentencia: list):
     return MODELO_ASUNTOS.model_prediction_tests(sentencia)
     
 # Sentencias a prdecir, junto al outcome esperado
 sentences = [
-    "siniestro a denunciar", #1 OK
-    "auto cotizacion", #2 MAL TIRO 3 (HOGAR)
+    "siniestro a denunciar", #1 
+    "auto cotizacion", #2 
     "envio presupuestos", #4
-    "solicitud cotizacion póliza del hogar",  #3 MAL TIRO 2 (AUTO)
+    "solicitud cotizacion póliza del hogar",  #3 
     "solicitud póliza del hogar",  #3
-    "que seas feliz", #0 # MAL TIRO 4 (presupuestos)
+    "que seas feliz", #0 
     "vacaciones en Mardel", #0
-    "notificación membresia", #0 # Mal tiro 4 (presupuestos)
-    "notificación membresía", #0 # Mal tiro 1 (denuncia siniestros)
+    "notificación membresia", #0 
+    "notificación membresía", #0 
 ]
 
 print("Información modelo:" )
