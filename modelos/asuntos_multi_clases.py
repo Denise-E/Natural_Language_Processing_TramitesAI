@@ -1,8 +1,9 @@
 import numpy as np
+import pandas as pd
 import tensorflow as tf
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
-from .data.data_asuntos_mc import outcomes, training_sentences as training_sentences_sentences, training_labels as data_training_labels, testing_sentences as data_testing_sentences, testing_labels as data_testing_labels
+#from .deprecado.data_asuntos_mc import outcomes, training_sentences as training_sentences_sentences, training_labels as data_training_labels, testing_sentences as data_testing_sentences, testing_labels as data_testing_labels
 from keras.utils import to_categorical
 
 class ModeloAsuntosMultiClases:
@@ -15,21 +16,43 @@ class ModeloAsuntosMultiClases:
     OOV_TOKEN = "<OOV>"  # Token para palabras fuera del vocabulario (Out Of Vocabulary).
     tokenizer = None  # Tokenizer se inicializa como None y se configura posteriormente.
     model = None  # Modelo se inicializa como None y se configura posteriormente.
+    training_sentences: list = None # Sentencias de entrenamiento
+    training_labels: list = None # Respuesta esperada para cada sentencia de entrenamiento
+    testing_sentences: list = None # Sentencias de prueba
+    testing_labels: list = None # Respuesta esperada para cada sentencia de prueba
+    categories_quantity: int = None
 
     @classmethod
     def __init__(cls):
+        # Obtiene los datos de capacitación y entrenamiento a partir de los datos guardados en el archivo csv precargado
+        cls.get_training_data()
         # Inicializa la configuración y el entrenamiento del modelo al instanciarse la clase.
         cls.model_config_and_training()
         
     @classmethod
-    def model_config_and_training(cls):
-        # 1. Definición de los strings de capacitación, importados de la carpeta data
-        sentences = training_sentences_sentences
-        training_labels = data_training_labels
-        # Nos guardamos la cantidad de clases con las que vamos a estar trabajando, ya que este valor será utilizado varias veces
-        outcomes_quantity = len(outcomes)
+    def get_training_data(cls):
+        # Este metodo trabaja con Pandas para la obtención de los datso de entrenameinto y de prueba a partir de archivo csv
+        # Crea el dataframe a partir del csv
+        df = pd.read_csv('modelos/data/asuntos.csv')
+        #print(df)
+        
+        # Filtra los datos de capacitación y testeo
+        training_data = df[df['Uso'] == 'C']
+        testing_data = df[df['Uso'] == 'T']
 
-        # 2. Tokenización de las sentencias
+        # Separa las sentencias de la respuesta esperada
+        cls.training_sentences = training_data['Sentencias'].tolist()
+        cls.training_labels = training_data['Categoria'].tolist()
+        cls.testing_sentences = testing_data['Sentencias'].tolist()
+        cls.testing_labels = testing_data['Categoria'].tolist()
+        
+        # Obtiene la cantidad de valores distintos en la columna 'Categoria'
+        cls.categories_quantity = df['Categoria'].nunique()
+
+        
+    @classmethod
+    def model_config_and_training(cls):
+        # 1. Tokenización de las sentencias
         """
         Tokenizer:
         
@@ -40,12 +63,12 @@ class ModeloAsuntosMultiClases:
         El token '0' guardará este valor, en nuetsro caso {0: "<OOV>"}
         """
         tokenizer = Tokenizer(num_words=cls.VOCAB_SIZE, oov_token=cls.OOV_TOKEN) 
-        tokenizer.fit_on_texts(sentences)
+        tokenizer.fit_on_texts(cls.training_sentences)
         cls.tokenizer = tokenizer
         word_indexed = tokenizer.word_index # Genera la lista de las palabras tokenizadas
         print("Indexed  WORDS", word_indexed)
         
-        training_sentences = tokenizer.texts_to_sequences(sentences) # Crea la secuencia de tokens para cada oración. Lista de listas.
+        training_sentences = tokenizer.texts_to_sequences(cls.training_sentences) # Crea la secuencia de tokens para cada oración. Lista de listas.
         
         """
         pad_sequences:
@@ -56,16 +79,15 @@ class ModeloAsuntosMultiClases:
         Por ejemplo, en una oración de 3 palabras que deba llevarse a una longitud de 5 palabras, quedará [1,2,3,<OOV>,<OOV>]
         """
         training_padded = pad_sequences(training_sentences,maxlen=cls.MAX_LENGTH, padding='post')  
-        training_labels = to_categorical(training_labels, num_classes=outcomes_quantity)
-        print("PADDED", training_padded)
+        training_labels = to_categorical(cls.training_labels, num_classes=cls.categories_quantity)
         #print("PADDED SHAPE", training_padded.shape) #Filas x columns - muestra cantidades
         
-        # 3. Creación y configuración del modelo de red neuronal
+        # 2. Creación y configuración del modelo de red neuronal
         model = tf.keras.Sequential([
             tf.keras.layers.Embedding(cls.VOCAB_SIZE, cls.EMBEDDING_DIM, input_length=cls.MAX_LENGTH),
             tf.keras.layers.GlobalAveragePooling1D(),
             tf.keras.layers.Dense(24, activation='relu'),
-            tf.keras.layers.Dense(outcomes_quantity, activation='softmax') # Para trabajar con múltiples clases
+            tf.keras.layers.Dense(cls.categories_quantity, activation='softmax') # Para trabajar con múltiples clases
         ])
 
         # Configuración del modelo
@@ -76,11 +98,9 @@ class ModeloAsuntosMultiClases:
         cls.model = model
 
         # Datos de prueba para el modelo
-        testing_sentences = data_testing_sentences
-        testing_sentences = tokenizer.texts_to_sequences(testing_sentences)
+        testing_sentences = tokenizer.texts_to_sequences(cls.testing_sentences)
         testing_padded = pad_sequences(testing_sentences, maxlen=cls.MAX_LENGTH, padding='post') 
-        testing_labels = data_testing_labels
-        testing_labels = to_categorical(testing_labels, num_classes=outcomes_quantity)
+        testing_labels = to_categorical(cls.testing_labels, num_classes=cls.categories_quantity)
 
         # A partir de la versión 2 de tf (TensorFlow), el modelo debe recibir datos del tipo de numpy (np) y no tipos de datos nativos de python
         training_padded = np.array(training_padded)
@@ -100,7 +120,7 @@ class ModeloAsuntosMultiClases:
         """
 
     @classmethod
-    def model_prediction_tests(cls, sentence: str) -> list[int]:
+    def model_prediction_tests(cls, sentence: list) -> list[int]:
         # Procesamiento de los datos de entrada. Tokenización strings.
         sequences = cls.tokenizer.texts_to_sequences(sentence)
         padded = pad_sequences(sequences, maxlen=cls.MAX_LENGTH, padding=cls.PADDING_TYPE, truncating=cls.TRUNC_TYPE)

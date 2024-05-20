@@ -1,10 +1,8 @@
-from modelos.deprecado.asuntos import ModeloAsuntos
 from modelos.asuntos_multi_clases import ModeloAsuntosMultiClases
 
-#MODELO_ASUNTOS =  ModeloAsuntos()
 MODELO_ASUNTOS = ModeloAsuntosMultiClases()
 
-def predecir(sentencia: str):
+def predecir(sentencia: list):
     return MODELO_ASUNTOS.model_prediction_tests(sentencia)
     
 # Sentencias a prdecir, junto al outcome esperado
@@ -26,7 +24,6 @@ print("Cantidad datos de capacitación: 169")
 print("Cantidad datos de testeo: 42")
 print("********************* INICIO PREDICCIÓNES *************************")
 for sentence in sentences:
-#if sentences:
     prediccion = predecir([sentence])
     print("STRING A PREDECIR:",sentence)
     print("PREDICCIÓN:", prediccion)

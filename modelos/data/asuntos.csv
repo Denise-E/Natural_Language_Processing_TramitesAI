@@ -1,0 +1,646 @@
+Categoria,Sentencias,Uso
+1,detalles denuncia de siniestro,T
+1,detalles siniestro a denunciar,T
+1,siniestro denunciado detalles,T
+1,documentación denuncia de siniestro,T
+1,documentación siniestro denunciado,T
+1,documentacion denuncia de siniestro,T
+1,documentacion siniestro denunciado,T
+1,pedido denuncia de siniestro,T
+1,pedido denuncia de un siniestro,T
+1,quiero denunciar un siniestro,T
+1,denuncia incendio,T
+1,denuncia incendio auto,T
+1,denuncia incendio vehiculo,T
+1,denuncia incendio hogar,T
+1,denuncia choque,T
+1,denuncia golpe,T
+1,denuncia de daño ocasionado,T
+1,denuncia de daño sufrido,T
+1,denuncia daños,T
+1,denuncia daños vehiculo,T
+1,denuncia daños auto,T
+1,denuncia accidente de circulación,T
+1,denuncia accidente de circulacion,T
+1,denuncia siniestro ocasionado,T
+1,denuncia siniestro sucedido,T
+1,pruebas denuncia siniestro,T
+1,denuncia de siniestro,T
+1,denuncia de un siniestro,T
+1,siniestro,T
+1,denuncia de siniestro,C
+1,denuncia de un siniestro,C
+1,denuncia siniestro,C
+1,solicitud denuncia de siniestro,C
+1,solicitud denuncia de un siniestro,C
+1,solicitud denuncia siniestro,C
+1,solicitud siniestro,C
+1,solicitud denuncia,C
+1,pedido denuncia de siniestro,C
+1,pedido denuncia de un siniestro,C
+1,pedido denuncia siniestro,C
+1,pedido siniestro,C
+1,pedido denuncia,C
+1,notificación siniestro,C
+1,aviso de siniestro,C
+1,siniestro denuncia,C
+1,siniestro a denunciar,C
+1,reporte denuncia de siniestro,C
+1,denuncio un siniestro,C
+1,quiero hacer una denuncia de siniestro,C
+1,informe siniestro a denunciar,C
+1,detalle denuncia de siniestro,C
+1,detalle siniestro a denunciar,C
+1,detalles denuncia de siniestro,C
+1,detalles siniestro a denunciar,C
+1,siniestro denunciado detalles,C
+1,documentación denuncia de siniestro,C
+1,documentación siniestro denunciado,C
+1,documentacion denuncia de siniestro,C
+1,documentacion siniestro denunciado,C
+1,quiero denunciar un siniestro,C
+1,denuncia incendio,C
+1,denuncia incendio auto,C
+1,denuncia incendio vehiculo,C
+1,denuncia incendio hogar,C
+1,denuncia choque,C
+1,denuncia golpe,C
+1,denuncia de daño ocasionado,C
+1,denuncia de daño sufrido,C
+1,denuncia daños,C
+1,denuncia daños vehiculo,C
+1,denuncia daños auto,C
+1,denuncia accidente de circulación,C
+1,denuncia accidente de circulacion,C
+1,denuncia siniestro ocasionado,C
+1,denuncia siniestro sucedido,C
+1,pruebas denuncia siniestro,C
+1,quiero reportar un siniestro,C
+1,siniestro en mi casa,C
+1,he tenido un siniestro,C
+1,reportar accidente,C
+1,necesito denunciar siniestro,C
+1,reporte de choque,C
+1,notificar accidente,C
+1,informar de un siniestro,C
+1,aviso de accidente,C
+1,choque a reportar,C
+1,informe de accidente,C
+1,accidente automovilístico,C
+1,denuncia accidente,C
+1,accidente de tráfico,C
+1,daño en el vehículo,C
+1,daño en la propiedad,C
+1,reporte de daños,C
+1,denuncia daños materiales,C
+1,siniestro de auto,C
+1,daños en mi auto,C
+1,accidente en mi hogar,C
+1,reportar daños,C
+1,informar siniestro de auto,C
+1,choque con otro vehículo,C
+1,reporte de siniestro de auto,C
+1,denuncia de accidente,C
+1,daños a terceros,C
+1,denuncia por choque,C
+1,aviso de daños,C
+1,reporte de siniestro de vehículo,C
+1,notificación de siniestro,C
+1,informar daños,C
+1,detalles del siniestro,C
+1,denuncia de accidente en casa,C
+1,accidente con otro auto,C
+1,choque con daños,C
+1,informe de daños,C
+1,accidente con heridos,C
+1,denunciar daños,C
+1,aviso de siniestro en casa,C
+1,informe siniestro en vehículo,C
+1,daño en vivienda,C
+1,choque de auto,C
+1,informar accidente de auto,C
+1,accidente en casa,C
+1,denunciar accidente automovilístico,C
+1,informe de daños en vehículo,C
+1,denuncia accidente de auto,C
+1,denuncia por siniestro,C
+1,reporte de accidente en auto,C
+1,aviso de daños en vehículo,C
+1,denuncia de accidente de circulación,C
+1,siniestro con daños,C
+1,denuncia de choque,C
+1,reporte de daño en auto,C
+1,choque en la calle,C
+1,accidente en la carretera,C
+1,informar daño en auto,C
+1,accidente con daños a terceros,C
+1,denuncia accidente con daños,C
+1,aviso accidente de auto,C
+1,reporte de siniestro con heridos,C
+1,informe de choque,C
+1,accidente grave,C
+1,denunciar accidente grave,C
+1,siniestro con heridos,C
+1,aviso de accidente de circulación,C
+1,reporte de accidente de tráfico,C
+1,informar de choque,C
+1,denunciar accidente en carretera,C
+1,informe de siniestro con heridos,C
+1,aviso de accidente grave,C
+1,reporte de siniestro en hogar,C
+1,denunciar choque con daños,C
+2,cotización de pólizas de auto,T
+2,cotización de polizas de auto,T
+2,cotizacion de pólizas de auto,T
+2,cotizacion de polizas de auto,T
+2,polizas de auto,T
+2,pólizas de auto,T
+2,cotización pólizas auto,T
+2,cotización polizas auto,T
+2,cotizacion pólizas auto,T
+2,cotizacion polizas auto,T
+2,polizas auto,T
+2,pólizas auto,T
+2,solicitar cotización de automóvil,T
+2,vehículo poliza,T
+2,póliza vehículo,T
+2,por favor cotizar poliza auto,T
+2,porfavor cotizar poliza auto,T
+2,por favor cotizar poliza vehiculo,T
+2,cotizar auto,T
+2,cotiazión vehículo póliza,T
+2,cotiazión vehículo poliza,T
+2,envio informacion poliza auto,T
+2,envio informacion poliza vehiuclo,T
+2,envio informacion póliza automóvil,T
+2,informacion poliza auto,T
+2,informacion poliza vehiuclo,T
+2,informacion póliza automóvil,T
+2,documentos poliza auto,T
+2,documentos poliza vehiuclo,T
+2,documentos póliza automóvil,T
+2,solicitud cotización de pólizas de auto,C
+2,solicitud cotización de polizas de auto,C
+2,solicitud cotizacion de pólizas de auto,C
+2,solicitud cotizacion de polizas de auto,C
+2,solicitud polizas de auto,C
+2,solicitud pólizas de auto,C
+2,solicitud cotización pólizas auto,C
+2,solicitud cotización polizas auto,C
+2,solicitud cotizacion pólizas auto,C
+2,solicitud cotizacion polizas auto,C
+2,solicitud polizas auto,C
+2,solicitud pólizas auto,C
+2,pedido cotización de pólizas de auto,C
+2,pedido cotización de polizas de auto,C
+2,pedido cotizacion de pólizas de auto,C
+2,pedido cotizacion de polizas de auto,C
+2,pedido polizas de auto,C
+2,pedido pólizas de auto,C
+2,pedido cotización pólizas auto,C
+2,pedido cotización polizas auto,C
+2,pedido cotizacion pólizas auto,C
+2,pedido cotizacion polizas auto,C
+2,pedido polizas auto,C
+2,pedido pólizas auto,C
+2,documentación poliza auto,C
+2,documentación poliza vehiuclo,C
+2,documentación póliza automóvil,C
+2,documentacion poliza auto,C
+2,documentacion poliza vehiuclo,C
+2,documentacion póliza automóvil,C
+2,papeles poliza auto,C
+2,papeles poliza vehiuclo,C
+2,papeles póliza automóvil,C
+2,quiero cotización póliza auto,C
+2,necesito cotización póliza auto,C
+2,cotización seguro de auto,C
+2,solicitar presupuesto de póliza de auto,C
+2,presupuesto seguro auto,C
+2,precio seguro de auto,C
+2,tarifa seguro de auto,C
+2,valor seguro de auto,C
+2,coste seguro de auto,C
+2,cotización de seguro vehicular,C
+2,precio de póliza de auto,C
+2,cotización para seguro de auto,C
+2,solicitud de precio de seguro de auto,C
+2,estimación seguro de auto,C
+2,cotización para póliza de coche,C
+2,tarifas seguro coche,C
+2,cotizar seguro para mi auto,C
+2,necesito cotización seguro de auto,C
+2,solicitar precio seguro vehicular,C
+2,cuánto cuesta el seguro de auto,C
+2,requiero cotización de seguro de auto,C
+2,pedido de precio de póliza vehicular,C
+2,solicito cotización de seguro para auto,C
+2,cotización de seguro automotor,C
+2,precio de seguro para mi auto,C
+2,estimación de seguro para auto,C
+2,cotizar seguro de vehículo,C
+2,valor de póliza de auto,C
+2,tarifa de seguro para auto,C
+2,quiero conocer precio de seguro de auto,C
+2,cotización de seguro para mi vehículo,C
+2,precio del seguro de mi auto,C
+2,cotización de seguro de coche,C
+2,necesito cotización para póliza de coche,C
+2,precio seguro vehicular,C
+2,valor de seguro para coche,C
+2,cotizar póliza para auto,C
+2,solicitud de cotización de seguro vehicular,C
+2,necesito saber precio de seguro para auto,C
+2,solicito precio de seguro de coche,C
+2,estimación de seguro vehicular,C
+2,cotización de seguro de automóvil,C
+2,precio del seguro vehicular,C
+2,tarifa de seguro para coche,C
+2,cotizar seguro de coche,C
+2,quiero saber el costo del seguro de auto,C
+2,cotización de seguro para coche,C
+2,precio de póliza vehicular,C
+2,solicitud de cotización de seguro para coche,C
+2,estimación de seguro de automóvil,C
+2,cotizar seguro para mi coche,C
+2,precio del seguro de automóvil,C
+2,cotización de seguro para mi auto,C
+2,necesito precio de seguro para mi coche,C
+2,cotización de seguro para vehículo,C
+2,precio del seguro de mi coche,C
+2,cotizar póliza vehicular,C
+2,precio de póliza de coche,C
+2,solicitud de precio de seguro vehicular,C
+2,estimación de seguro para coche,C
+2,necesito cotización para seguro de vehículo,C
+2,precio de seguro para coche,C
+2,tarifa de seguro de vehículo,C
+2,valor de seguro para automóvil,C
+2,cotización para seguro de coche,C
+2,precio del seguro para vehículo,C
+2,solicitud de precio de seguro para coche,C
+2,necesito saber costo de seguro para auto,C
+2,cotización para seguro de automóvil,C
+2,valor de seguro para vehículo,C
+2,precio de seguro para mi coche,C
+2,cotizar seguro para automóvil,C
+3,cotización de pólizas del hogar,T
+3,cotizacion de polizas del hogar,T
+3,polizas del hogar,T
+3,pólizas del hogar,T
+3,cotización pólizas hogar,T
+3,cotización polizas hogar,T
+3,polizas hogar,T
+3,pólizas hogar,T
+3,solicitud cotización de pólizas del hogar,T
+3,solicitud cotizacion de polizas del hogar,T
+3,solicitud polizas del hogar,T
+3,solicitud pólizas del hogar,T
+3,solicitud cotización pólizas hogar,T
+3,solicitud cotización polizas hogar,T
+3,solicitud polizas hogar,T
+3,solicitud pólizas hogar,T
+3,pedido cotización de pólizas del hogar,T
+3,pedido cotizacion de polizas del hogar,T
+3,pedido polizas del hogar,T
+3,pedido pólizas del hogar,T
+3,pedido cotización pólizas hogar,T
+3,pedido cotización polizas hogar,T
+3,pedido polizas hogar,T
+3,pedido pólizas hogar,T
+3,cotización de pólizas de la casa,T
+3,cotizacion de polizas de la casa,T
+3,cotización de pólizas casa,T
+3,cotizacion de polizas casa,T
+3,cotización de pólizas vivienda,T
+3,cotizacion de polizas vivienda,T
+3,solicitud cotización de polizas del hogar,C
+3,solicitud cotizacion de pólizas del hogar,C
+3,solicitud cotizacion pólizas hogar,C
+3,solicitud cotizacion polizas hogar,C
+3,cotización de pólizas depto,C
+3,cotizacion de polizas depto,C
+3,cotización de pólizas departamento,C
+3,cotizacion de polizas departamento,C
+3,cotización de polizas veiculo,C
+3,cotizacion de pólizas veiculo,C
+3,cotizacion de polizas veiculo,C
+3,cotisasión de pólizas veiculo,C
+3,cotisasión de polizas veiculo,C
+3,cotisasion de pólizas veiculo,C
+3,cotisasion de polizas veiculo,C
+3,cotisasión de pólizas de auto,C
+3,cotisasión de polizas de auto,C
+3,cotisasion de pólizas de auto,C
+3,cotisasion de polizas de auto,C
+3,cotización de pólizas vehiculo,C
+3,cotización de polizas vehiculo,C
+3,cotizacion de pólizas vehiculo,C
+3,cotizacion de polizas vehiculo,C
+3,cotisasión de pólizas vehiculo,C
+3,cotisasión de polizas vehiculo,C
+3,cotisasion de pólizas vehiculo,C
+3,cotisasion de polizas vehiculo,C
+3,polisas de auto,C
+3,pólisas de auto,C
+3,cotización de polizas del hogar,C
+3,cotizacion de pólizas del hogar,C
+3,cotizacion pólizas hogar,C
+3,cotizacion polizas hogar,C
+3,solicitud de presupuesto para hogar,C
+3,cotización de seguro de vivienda,C
+3,pedir presupuesto de póliza de hogar,C
+3,pedido hogar por favor cotizar,C
+3,solicitar presupuesto seguro hogar,C
+3,necesito cotización seguro vivienda,C
+3,presupuesto seguro casa,C
+3,precio seguro hogar,C
+3,tarifa seguro vivienda,C
+3,valor seguro hogar,C
+3,coste seguro hogar,C
+3,cotización de seguro habitacional,C
+3,precio de seguro de hogar,C
+3,cotización para seguro de vivienda,C
+3,solicitud de precio de seguro de hogar,C
+3,estimación seguro hogar,C
+3,cotización para póliza de vivienda,C
+3,tarifas seguro vivienda,C
+3,cotizar seguro para mi hogar,C
+3,necesito cotización seguro de hogar,C
+3,solicitar precio seguro habitacional,C
+3,cuánto cuesta el seguro de hogar,C
+3,requiero cotización de seguro de hogar,C
+3,pedido de precio de póliza habitacional,C
+3,solicito cotización de seguro para hogar,C
+3,cotización de seguro de casa,C
+3,precio de seguro para mi hogar,C
+3,estimación de seguro para hogar,C
+3,cotizar seguro de vivienda,C
+3,valor de póliza de hogar,C
+3,tarifa de seguro para hogar,C
+3,quiero conocer precio de seguro de hogar,C
+3,cotización de seguro para mi vivienda,C
+3,precio del seguro de mi hogar,C
+3,necesito cotización para póliza de vivienda,C
+3,precio seguro habitacional,C
+3,valor de seguro para casa,C
+3,cotizar póliza para hogar,C
+3,solicitud de cotización de seguro habitacional,C
+3,necesito saber precio de seguro para hogar,C
+3,solicito precio de seguro de vivienda,C
+3,estimación de seguro habitacional,C
+3,precio del seguro habitacional,C
+3,tarifa de seguro para vivienda,C
+3,quiero saber el costo del seguro de hogar,C
+3,cotización de seguro para vivienda,C
+3,precio de póliza habitacional,C
+3,solicitud de cotización de seguro para vivienda,C
+3,estimación de seguro de casa,C
+3,cotizar seguro para mi vivienda,C
+3,precio del seguro de casa,C
+3,cotización de seguro para mi hogar,C
+3,necesito precio de seguro para mi vivienda,C
+3,cotización de seguro para hogar,C
+3,precio del seguro de mi casa,C
+3,cotizar póliza habitacional,C
+3,precio de póliza de casa,C
+3,solicitud de precio de seguro habitacional,C
+3,estimación de seguro para vivienda,C
+3,necesito cotización para seguro de vivienda,C
+3,precio de seguro para vivienda,C
+3,tarifa de seguro de hogar,C
+3,valor de seguro para vivienda,C
+3,precio del seguro para vivienda,C
+3,solicitud de precio de seguro para vivienda,C
+3,necesito saber costo de seguro para hogar,C
+3,cotización para seguro de casa,C
+3,precio de seguro para mi vivienda,C
+3,cotizar seguro para vivienda,C
+3,necesito precio del seguro de hogar,C
+3,solicitud de cotización de seguro de casa,C
+3,cuál es el costo del seguro de hogar,C
+3,cotización de seguro para vivienda particular,C
+3,precio de seguro de hogar anual,C
+4,presupuestos Solicitados,T
+4,presupuestos,T
+4,solicitud Presupuestos Solicitados,T
+4,solicitud presupuestos,T
+4,pedido Presupuestos Solicitados,T
+4,pedido presupuestos,T
+4,pedido Carga de presupuestos,T
+4,pedido presupuestos a cargar,T
+4,pedido auto Por favor cotizar,T
+4,solicitud Carga de presupuestos,T
+4,solicitud presupuestos a cargar,T
+4,necesito presupuesto,T
+4,carga de presupuestos,T
+4,presupuestos a cargar,T
+4,presupuesto,T
+4,envio presupuesto,T
+4,presupuestación,T
+4,pedido presupuestación,T
+4,presupuestacion,T
+4,solicitud presupuestación,T
+4,envio infromacion para presupuesto,T
+4,envio infromacion para presupuestacion,T
+4,envio infromación para presupuestación,T
+4,infromacion presupuestos,T
+4,infromación presupuestación,T
+4,presupuestar,T
+4,carga presupuestación,T
+4,cargar presupuesto,T
+4,cargar preuspuestacion,T
+4,presupuestacion info,T
+4,presupuestación solciitud,C
+4,por favor presupuestar,C
+4,presupuestar por favor,C
+4,datos para presupuesto,C
+4,infromación presupuestación,C
+4,infromacion presupuestacion,C
+4,necesito presupuestación,C
+4,necesito presupuestacion,C
+4,preusprestacion,C
+4,carga presupuetso,C
+4,carga presupuesto,C
+4,carga presupuestacion,C
+4,presupuesto charlado,C
+4,presupuesto para analizar,C
+4,análisis presupuesto,C
+4,presupuesto urgentente,C
+4,necesito este presupuesto,C
+4,presupuesto seguro,C
+4,presupuesto cobertura,C
+4,seguro presupuesto,C
+4,seguro presupuestación,C
+4,seguro presupuestacion,C
+4,cobertura presupuesto,C
+4,cobertura presupuestación,C
+4,cobertura presupuestacion,C
+4,por favor presupuestar seguro,C
+4,solciitud presupuesto seguro,C
+4,presupuesto solicitud,C
+4,cotización presupuestos,C
+4,costo presupuesto,C
+4,revisión de presupuesto,C
+4,precio del presupuesto,C
+4,propuesta de presupuesto,C
+4,estimación de presupuesto,C
+4,cotizar presupuesto,C
+4,valor del presupuesto,C
+4,detalle de presupuesto,C
+4,previsión de presupuesto,C
+4,cálculo de presupuesto,C
+4,resumen de presupuesto,C
+4,documentación de presupuesto,C
+4,listado de presupuesto,C
+4,gastos del presupuesto,C
+4,informe de presupuesto,C
+4,planificación del presupuesto,C
+4,preparación de presupuesto,C
+4,ajuste de presupuesto,C
+4,revisión de presupuestación,C
+4,envío de presupuesto,C
+4,información para presupuestación,C
+4,cotización de presupuestación,C
+4,solicitud de presupuestación,C
+4,pedido de presupuestación,C
+4,solicitud de carga de presupuestación,C
+4,pedido de carga de presupuestación,C
+4,necesito cargar presupuestación,C
+4,cargar presupuesto pendiente,C
+4,informe de carga de presupuestación,C
+4,detalle de carga de presupuesto,C
+4,envío de carga de presupuesto,C
+4,ajuste de carga de presupuesto,C
+4,resumen de carga de presupuesto,C
+4,listado de carga de presupuesto,C
+4,gastos de carga de presupuesto,C
+4,documentación de carga de presupuesto,C
+4,preparación de carga de presupuesto,C
+4,informe de ajuste de presupuesto,C
+4,detalle de ajuste de presupuesto,C
+4,envío de ajuste de presupuesto,C
+4,planificación de ajuste de presupuesto,C
+4,informe de revisión de presupuesto,C
+4,detalle de revisión de presupuesto,C
+4,ajuste de revisión de presupuesto,C
+4,resumen de revisión de presupuesto,C
+4,listado de revisión de presupuesto,C
+4,gastos de revisión de presupuesto,C
+4,documentación de revisión de presupuesto,C
+4,preparación de revisión de presupuesto,C
+4,informe de preparación de presupuesto,C
+4,detalle de preparación de presupuesto,C
+4,ajuste de preparación de presupuesto,C
+4,resumen de preparación de presupuesto,C
+4,listado de preparación de presupuesto,C
+4,gastos de preparación de presupuesto,C
+4,documentación de preparación de presupuesto,C
+4,planificación de revisión de presupuesto,C
+4,informe de planificación de presupuesto,C
+4,detalle de planificación de presupuesto,C
+4,ajuste de planificación de presupuesto,C
+4,resumen de planificación de presupuesto,C
+4,listado de planificación de presupuesto,C
+4,gastos de planificación de presupuesto,C
+4,documentación de planificación de presupuesto,C
+4,preparación de planificación de presupuesto,C
+4,informe de estimación de presupuesto,C
+4,detalle de estimación de presupuesto,C
+4,ajuste de estimación de presupuesto,C
+4,resumen de estimación de presupuesto,C
+4,listado de estimación de presupuesto,C
+4,gastos de estimación de presupuesto,C
+4,documentación de estimación de presupuesto,C
+4,preparación de estimación de presupuesto,C
+4,informe de cálculo de presupuesto,C
+4,detalle de cálculo de presupuesto,C
+4,ajuste de cálculo de presupuesto,C
+4,resumen de cálculo de presupuesto,C
+4,listado de cálculo de presupuesto,C
+4,gastos de cálculo de presupuesto,C
+4,documentación de cálculo de presupuesto,C
+4,preparación de cálculo de presupuesto,C
+4,informe de previsión de presupuesto,C
+4,detalle de previsión de presupuesto,C
+4,ajuste de previsión de presupuesto,C
+4,resumen de previsión de presupuesto,C
+4,listado de previsión de presupuesto,C
+4,gastos de previsión de presupuesto,C
+4,documentación de previsión de presupuesto,C
+4,preparación de previsión de presupuesto,C
+4,pedido de presupuesto detallado,C
+4,detalle específico de presupuestación,C
+0,"""pedido Vacaciones en Mardel""",C
+0,"""pedido Promoción en ropa""",T
+0,"""solicitud Vacaciones en Mardel""",T
+0,"""solicitud Promoción en ropa""",C
+0,"""vacaciones en Mardel""",T
+0,"""promoción en ropa""",C
+0,"""recordatorio de pago de factura pendiente""",C
+0,"""confirmación de reserva de hotel""",C
+0,"""actualización de política de privacidad""",T
+0,"""información sobre cambios en el horario de atención al cliente""",C
+0,"""recordatorio de cita médica""",T
+0,"""confirmación de registro en el evento""",T
+0,"""notificación de entrega de paquete""",T
+0,"""resumen mensual de cuenta bancaria""",C
+0,"""invitación a evento de networking empresarial""",T
+0,"""actualización sobre el estado de tu solicitud""",C
+0,"""confirmación de reserva de vuelo""",C
+0,"""recordatorio de fecha de vencimiento de suscripción""",T
+0,"""informe de rendimiento trimestral""",C
+0,"""recordatorio de reunión de equipo""",C
+0,"""confirmación de compra en línea""",C
+0,"""invitación a participar en encuesta de satisfacción""",T
+0,"""notificación de cambio de contraseña de cuenta""",C
+0,"""resumen de actividad en la cuenta de redes sociales""",T
+0,"""recordatorio de renovación de membresía""",C
+0,"""invitación a seminario web sobre desarrollo profesional""",C
+0,"""vacaciones!""",T
+0,"""descuentos solo para vos""",T
+0,"""conocé Datadog""",C
+0,"""conoce Datadog""",T
+0,"""feliz cumpleaños""",T
+0,"""conocé nuestras ofertas""",T
+0,"""conoce nuestros beneficios""",C
+0,"""nuevo mensaje""",C
+0,"""descubre todas las novedades""",C
+0,"""últimos días""",C
+0,"""nuevo lanzamiento""",C
+0,"""nuevos lanzamientos""",C
+0,"""¡gana un millón de dólares ahora!""",C
+0,"""oferta especial: ¡Descuento del 50 porciento de descuento solo por hoy!""",C
+0,"""aumenta tu puntaje de crédito al instante""",C
+0,"""¡compra seguidores y likes para tus redes sociales!""",C
+0,"""conoce a solteros locales cerca de ti""",C
+0,"""reunión de equipo esta tarde a las 3 p.m.""",C
+0,"""confirmación de reserva para la conferencia""",C
+0,"""actualización semanal del proyecto""",C
+0,"""recuerda enviar el informe antes del viernes""",C
+0,"""invitación a la presentación del nuevo producto""",C
+0,"""¡gana un iPhone gratis!""",C
+0,"""¡oferta exclusiva: descuento del 70% en productos electrónicos!""",C
+0,"""aumenta tus seguidores en redes sociales al instante""",C
+0,"""¡deshazte de la deuda en 24 horas!""",C
+0,"""¡sorteo de vacaciones todo incluido!""",C
+0,"""¡conoce solteros calientes en tu área!""",C
+0,"""¡baja de peso rápidamente con esta pastilla milagrosa!""",C
+0,"""¡dinero fácil y rápido: hazte rico en una semana!""",C
+0,"""¡prueba gratis nuestro producto y gana una tarjeta de regalo!""",C
+0,"""¡increíble oportunidad de inversión con altos rendimientos!""",C
+0,"""¡descubre el secreto para una piel perfecta!""",C
+0,"""¡aprovecha esta oferta única: préstamos sin intereses!""",C
+0,"""¡gana un viaje de lujo a las Bahamas!""",C
+0,"""¡incrementa tus ingresos con este sistema probado!""",C
+0,"""¡obtén un préstamo sin verificación de crédito!""",C
+0,"""¡haz crecer tu negocio con nuestro software revolucionario!""",C
+0,"""¡oferta limitada: suscríbete ahora y recibe un descuento adicional!""",C
+0,"""¡descubre cómo ganar dinero desde casa!""",C
+0,"""¡productos de belleza gratis solo por registrarte!""",C
+0,"""¡tu cuenta ha sido seleccionada para recibir un premio especial!",C
+0,"""solicitud Vacaciones""",C
+0,"""solicitud Vacaciones Mar de las Pampas""",T
+0,"""un texto nuevo""",T
+0,"""cualquier cosa""",T
+0,"""simplemente otro string con palabras no tokenizadas""",T
