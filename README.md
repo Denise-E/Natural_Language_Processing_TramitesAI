@@ -62,4 +62,4 @@ py main.py
 
 Este proyecto utiliza la biblioteca **Pandas** para la obtención de datos a partir de archivos CSV y luego **TensorFlow** para la creación de modelos de procesamiento de lenguaje natural. 
 
-**Pandas** es una biblioteca de Python que proporciona estructuras de datos de alto rendimiento y herramientas de análisis de datos, mientras que **TensorFlow** es una plataforma de código abierto para el aprendizaje automático desarrollada por Google.
+**Pandas** es una biblioteca que proporciona estructuras de datos de alto rendimiento y herramientas de análisis de datos, mientras que **TensorFlow** es una plataforma de código abierto para el aprendizaje automático desarrollada por Google.
