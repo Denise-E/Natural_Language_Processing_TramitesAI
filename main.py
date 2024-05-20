@@ -1,6 +1,6 @@
 from modelos.asuntos_multi_clases import ModeloAsuntosMultiClases
 
-MODELO_ASUNTOS = ModeloAsuntosMultiClases(vocab_size=10000,embedding=16,max_length=10000)
+MODELO_ASUNTOS = ModeloAsuntosMultiClases(vocab_size=10000,embedding=16,max_length=10000, num_epochs=5000)
 
 def predecir(sentencia: list):
     return MODELO_ASUNTOS.model_prediction_tests(sentencia)

@@ -20,12 +20,14 @@ class ModeloAsuntosMultiClases:
     testing_sentences: list = None # Sentencias de prueba
     testing_labels: list = None # Respuesta esperada para cada sentencia de prueba
     categories_quantity: int = None
+    num_epochs: int = None # Cantidad de iteraciones que hará el modelo durante el entrenameinto
 
     @classmethod
-    def __init__(cls, vocab_size:int, embedding:int,max_length: int ):
+    def __init__(cls, vocab_size:int = 10000, embedding:int = 16,max_length: int = 10000, num_epochs:int = 3000):
         cls.vocab_size = vocab_size
         cls.embedding_dim = embedding
         cls.max_length = max_length
+        cls.num_epochs = num_epochs
         # Obtiene los datos de capacitación y entrenamiento a partir de los datos guardados en el archivo csv precargado
         cls.get_data()
         # Inicializa la configuración y el entrenamiento del modelo al instanciarse la clase.
@@ -111,10 +113,9 @@ class ModeloAsuntosMultiClases:
         testing_padded = np.array(testing_padded)
         testing_labels = np.array(testing_labels)
 
-        num_epochs = 3000 # Cantidad de iteraciones que hará el modelo durante el entrenameinto
         print("TEST RESULTS")
         # Entrenamiento del modelo con los datos de entrenamiento y de prueba.
-        history = model.fit(training_padded, training_labels, epochs=num_epochs, validation_data=(testing_padded, testing_labels), verbose=2)
+        history = model.fit(training_padded, training_labels, epochs=cls.num_epochs, validation_data=(testing_padded, testing_labels), verbose=2)
         """
         Resultados model.fit:
         
