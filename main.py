@@ -20,10 +20,10 @@ sentences = [
     ["presupuestar por favor", 4],
     ["presupuestación", 4],
     ["que seas feliz", 0 ],
-    ["premio mayor", 0 ],
-    ["participa de este imperdible momento!", 0 ],
+    ["premio mayor", 0 ], #4
+    ["participa de este imperdible momento!", 0 ], #4
     ["inscribite al seminario web", 0 ],
-    ["¿Conocés AWS?", 0 ]
+    ["¿Conocés AWS?", 0 ] #4
 ]
 
 print("Información modelo:" )
@@ -34,6 +34,6 @@ print("Cantidad datos de testeo: 150 - 20%")
 print("********************* INICIO PREDICCIÓNES *************************")
 for sentence in sentences:
     prediccion = predecir([sentence[0]])
-    print("STRING A PREDECIR: ",sentence, " RESULTADO ESPERADO: ", sentence[1])
+    print("STRING A PREDECIR: ",sentence[0], " RESULTADO ESPERADO: ", sentence[1])
     print("PREDICCIÓN:", prediccion)
 print("********************** FIN PREDICCIÓNES **************************")
