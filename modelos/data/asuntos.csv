@@ -571,76 +571,181 @@ Categoria,Sentencias,Uso
 4,preparación de previsión de presupuesto,C
 4,pedido de presupuesto detallado,C
 4,detalle específico de presupuestación,C
-0,"""pedido Vacaciones en Mardel""",C
-0,"""pedido Promoción en ropa""",T
-0,"""solicitud Vacaciones en Mardel""",T
-0,"""solicitud Promoción en ropa""",C
-0,"""vacaciones en Mardel""",T
-0,"""promoción en ropa""",C
-0,"""recordatorio de pago de factura pendiente""",C
-0,"""confirmación de reserva de hotel""",C
-0,"""actualización de política de privacidad""",T
-0,"""información sobre cambios en el horario de atención al cliente""",C
-0,"""recordatorio de cita médica""",T
-0,"""confirmación de registro en el evento""",T
-0,"""notificación de entrega de paquete""",T
-0,"""resumen mensual de cuenta bancaria""",C
-0,"""invitación a evento de networking empresarial""",T
-0,"""actualización sobre el estado de tu solicitud""",C
-0,"""confirmación de reserva de vuelo""",C
-0,"""recordatorio de fecha de vencimiento de suscripción""",T
-0,"""informe de rendimiento trimestral""",C
-0,"""recordatorio de reunión de equipo""",C
-0,"""confirmación de compra en línea""",C
-0,"""invitación a participar en encuesta de satisfacción""",T
-0,"""notificación de cambio de contraseña de cuenta""",C
-0,"""resumen de actividad en la cuenta de redes sociales""",T
-0,"""recordatorio de renovación de membresía""",C
-0,"""invitación a seminario web sobre desarrollo profesional""",C
-0,"""vacaciones!""",T
-0,"""descuentos solo para vos""",T
-0,"""conocé Datadog""",C
-0,"""conoce Datadog""",T
-0,"""feliz cumpleaños""",T
-0,"""conocé nuestras ofertas""",T
-0,"""conoce nuestros beneficios""",C
-0,"""nuevo mensaje""",C
-0,"""descubre todas las novedades""",C
-0,"""últimos días""",C
-0,"""nuevo lanzamiento""",C
-0,"""nuevos lanzamientos""",C
-0,"""¡gana un millón de dólares ahora!""",C
-0,"""oferta especial: ¡Descuento del 50 porciento de descuento solo por hoy!""",C
-0,"""aumenta tu puntaje de crédito al instante""",C
-0,"""¡compra seguidores y likes para tus redes sociales!""",C
-0,"""conoce a solteros locales cerca de ti""",C
-0,"""reunión de equipo esta tarde a las 3 p.m.""",C
-0,"""confirmación de reserva para la conferencia""",C
-0,"""actualización semanal del proyecto""",C
-0,"""recuerda enviar el informe antes del viernes""",C
-0,"""invitación a la presentación del nuevo producto""",C
-0,"""¡gana un iPhone gratis!""",C
-0,"""¡oferta exclusiva: descuento del 70% en productos electrónicos!""",C
-0,"""aumenta tus seguidores en redes sociales al instante""",C
-0,"""¡deshazte de la deuda en 24 horas!""",C
-0,"""¡sorteo de vacaciones todo incluido!""",C
-0,"""¡conoce solteros calientes en tu área!""",C
-0,"""¡baja de peso rápidamente con esta pastilla milagrosa!""",C
-0,"""¡dinero fácil y rápido: hazte rico en una semana!""",C
-0,"""¡prueba gratis nuestro producto y gana una tarjeta de regalo!""",C
-0,"""¡increíble oportunidad de inversión con altos rendimientos!""",C
-0,"""¡descubre el secreto para una piel perfecta!""",C
-0,"""¡aprovecha esta oferta única: préstamos sin intereses!""",C
-0,"""¡gana un viaje de lujo a las Bahamas!""",C
-0,"""¡incrementa tus ingresos con este sistema probado!""",C
-0,"""¡obtén un préstamo sin verificación de crédito!""",C
-0,"""¡haz crecer tu negocio con nuestro software revolucionario!""",C
-0,"""¡oferta limitada: suscríbete ahora y recibe un descuento adicional!""",C
-0,"""¡descubre cómo ganar dinero desde casa!""",C
-0,"""¡productos de belleza gratis solo por registrarte!""",C
-0,"""¡tu cuenta ha sido seleccionada para recibir un premio especial!",C
-0,"""solicitud Vacaciones""",C
-0,"""solicitud Vacaciones Mar de las Pampas""",T
-0,"""un texto nuevo""",T
-0,"""cualquier cosa""",T
-0,"""simplemente otro string con palabras no tokenizadas""",T
+0,pedido Vacaciones en Mardel,C
+0,pedido Promoción en ropa,T
+0,solicitud Vacaciones en Mardel,T
+0,solicitud Promoción en ropa,C
+0,vacaciones en Mardel,T
+0,promoción en ropa,C
+0,recordatorio de pago de factura pendiente,C
+0,confirmación de reserva de hotel,C
+0,actualización de política de privacidad,T
+0,información sobre cambios en el horario de atención al cliente,C
+0,recordatorio de cita médica,T
+0,confirmación de registro en el evento,T
+0,notificación de entrega de paquete,T
+0,resumen mensual de cuenta bancaria,C
+0,invitación a evento de networking empresarial,T
+0,actualización sobre el estado de tu solicitud,C
+0,confirmación de reserva de vuelo,C
+0,recordatorio de fecha de vencimiento de suscripción,T
+0,informe de rendimiento trimestral,C
+0,recordatorio de reunión de equipo,C
+0,confirmación de compra en línea,C
+0,invitación a participar en encuesta de satisfacción,T
+0,notificación de cambio de contraseña de cuenta,C
+0,resumen de actividad en la cuenta de redes sociales,T
+0,recordatorio de renovación de membresía,C
+0,invitación a seminario web sobre desarrollo profesional,C
+0,vacaciones!,T
+0,descuentos solo para vos,T
+0,conocé Datadog,C
+0,conoce Datadog,T
+0,feliz cumpleaños,T
+0,conocé nuestras ofertas,T
+0,conoce nuestros beneficios,C
+0,nuevo mensaje,C
+0,descubre todas las novedades,C
+0,últimos días,C
+0,nuevo lanzamiento,C
+0,nuevos lanzamientos,C
+0,¡gana un millón de dólares ahora!,C
+0,oferta especial: ¡Descuento del 50 porciento de descuento solo por hoy!,C
+0,aumenta tu puntaje de crédito al instante,C
+0,¡compra seguidores y likes para tus redes sociales!,C
+0,conoce a solteros locales cerca de ti,C
+0,reunión de equipo esta tarde a las 3 p.m.,C
+0,confirmación de reserva para la conferencia,C
+0,actualización semanal del proyecto,C
+0,recuerda enviar el informe antes del viernes,C
+0,invitación a la presentación del nuevo producto,C
+0,¡gana un iPhone gratis!,C
+0,¡oferta exclusiva: descuento del 70% en productos electrónicos!,C
+0,aumenta tus seguidores en redes sociales al instante,C
+0,¡deshazte de la deuda en 24 horas!,C
+0,¡sorteo de vacaciones todo incluido!,C
+0,¡conoce solteros calientes en tu área!,C
+0,¡baja de peso rápidamente con esta pastilla milagrosa!,C
+0,¡dinero fácil y rápido: hazte rico en una semana!,C
+0,¡prueba gratis nuestro producto y gana una tarjeta de regalo!,C
+0,¡increíble oportunidad de inversión con altos rendimientos!,C
+0,¡descubre el secreto para una piel perfecta!,C
+0,¡aprovecha esta oferta única: préstamos sin intereses!,C
+0,¡gana un viaje de lujo a las Bahamas!,C
+0,¡incrementa tus ingresos con este sistema probado!,C
+0,¡obtén un préstamo sin verificación de crédito!,C
+0,¡haz crecer tu negocio con nuestro software revolucionario!,C
+0,¡oferta limitada: suscríbete ahora y recibe un descuento adicional!,C
+0,¡descubre cómo ganar dinero desde casa!,C
+0,¡productos de belleza gratis solo por registrarte!,C
+0,¡tu cuenta ha sido seleccionada para recibir un premio especial!,C
+0,solicitud Vacaciones,C
+0,solicitud Vacaciones Mar de las Pampas,T
+0,un texto nuevo,T
+0,cualquier cosa,T
+0,simplemente otro string con palabras no tokenizadas,T
+0,Actualizamos nuestros términos y condiciones,T
+0,ganá un millón de dólares ahora,T
+0,oferta especial: ¡Descuento del 50% solo por hoy!,T
+0,aumenta tu puntaje de crédito al instante,T
+0,compra seguidores y likes para tus redes sociales,T
+0,conoce a solteros locales cerca de ti,T
+0,reunión de equipo esta tarde a las 3 p.m.,T
+0,confirmación de reserva para la conferencia,T
+0,actualización semanal del proyecto,T
+0,recuerda enviar el informe antes del viernes,T
+0,invitación a la presentación del nuevo producto,T
+0,ganá un iPhone gratis,C
+0,oferta exclusiva: descuento del 70% en productos electrónicos,C
+0,aumenta tus seguidores en redes sociales al instante,C
+0,deshazte de la deuda en 24 horas,C
+0,sorteo de vacaciones todo incluido,C
+0,conoce solteros calientes en tu área,C
+0,baja de peso rápidamente con esta pastilla milagrosa,C
+0,dinero fácil y rápido: hazte rico en una semana,C
+0,prueba gratis nuestro producto y gana una tarjeta de regalo,C
+0,increíble oportunidad de inversión con altos rendimientos,C
+0,descubre el secreto para una piel perfecta,C
+0,aprovecha esta oferta única: préstamos sin intereses,C
+0,gana un viaje de lujo a las Bahamas,C
+0,incrementa tus ingresos con este sistema probado,C
+0,obtén un préstamo sin verificación de crédito,C
+0,haz crecer tu negocio con nuestro software revolucionario,C
+0,oferta limitada: suscríbete ahora y recibe un descuento adicional,C
+0,descubre cómo ganar dinero desde casa,C
+0,productos de belleza gratis solo por registrarte,C
+0,tu cuenta ha sido seleccionada para recibir un premio especial,C
+0,conoce Datadog,C
+0,feliz cumpleaños,C
+0,conocé nuestras ofertas,C
+0,solicitud Vacaciones Mar de las Pampas,C
+0,conoce nuestros beneficios,C
+0,nuevo mensaje,C
+0,descubre todas las novedades,C
+0,últimos días,C
+0,nuevo lanzamiento,C
+0,nuevos lanzamientos,C
+0,pedido Promoción en ropa,C
+0,solicitud Vacaciones en Mardel,C
+0,vacaciones en Mardel,C
+0,actualización de política de privacidad,C
+0,recordatorio de cita médica,C
+0,confirmación de registro en el evento,C
+0,notificación de entrega de paquete,C
+0,invitación a evento de networking empresarial,C
+0,recordatorio de fecha de vencimiento de suscripción,C
+0,invitación a participar en encuesta de satisfacción,C
+0,resumen de actividad en la cuenta de redes sociales,C
+0,vacaciones!,C
+0,descuentos solo para vos,C
+0,conoce Datadog,C
+0,feliz cumpleaños,C
+0,conocé nuestras ofertas,C
+0,solicitud Vacaciones Mar de las Pampas,C
+0,confirmación de reserva de vuelo,C
+0,informe de rendimiento trimestral,C
+0,recordatorio de reunión de equipo,C
+0,confirmación de compra en línea,C
+0,notificación de cambio de contraseña de cuenta,C
+0,recordatorio de renovación de membresía,C
+0,invitación a seminario web sobre desarrollo profesional,C
+0,oferta exclusiva: 30% de descuento en tu próxima compra,C
+0,mejoras en tu plan de salud,C
+0,notificación de actividad sospechosa en tu cuenta,C
+0,aprovecha esta oferta limitada: 50% de descuento en todos los productos,C
+0,reserva tu lugar en nuestro evento exclusivo,C
+0,nuevas oportunidades de inversión en criptomonedas,C
+0,gana premios instantáneos solo por participar,C
+0,obtén tu tarjeta de crédito sin verificación de ingresos,C
+0,tu premio te está esperando: haz clic aquí,C
+0,mejora tu historial crediticio en 3 simples pasos,C
+0,compra productos milagrosos para la pérdida de peso,C
+0,descubre cómo hacer dinero rápido desde casa,C
+2,Por favor cotizarme vehículo,C
+2,Por favor cotizarm auto,C
+2,Por favor cotizarme automovil,C
+2,Porfavor cotizarme vehículo,C
+2,Porfavor cotizarm auto,C
+2,Porfavor cotizarme automovil,C
+2,auto cotizar urgente,C
+2,auto cotizar por favor,C
+2,cotización auto información,C
+2,cotización auto info,C
+2,cotización vehículo información,C
+2,cotización vehículo info,C
+2,cotización auto docuementos,C
+2,cotización vehículo documentos,C
+2,cotización auto docuementos solicitados,C
+3,consulta seguro del hogar,C
+3,porfavor realizar cotización seguro del hogar,C
+3,cotizar seguro hogar por favor,C
+3,por favor realizar cotización seguro del hogar,C
+3,cotizar seguro hogar porfavor,C
+3,cotizar hogar urgente!,C
+3,costo seguro hogar,C
+3,seguro hogar consulta cotización,C
+3,valor seguro hogar consulta cotización,C
+3,cotización hogar solicitud,C
+3,envio solicitud cotización del hogar,C
+3,envio solicitud cotizacion del hogar,C
+3,documentos cotizacion hogar,C
