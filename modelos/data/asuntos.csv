@@ -112,55 +112,55 @@ Categoria,Sentencias,Uso
 1,accidente con otro auto,C
 1,choque con daños,C
 1,informe de daños,C
-1,accidente con heridos,C
-1,denunciar daños,C
+1,siniestro accidente con heridos,C
+1,denunciar daños de un siniestro,C
 1,aviso de siniestro en casa,C
 1,informe siniestro en vehículo,C
 1,daño en vivienda,C
 1,choque de auto,C
 1,informar accidente de auto,C
 1,accidente en casa,C
-1,denunciar accidente automovilístico,C
-1,informe de daños en vehículo,C
+1,denuncia siniestro accidente automovilístico,C
+1,informe siniestros daños en vehículo,C
 1,denuncia accidente de auto,C
 1,denuncia por siniestro,C
 1,reporte de accidente en auto,C
 1,aviso de daños en vehículo,C
 1,denuncia de accidente de circulación,C
 1,siniestro con daños,C
-1,denuncia de choque,C
-1,reporte de daño en auto,C
+1,denuncia siniestro choqué,C
+1,reporte de daño de iniestro,C
 1,choque en la calle,C
 1,accidente en la carretera,C
-1,informar daño en auto,C
+1,informar siniestro auto,C
 1,accidente con daños a terceros,C
 1,denuncia accidente con daños,C
 1,aviso accidente de auto,C
 1,reporte de siniestro con heridos,C
 1,informe de choque,C
 1,accidente grave,C
-1,denunciar accidente grave,C
+1,denunciar siniestro,C
 1,siniestro con heridos,C
 1,aviso de accidente de circulación,C
 1,reporte de accidente de tráfico,C
-1,informar de choque,C
-1,denunciar accidente en carretera,C
+1,"informe de siniestro, choque",C
+1,denuncia siniestro en carretera,C
 1,informe de siniestro con heridos,C
-1,aviso de accidente grave,C
+1,aviso de siniestro grave,C
 1,reporte de siniestro en hogar,C
 1,denunciar choque con daños,C
-2,cotización de pólizas de auto,T
-2,cotización de polizas de auto,T
-2,cotizacion de pólizas de auto,T
-2,cotizacion de polizas de auto,T
-2,polizas de auto,T
-2,pólizas de auto,T
-2,cotización pólizas auto,T
-2,cotización polizas auto,T
-2,cotizacion pólizas auto,T
-2,cotizacion polizas auto,T
-2,polizas auto,T
-2,pólizas auto,T
+2,cotización de póliza de auto,T
+2,cotización de poliza de auto,T
+2,cotizacion de póliza de auto,T
+2,cotizacion de poliza de auto,T
+2,poliza de auto,T
+2,póliza de auto,T
+2,cotización póliza auto,T
+2,cotización poliza auto,T
+2,cotizacion póliza auto,T
+2,cotizacion poliza auto,T
+2,poliza auto,T
+2,póliza auto,T
 2,solicitar cotización de automóvil,T
 2,vehículo poliza,T
 2,póliza vehículo,T
@@ -179,30 +179,30 @@ Categoria,Sentencias,Uso
 2,documentos poliza auto,T
 2,documentos poliza vehiuclo,T
 2,documentos póliza automóvil,T
-2,solicitud cotización de pólizas de auto,C
-2,solicitud cotización de polizas de auto,C
-2,solicitud cotizacion de pólizas de auto,C
-2,solicitud cotizacion de polizas de auto,C
-2,solicitud polizas de auto,C
-2,solicitud pólizas de auto,C
-2,solicitud cotización pólizas auto,C
-2,solicitud cotización polizas auto,C
-2,solicitud cotizacion pólizas auto,C
-2,solicitud cotizacion polizas auto,C
-2,solicitud polizas auto,C
-2,solicitud pólizas auto,C
-2,pedido cotización de pólizas de auto,C
-2,pedido cotización de polizas de auto,C
-2,pedido cotizacion de pólizas de auto,C
-2,pedido cotizacion de polizas de auto,C
-2,pedido polizas de auto,C
-2,pedido pólizas de auto,C
-2,pedido cotización pólizas auto,C
-2,pedido cotización polizas auto,C
-2,pedido cotizacion pólizas auto,C
-2,pedido cotizacion polizas auto,C
-2,pedido polizas auto,C
-2,pedido pólizas auto,C
+2,solicitud cotización de póliza de auto,C
+2,solicitud cotización de poliza de auto,C
+2,solicitud cotizacion de póliza de auto,C
+2,solicitud cotizacion de poliza de auto,C
+2,solicitud poliza de auto,C
+2,solicitud póliza de auto,C
+2,solicitud cotización póliza auto,C
+2,solicitud cotización poliza auto,C
+2,solicitud cotizacion póliza auto,C
+2,solicitud cotizacion poliza auto,C
+2,solicitud poliza auto,C
+2,solicitud póliza auto,C
+2,pedido cotización de póliza de auto,C
+2,pedido cotización de poliza de auto,C
+2,pedido cotizacion de póliza de auto,C
+2,pedido cotizacion de poliza de auto,C
+2,pedido poliza de auto,C
+2,pedido póliza de auto,C
+2,pedido cotización póliza auto,C
+2,pedido cotización poliza auto,C
+2,pedido cotizacion póliza auto,C
+2,pedido cotizacion poliza auto,C
+2,pedido poliza auto,C
+2,pedido póliza auto,C
 2,documentación poliza auto,C
 2,documentación poliza vehiuclo,C
 2,documentación póliza automóvil,C
@@ -220,14 +220,14 @@ Categoria,Sentencias,Uso
 2,precio seguro de auto,C
 2,tarifa seguro de auto,C
 2,valor seguro de auto,C
-2,coste seguro de auto,C
+2,costo seguro de auto,C
 2,cotización de seguro vehicular,C
 2,precio de póliza de auto,C
 2,cotización para seguro de auto,C
 2,solicitud de precio de seguro de auto,C
 2,estimación seguro de auto,C
 2,cotización para póliza de coche,C
-2,tarifas seguro coche,C
+2,costo seguro coche,C
 2,cotizar seguro para mi auto,C
 2,necesito cotización seguro de auto,C
 2,solicitar precio seguro vehicular,C
@@ -240,7 +240,7 @@ Categoria,Sentencias,Uso
 2,estimación de seguro para auto,C
 2,cotizar seguro de vehículo,C
 2,valor de póliza de auto,C
-2,tarifa de seguro para auto,C
+2,tarifa de poliza para auto,C
 2,quiero conocer precio de seguro de auto,C
 2,cotización de seguro para mi vehículo,C
 2,precio del seguro de mi auto,C
@@ -288,65 +288,65 @@ Categoria,Sentencias,Uso
 3,cotizacion de polizas del hogar,T
 3,polizas del hogar,T
 3,pólizas del hogar,T
-3,cotización pólizas hogar,T
-3,cotización polizas hogar,T
-3,polizas hogar,T
-3,pólizas hogar,T
-3,solicitud cotización de pólizas del hogar,T
-3,solicitud cotizacion de polizas del hogar,T
-3,solicitud polizas del hogar,T
-3,solicitud pólizas del hogar,T
-3,solicitud cotización pólizas hogar,T
-3,solicitud cotización polizas hogar,T
-3,solicitud polizas hogar,T
-3,solicitud pólizas hogar,T
-3,pedido cotización de pólizas del hogar,T
-3,pedido cotizacion de polizas del hogar,T
-3,pedido polizas del hogar,T
-3,pedido pólizas del hogar,T
-3,pedido cotización pólizas hogar,T
-3,pedido cotización polizas hogar,T
-3,pedido polizas hogar,T
-3,pedido pólizas hogar,T
-3,cotización de pólizas de la casa,T
-3,cotizacion de polizas de la casa,T
-3,cotización de pólizas casa,T
-3,cotizacion de polizas casa,T
-3,cotización de pólizas vivienda,T
-3,cotizacion de polizas vivienda,T
-3,solicitud cotización de polizas del hogar,C
-3,solicitud cotizacion de pólizas del hogar,C
-3,solicitud cotizacion pólizas hogar,C
-3,solicitud cotizacion polizas hogar,C
-3,cotización de pólizas depto,C
-3,cotizacion de polizas depto,C
-3,cotización de pólizas departamento,C
-3,cotizacion de polizas departamento,C
-3,cotización de polizas veiculo,C
-3,cotizacion de pólizas veiculo,C
-3,cotizacion de polizas veiculo,C
-3,cotisasión de pólizas veiculo,C
-3,cotisasión de polizas veiculo,C
-3,cotisasion de pólizas veiculo,C
-3,cotisasion de polizas veiculo,C
-3,cotisasión de pólizas de auto,C
-3,cotisasión de polizas de auto,C
-3,cotisasion de pólizas de auto,C
-3,cotisasion de polizas de auto,C
-3,cotización de pólizas vehiculo,C
-3,cotización de polizas vehiculo,C
-3,cotizacion de pólizas vehiculo,C
-3,cotizacion de polizas vehiculo,C
-3,cotisasión de pólizas vehiculo,C
-3,cotisasión de polizas vehiculo,C
-3,cotisasion de pólizas vehiculo,C
-3,cotisasion de polizas vehiculo,C
-3,polisas de auto,C
-3,pólisas de auto,C
-3,cotización de polizas del hogar,C
-3,cotizacion de pólizas del hogar,C
-3,cotizacion pólizas hogar,C
-3,cotizacion polizas hogar,C
+3,cotización póliza hogar,T
+3,cotización poliza hogar,T
+3,poliza hogar,T
+3,póliza hogar,T
+3,solicitud cotización de póliza del hogar,T
+3,solicitud cotizacion de poliza del hogar,T
+3,solicitud poliza del hogar,T
+3,solicitud póliza del hogar,T
+3,solicitud cotización póliza hogar,T
+3,solicitud cotización poliza hogar,T
+3,solicitud poliza hogar,T
+3,solicitud póliza hogar,T
+3,pedido cotización de póliza del hogar,T
+3,pedido cotizacion de poliza del hogar,T
+3,pedido poliza del hogar,T
+3,pedido póliza del hogar,T
+3,pedido cotización póliza hogar,T
+3,pedido cotización poliza hogar,T
+3,pedido poliza hogar,T
+3,pedido póliza hogar,T
+3,cotización de póliza de la casa,T
+3,cotizacion de poliza de la casa,T
+3,cotización de póliza casa,T
+3,cotizacion de poliza casa,T
+3,cotización de póliza vivienda,T
+3,cotizacion de poliza vivienda,T
+3,solicitud cotización de poliza del hogar,C
+3,solicitud cotizacion de póliza del hogar,C
+3,solicitud cotizacion póliza hogar,C
+3,solicitud cotizacion poliza hogar,C
+3,cotización de póliza depto,C
+3,cotizacion de poliza depto,C
+3,cotización de póliza departamento,C
+3,cotizacion de poliza departamento,C
+3,cotización de poliza hogar,C
+3,cotizacion de póliza hogar,C
+3,cotizacion de poliza vivienda,C
+3,cotisasión de póliza viviends,C
+3,cotisasión de poliza casa,C
+3,cotisasion de póliza casa,C
+3,cotisasion de poliza depto,C
+3,cotisasión de póliza depto,C
+3,cotisasión de poliza departamento,C
+3,cotisasion de póliza del hogar,C
+3,cotisasion de poliza del hogar,C
+3,cotización de póliza de mi hogar,C
+3,cotización de poliza para mi hogar,C
+3,cotizacion de póliza de el hogar,C
+3,cotizacion de poliza de mi hogar,C
+3,cotisasión de póliza departamento,C
+3,cotisasión de poliza del hogar,C
+3,cotisasion de póliza de l hogar,C
+3,cotisasion de poliza casa,C
+3,polisa de hogar,C
+3,pólisa de vivienda,C
+3,cotización de poliza del hogar,C
+3,cotizacion de póliza del hogar,C
+3,cotizacion póliza hogar,C
+3,cotizacion poliza hogar,C
 3,solicitud de presupuesto para hogar,C
 3,cotización de seguro de vivienda,C
 3,pedir presupuesto de póliza de hogar,C
@@ -429,7 +429,7 @@ Categoria,Sentencias,Uso
 4,pedido presupuestos,T
 4,pedido Carga de presupuestos,T
 4,pedido presupuestos a cargar,T
-4,pedido auto Por favor cotizar,T
+4,pedido cotización,T
 4,solicitud Carga de presupuestos,T
 4,solicitud presupuestos a cargar,T
 4,necesito presupuesto,T
@@ -441,17 +441,17 @@ Categoria,Sentencias,Uso
 4,pedido presupuestación,T
 4,presupuestacion,T
 4,solicitud presupuestación,T
-4,envio infromacion para presupuesto,T
-4,envio infromacion para presupuestacion,T
-4,envio infromación para presupuestación,T
-4,infromacion presupuestos,T
-4,infromación presupuestación,T
+4,envio informacion para presupuesto,T
+4,envio informacion para presupuestacion,T
+4,envio información para presupuestación,T
+4,informacion presupuestos,T
+4,información presupuestación,T
 4,presupuestar,T
 4,carga presupuestación,T
 4,cargar presupuesto,T
-4,cargar preuspuestacion,T
+4,cargar presupuestacion,T
 4,presupuestacion info,T
-4,presupuestación solciitud,C
+4,presupuestación solicitud,C
 4,por favor presupuestar,C
 4,presupuestar por favor,C
 4,datos para presupuesto,C
@@ -460,7 +460,7 @@ Categoria,Sentencias,Uso
 4,necesito presupuestación,C
 4,necesito presupuestacion,C
 4,preusprestacion,C
-4,carga presupuetso,C
+4,carga presupuesto,C
 4,carga presupuesto,C
 4,carga presupuestacion,C
 4,presupuesto charlado,C
@@ -473,11 +473,11 @@ Categoria,Sentencias,Uso
 4,seguro presupuesto,C
 4,seguro presupuestación,C
 4,seguro presupuestacion,C
-4,cobertura presupuesto,C
-4,cobertura presupuestación,C
-4,cobertura presupuestacion,C
+4,nuevo presupuesto,C
+4,nueva presupuestación,C
+4,nueva presupuestacion solicitada,C
 4,por favor presupuestar seguro,C
-4,solciitud presupuesto seguro,C
+4,solicitud presupuesto seguro,C
 4,presupuesto solicitud,C
 4,cotización presupuestos,C
 4,costo presupuesto,C
@@ -540,40 +540,40 @@ Categoria,Sentencias,Uso
 4,informe de planificación de presupuesto,C
 4,detalle de planificación de presupuesto,C
 4,ajuste de planificación de presupuesto,C
-4,resumen de planificación de presupuesto,C
-4,listado de planificación de presupuesto,C
-4,gastos de planificación de presupuesto,C
-4,documentación de planificación de presupuesto,C
-4,preparación de planificación de presupuesto,C
+4,pedido planificación de presupuesto,C
+4,solicitud de planificación de presupuesto,C
+4,por favor planificar presupuesto,C
+4,documentación presupuesto,C
+4,documentación para presupuesto,C
 4,informe de estimación de presupuesto,C
 4,detalle de estimación de presupuesto,C
-4,ajuste de estimación de presupuesto,C
-4,resumen de estimación de presupuesto,C
-4,listado de estimación de presupuesto,C
-4,gastos de estimación de presupuesto,C
-4,documentación de estimación de presupuesto,C
-4,preparación de estimación de presupuesto,C
-4,informe de cálculo de presupuesto,C
-4,detalle de cálculo de presupuesto,C
-4,ajuste de cálculo de presupuesto,C
-4,resumen de cálculo de presupuesto,C
-4,listado de cálculo de presupuesto,C
-4,gastos de cálculo de presupuesto,C
-4,documentación de cálculo de presupuesto,C
-4,preparación de cálculo de presupuesto,C
-4,informe de previsión de presupuesto,C
-4,detalle de previsión de presupuesto,C
-4,ajuste de previsión de presupuesto,C
-4,resumen de previsión de presupuesto,C
-4,listado de previsión de presupuesto,C
-4,gastos de previsión de presupuesto,C
-4,documentación de previsión de presupuesto,C
-4,preparación de previsión de presupuesto,C
+4,documentación para presupuestación,C
+4,documentación presupuestación,C
+4,documentación de presupuestación,C
+4,documentación de presupuestacion,C
+4,documentación del presupuesto,C
+4,preparación de presupuesto,C
+4,presupuesto requerido,C
+4,requiero de presupuesto,C
+4,presupuestación charlada,C
+4,Información para presupuestación,C
+4,Archivos para presupuestación,C
+4,Información para presupuesto,C
+4,Informacion para presupuesto,C
+4,preparación presupuestacion,C
+4,presupuestá,C
+4,aviso pedio presupuestación,C
+4,aviso pedio presupuesto,C
+4,aviso pedio presupuestacion,C
+4,solicto presupuesto,C
+4,solicito presupuestación,C
+4,solicito presupuestacion,C
+4,presupuesto seguro,C
 4,pedido de presupuesto detallado,C
 4,detalle específico de presupuestación,C
-0,pedido Vacaciones en Mardel,C
-0,pedido Promoción en ropa,T
-0,solicitud Vacaciones en Mardel,T
+0,Vacaciones en Mardel,C
+0,Promoción en ropa,T
+0,¿Queres vacaionar en Mar del Plata?,T
 0,solicitud Promoción en ropa,C
 0,vacaciones en Mardel,T
 0,promoción en ropa,C
@@ -597,13 +597,13 @@ Categoria,Sentencias,Uso
 0,resumen de actividad en la cuenta de redes sociales,T
 0,recordatorio de renovación de membresía,C
 0,invitación a seminario web sobre desarrollo profesional,C
-0,vacaciones!,T
+0,¿querés vacaciones?,T
 0,descuentos solo para vos,T
 0,conocé Datadog,C
-0,conoce Datadog,T
+0,conoces Datadog,T
 0,feliz cumpleaños,T
 0,conocé nuestras ofertas,T
-0,conoce nuestros beneficios,C
+0,¿conoces nuestros beneficios?,C
 0,nuevo mensaje,C
 0,descubre todas las novedades,C
 0,últimos días,C
@@ -639,8 +639,8 @@ Categoria,Sentencias,Uso
 0,¡descubre cómo ganar dinero desde casa!,C
 0,¡productos de belleza gratis solo por registrarte!,C
 0,¡tu cuenta ha sido seleccionada para recibir un premio especial!,C
-0,solicitud Vacaciones,C
-0,solicitud Vacaciones Mar de las Pampas,T
+0,¡aprovechá tus vacaciones!,C
+0,Vacaciones en Mar de las Pampas,T
 0,un texto nuevo,T
 0,cualquier cosa,T
 0,simplemente otro string con palabras no tokenizadas,T
@@ -687,7 +687,7 @@ Categoria,Sentencias,Uso
 0,nuevos lanzamientos,C
 0,pedido Promoción en ropa,C
 0,solicitud Vacaciones en Mardel,C
-0,vacaciones en Mardel,C
+0,¡Feliz cumpleaños Augusto! Te desaeamos desde la empresa,C
 0,actualización de política de privacidad,C
 0,recordatorio de cita médica,C
 0,confirmación de registro en el evento,C
@@ -698,8 +698,8 @@ Categoria,Sentencias,Uso
 0,resumen de actividad en la cuenta de redes sociales,C
 0,vacaciones!,C
 0,descuentos solo para vos,C
-0,conoce Datadog,C
-0,feliz cumpleaños,C
+0,¿Conocés nuestros servicios?,C
+0,Conocenos,C
 0,conocé nuestras ofertas,C
 0,solicitud Vacaciones Mar de las Pampas,C
 0,confirmación de reserva de vuelo,C
