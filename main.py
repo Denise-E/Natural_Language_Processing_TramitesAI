@@ -1,9 +1,10 @@
 from datetime import datetime
+import math
 from modelos.asuntos_multi_clases import ModeloAsuntosMultiClases
 
 inicio = datetime.now()
 # TODO probar con 3000 iteraciones
-MODELO_ASUNTOS = ModeloAsuntosMultiClases(vocab_size=10000,embedding=16,max_length=10000, num_epochs=4000) 
+MODELO_ASUNTOS = ModeloAsuntosMultiClases(vocab_size=10000,embedding=16,max_length=10000, num_epochs=3000) 
 
 def predecir(sentencia: list):
     return MODELO_ASUNTOS.model_prediction_tests(sentencia)
@@ -23,8 +24,7 @@ sentences = [
     ["presupuestar por favor", 4],
     ["presupuestación", 4],
     ["que seas feliz", 0 ],
-    ["premio mayor", 0 ], 
-    ["participa de este imperdible momento!", 0 ],
+    ["premio mayor", 0 ],
     ["inscribite al seminario web", 0 ],
     ["¿Conocés AWS?", 0 ] 
 ]
@@ -43,6 +43,7 @@ print("********************** FIN PREDICCIÓNES **************************")
 fin = datetime.now()
 tiempo_proceso_segs = fin - inicio
 # Obtener la diferencia en minutos
-tiempo_proceso_mins = tiempo_proceso_segs.total_seconds() / 60
-
-print(f"El proceso completo demora {tiempo_proceso_mins} minutos.")
+tiempo_proceso_mins = math.trunc(tiempo_proceso_segs.total_seconds() / 60)
+print(f"El proceso completo demora {tiempo_proceso_mins} minutos.") 
+# 41 mins 4000 iteraciones
+# 26 3000 iteraciones
