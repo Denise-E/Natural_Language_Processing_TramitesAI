@@ -45,4 +45,4 @@ tiempo_proceso_segs = fin - inicio
 # Obtener la diferencia en minutos
 tiempo_proceso_mins = tiempo_proceso_segs.total_seconds() / 60
 
-print(f"Han pasado {tiempo_proceso_mins} minutos.")
+print(f"El proceso completo demora {tiempo_proceso_mins} minutos.")
