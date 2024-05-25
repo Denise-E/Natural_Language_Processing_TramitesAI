@@ -23,11 +23,22 @@ import re
 
 class ValidacionTramites:
     
+    @staticmethod
+    def clean_text(cls, text: str) -> str:
+        # Convertir a minúsculas y reemplazar caracteres no deseados
+        text = text.lower()
+        text = text.replace(".", "")
+        text = text.replace(":", "")
+        text = text.replace("!", "")
+        text = text.replace("¡", "")
+        text = text.replace("¿", "")
+        text = text.replace("?", "")
+        text = text.replace("\n", " ")
+        return text
+    
     @classmethod
     def validate_tramit(cls, tramite: int, body: str) -> dict:
-        body = body.lower()
-        # Elimino puntos, signos de excalación y de interrogación
-        body = re.sub(r'[.:!¡¿?]', '', body)
+        body = cls.clean_text(body)
 
         if int(tramite) == 2: #Cotización póliza de auto
             fields = cls.search_car_policy_fields(body)
@@ -39,11 +50,11 @@ class ValidacionTramites:
         return validation
     
     @classmethod
-    def search_home_policy_fields(cls, text: str):
+    def search_home_policy_fields(cls, text: str) -> dict:
         """
         Campos: tipo inmueble, dirección, código postal, superficie y rejas
         """
-        property = None
+        property = None # Casa, departamento, oficina, consultorio
         direction = None
         area = None
         has_bars = None
@@ -54,7 +65,7 @@ class ValidacionTramites:
         return res
 
     @classmethod
-    def search_car_policy_fields(cls, text: str):
+    def search_car_policy_fields(cls, text: str) -> dict:
         """
         Campos: marca, modelo, año y código postal.
         """
@@ -80,7 +91,13 @@ class ValidacionTramites:
         return res
     
     @classmethod
-    def search_postal_code(cls, text: str):
+    def search_postal_code(cls, text: str) -> str | None:
+        """
+        # Patrón para identificar código postal (suponiendo que es un número de 4 a 5 dígitos)
+        postal_code_pattern = re.compile(r'\b(\d{4,5})\b')
+        
+        Evaluar si me sirve, el tema es que con el año del auto se confunde
+        """
         # Patrón para identificar código postal
         text = text.replace("codigo", "cod")
         text = text.replace("código", "cod")
