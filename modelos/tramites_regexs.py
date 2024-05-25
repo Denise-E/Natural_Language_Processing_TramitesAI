@@ -17,6 +17,7 @@ Tengo 2 situaciones:
         -> En el body encuentro datos
 
     Para esto voy a usar expresiones regulares y técnicas de reconocimiento de entidades nombradas (NER)
+    El Reconocimiento de Entidades Nombradas puede identificar entidades basadas en el contexto y patrones aprendidos durante el entrenamiento, lo que lo hace más adaptable y robusto.
         
 """
 import re
