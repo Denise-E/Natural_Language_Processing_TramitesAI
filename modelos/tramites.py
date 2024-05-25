@@ -24,7 +24,7 @@ import re
 class ValidacionTramites:
     
     @staticmethod
-    def clean_text(cls, text: str) -> str:
+    def clean_text(text: str) -> str:
         # Convertir a minúsculas y reemplazar caracteres no deseados
         text = text.lower()
         text = text.replace(".", "")
@@ -42,7 +42,7 @@ class ValidacionTramites:
 
         if int(tramite) == 2: #Cotización póliza de auto
             fields = cls.search_car_policy_fields(body)
-        if int(tramite) == 3:
+        if int(tramite) == 3: #Cotización póliza del hogar
             fields = cls.search_home_policy_fields(body)
             
         validation = cls.validate_completed_fields(fields)
@@ -111,7 +111,7 @@ class ValidacionTramites:
         return postal_code
 
     @classmethod
-    def validate_completed_fields(cls, fields: dict):
+    def validate_completed_fields(cls, fields: dict) -> dict:
         res = {
             "success": True,
             "fields_missing": []
