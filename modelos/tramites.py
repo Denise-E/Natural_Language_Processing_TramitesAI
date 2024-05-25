@@ -33,6 +33,10 @@ class ValidacionTramites:
             fields = cls.search_car_policy_fields(body)
         if int(tramite) == 3:
             fields = cls.search_home_policy_fields(body)
+            
+        validation = cls.validate_completed_fields(fields)
+        print(validation)
+        return validation
     
     @classmethod
     def search_home_policy_fields(cls, text: str):
@@ -87,8 +91,25 @@ class ValidacionTramites:
         postal_code = postal_code.group(1) if postal_code else None
         return postal_code
 
+    @classmethod
+    def validate_completed_fields(cls, fields: dict):
+        res = {
+            "success": True,
+            "fields_missing": []
+        }
+        for key, value in fields.items():
+            if not value:
+                res['success'] = False
+                res["fields_missing"].append(key)
+        
+        return res
+        
 val = ValidacionTramites()
 
+
+print()
+print("********** Ejemplos póliza para el auto *************** ")
+print()
 print("CASE 1")
 input1 = "Buenas tardes, quisiera cotizar un seguro para mi auto. Por favor, envíenme las diferentes opciones que su compañia ofrece. Los datos de mi vehiculo son: \nMarca: Chevrolet \nModelo: Spin \nAño: 2023\nCod Postal: 1414 \nTengo cochera propia. Adjunto también foto de mi vehiculo para que se vea que está en perfectas condiciones.\nMuchas gracias"
 val.validate_tramit(2, input1)
@@ -100,3 +121,10 @@ print()
 print("CASE 3")
 input3 = "Buenas!! ¿Como estan? Los datos de mi vehiculo son: \nMarca Chevrolet \nModelo Spin \nAño: 2023\n cp. 1414 \nTengo cochera propia. Adjunto también foto de mi vehiculo para que se vea que está en perfectas condiciones.\nMuchas gracias"
 val.validate_tramit(2, input3)
+
+print()
+print("********** Ejemplos póliza del hogar *************** ")
+print()
+print("CASE 4")
+input4 = "Buenas tardes, quisiera cotizar un seguro para mi hogar. Por favor, envíenme las diferentes opciones que su compañía ofrece. Los datos de mi inmueble son: \nTipo de inmueble: Casa \nDirección: Calle Falsa 123, Ciudad \nCod Postal: 1414 \nSuperficie: 150 m² \nPoseo rejas en todas las ventanas y puertas. Adjunto también fotos del inmueble para que se vea su estado actual.\nMuchas gracias"
+val.validate_tramit(3, input4)
