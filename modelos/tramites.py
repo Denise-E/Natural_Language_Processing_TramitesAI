@@ -75,10 +75,11 @@ class ValidacionTramites:
     
     @classmethod
     def search_postal_code(cls, text: str):
-        # Patrón para identificar código postal. OBS: CP -  Cod. Postal - cod pos - cod. pos. - cod pos. Puede ignorar puntos?
+        # Patrón para identificar código postal
         text = text.replace("codigo", "cod")
         text = text.replace("código", "cod")
-        text = re.sub(r'\bpos\b', 'postal', text) # Para que lo remeplace si "pos" viene sólo y no dentro de otra palabra como "postal"
+        # Para que lo remeplace si "pos" viene sólo y no dentro de otra palabra como "postal"
+        text = re.sub(r'\bpos\b', 'postal', text)
         text = text.replace("cp", "cod postal")
 
         postal_code_pattern = re.compile(r'cod postal\s*(\d+)', re.IGNORECASE)
