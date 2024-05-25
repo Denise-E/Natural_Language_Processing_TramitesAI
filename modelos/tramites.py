@@ -43,11 +43,13 @@ class ValidacionTramites:
         """
         Campos: tipo inmueble, dirección, código postal, superficie y rejas
         """
-        brand = None
-        model = None
-        year = None
+        property = None
+        direction = None
+        area = None
+        has_bars = None
         postal_code = cls.search_postal_code(text)
-        res = {"marca": brand, "modelo": model, "año": year, "cp": postal_code}
+        
+        res = {"tipo_inmueble": property, "direccion": direction, "superficie": area, "tiene_barras": has_bars, "cp": postal_code}
         print(res)
         return res
 
@@ -101,7 +103,6 @@ class ValidacionTramites:
             if not value:
                 res['success'] = False
                 res["fields_missing"].append(key)
-        
         return res
         
 val = ValidacionTramites()
