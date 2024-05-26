@@ -56,22 +56,25 @@ class ValidacionTramites:
     def train_ner_model(cls, train_data, iterations=100):
         # Preparar el optimizador
         optimizer = cls.nlp.begin_training()
-
+        print("PRINT 1")
         # Iterar sobre los datos de entrenamiento durante el número especificado de iteraciones
         for itn in range(iterations):
+            print("PRINT 2")
             # Mezclar los datos de entrenamiento
             random.shuffle(train_data)
             losses = {}
-
+            print("PRINT 3")
             # Dividir los datos en lotes (mini-batches) y actualizar el modelo con cada lote
             for batch in minibatch(train_data, size=compounding(4.0, 32.0, 1.001)):
+                print("PRINT 4")
                 texts, annotations = zip(*batch)
+                print("PRINT 5")
                 cls.nlp.update(texts, annotations, drop=0.5, losses=losses)
+                print("PRINT 6")
 
             # Imprimir el progreso del entrenamiento
             print("Iteración {} Loss: {:.4f}".format(itn, losses['ner']))
-
-        
+    
     @staticmethod
     def clean_text(text: str) -> str:
         # Convertir a minúsculas y reemplazar caracteres no deseados
