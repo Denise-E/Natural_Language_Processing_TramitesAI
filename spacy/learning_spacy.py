@@ -1,8 +1,4 @@
 """
-https://github.com/explosion/projects/tree/v3/tutorials
-
-https://www.youtube.com/results?search_query=python+spacy+nlp+creating+my+own+model
-
 https://spacy.io/api
 
 sm = small
@@ -32,10 +28,6 @@ SpaCy requiere que lso datos de entrenamiento deben ser del tipo docbin y deben 
 nlp = spacy.blank("es") # load a new spacy model
 doc_bin = DocBin()
 
-# Chequear si está desactualizado. 
-"""
-Que hace? 
-"""
 # Recorremos nuestros datos de entrenamiento
 for training_example  in tqdm(training_data): 
     # Obtenemos los textos / las sentencias de entrenamiento
@@ -62,4 +54,5 @@ for training_example  in tqdm(training_data):
 
 doc_bin.to_disk("train.spacy") # Se pisa cada vez que re corre la línea de código
 
-
+# Una vez creados los archivos de configuración ...
+# python -m spacy train config.cfg --paths.train ./train.spacy --paths.dev ./dev.spacy
