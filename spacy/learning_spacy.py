@@ -1,13 +1,12 @@
 """
-https://spacy.io/api
+Documentación Oficial: https://spacy.io/api
+
+Para cada dato de entrenamiento se definen los textos (Doc) y se les agregan las entidades como una lista de objetos (Span) para predecir
+Para el entrenamiento del modelo se requiere de un archivo de configuración: https://spacy.io/usage/training#quickstart
+
 
 sm = small
 lg = large y es más preciso
-
-Para cada dato de entrenameinto se definen los textos (Doc) y se les agregan las entidades como una lista de objetos (Span) para predecir
-
-Para el entrenamiento del modelo se requiere de un archivo de configuración
-
 """
 from data.data import TRAIN_DATA
 from spacy.util import filter_spans
