@@ -1,6 +1,6 @@
 from datetime import datetime
 import math
-from modelos.asuntos_multi_clases import ModeloAsuntosMultiClases
+from modelos.asuntos.asuntos_multi_clases import ModeloAsuntosMultiClases
 
 inicio = datetime.now()
 # TODO probar con 3000 iteraciones

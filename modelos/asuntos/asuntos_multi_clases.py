@@ -37,7 +37,7 @@ class ModeloAsuntosMultiClases:
     def get_data(cls):
         # Este metodo trabaja con Pandas para la obtención de los datso de entrenameinto y de prueba a partir de archivo csv
         # Crea el dataframe a partir del csv
-        df = pd.read_csv('modelos/data/asuntos.csv')
+        df = pd.read_csv('modelos/asuntos/asuntos_data/asuntos.csv')
         #print(df)
         
         # Es importante que no hayan espacios en lso títulos, para que puedan encontrarse las columnas. Por ejemplo "Uso" y no " Uso "
