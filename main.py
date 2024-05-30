@@ -3,8 +3,7 @@ import math
 from modelos.asuntos.asuntos_multi_clases import ModeloAsuntosMultiClases
 
 inicio = datetime.now()
-# TODO probar con 3000 iteraciones
-MODELO_ASUNTOS = ModeloAsuntosMultiClases(vocab_size=10000,embedding=16,max_length=10000, num_epochs=3000) 
+MODELO_ASUNTOS = ModeloAsuntosMultiClases(vocab_size=10000,embedding=16,max_length=10000, num_epochs=4000) 
 
 def predecir(sentencia: list):
     return MODELO_ASUNTOS.model_prediction_tests(sentencia)
@@ -18,15 +17,14 @@ sentences = [
     ["solicitud cotizacion póliza del hogar",  3 ],
     ["solicitud póliza del hogar",  3],
     ["vacaciones en Mardel", 0],
-    ["notificación membresia", 0 ],
+    ["descuento en la membresia del gimnasio, ¡No te la pierdas!", 0 ],
     ["notificación membresía", 0 ],
     ["cotizar vehículo", 2],
     ["presupuestar por favor", 4],
     ["presupuestación", 4],
-    ["que seas feliz", 0 ],
-    ["premio mayor", 0 ],
+    ["¡Participá y obtené un premio!", 0 ],
     ["inscribite al seminario web", 0 ],
-    ["¿Conocés AWS?", 0 ] 
+    ["¿Conocés los servicios de AWS?", 0 ] 
 ]
 
 print("Información modelo:" )
@@ -45,5 +43,5 @@ tiempo_proceso_segs = fin - inicio
 # Obtener la diferencia en minutos
 tiempo_proceso_mins = math.trunc(tiempo_proceso_segs.total_seconds() / 60)
 print(f"El proceso completo demora {tiempo_proceso_mins} minutos.") 
-# 41 mins 4000 iteraciones
-# 26 3000 iteraciones
+# 23 a 41 mins 4000 iteraciones (en mi máquina)
+# 16 a 30 mins 3000 iteraciones (en mi máquina)
