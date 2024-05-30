@@ -54,5 +54,8 @@ for training_example  in tqdm(training_data):
 
 doc_bin.to_disk("train.spacy") # Se pisa cada vez que re corre la línea de código
 
-# Una vez creados los archivos de configuración ...
-# python -m spacy train config.cfg --paths.train ./train.spacy --paths.dev ./dev.spacy
+"""
+Para entrenar al modelo se debe correr el siguiente comando:
+
+    python -m spacy train config.cfg --paths.train ./train.spacy --paths.dev ./trein.spacy
+"""
