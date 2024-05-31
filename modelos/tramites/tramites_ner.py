@@ -89,6 +89,23 @@ class ValidacionTramites:
         python -m spacy train config.cfg --paths.train ./train.spacy --paths.dev ./train.spacy
         """
         
+    @classmethod
+    def predict(cls, sentece: str):
+        pass
+        """
+            You need to save the trained model to disk. Then, instead of spacy.blank("en"), 
+            you would use spacy.load("path/to/model/"). 
+            Once you do that, you will be able to use the model you saved.
+        """
+        nlp2 = spacy.load("train.spacy")
+        for text, _ in sentece:
+            doc = nlp2(text)
+            print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
+            print("Tokens", [(t.text, t.ent_type_, t.ent_iob) for t in doc])
+        """
+        Getting probabilities: 
+        https://stackoverflow.com/questions/59877735/how-to-get-probability-of-prediction-per-entity-from-spacy-ner-model
+        """
 
 val = ValidacionTramites()
 
