@@ -5,7 +5,7 @@ TRAIN_DATA = [
     ),
     (
         {"text": "hola, necesito un seguro para mi auto marca ford modelo fiesta año 2019 código postal 5000 gracias",
-        "entities": [(42, 46, "MARCA"), (54, 60, "MODELO"), (65, 69, "AÑO"), (82, 86, "COD_POSTAL")]}
+        "entities": [(44, 48, "MARCA"), (54, 60, "MODELO"), (65, 69, "AÑO"), (82, 86, "COD_POSTAL")]}
     ),
     (
         {"text": "buen día, quisiera saber cuánto me cuesta un seguro para mi coche marca toyota modelo corolla año 2015 cod. postal 28001 gracias",
