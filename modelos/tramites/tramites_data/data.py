@@ -1,130 +1,102 @@
 TRAIN_DATA = [
-    (
-        {"text": "buenas tardes, quisiera cotizar un seguro para mi auto por favor, envíenme las diferentes opciones que su compañia ofrece los datos de mi vehiculo son  marca chevrolet  modelo spin  año 2023 cod postal 1414  tengo cochera propia adjunto también foto de mi vehiculo para que se vea que está en perfectas condiciones muchas gracias", 
-        "entities": [(108, 118, "MARCA"), (120, 124, "MODELO"), (126, 130, "AÑO"), (132, 140, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "hola, necesito un seguro para mi auto marca ford modelo fiesta año 2019 código postal 5000 gracias",
-        "entities": [(44, 48, "MARCA"), (54, 60, "MODELO"), (65, 69, "AÑO"), (82, 86, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "buen día, quisiera saber cuánto me cuesta un seguro para mi coche marca toyota modelo corolla año 2015 cod. postal 28001 gracias",
-        "entities": [(57, 62, "MARCA"), (70, 77, "MODELO"), (82, 86, "AÑO"), (99, 105, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "necesito asegurar mi vehículo, es un honda civic del año 2020, código postal 90210",
-        "entities": [(34, 39, "MARCA"), (40, 45, "MODELO"), (54, 58, "AÑO"), (75, 80, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "buenos días, quisiera información sobre seguros para un nissan sentra del 2018, vivo en el código postal 12345",
-        "entities": [(54, 60, "MARCA"), (61, 67, "MODELO"), (72, 76, "AÑO"), (95, 100, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "quiero asegurar un auto marca peugeot modelo 208 año 2021, mi código postal es 54321",
-        "entities": [(28, 35, "MARCA"), (44, 47, "MODELO"), (53, 57, "AÑO"), (76, 81, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "hola, estoy buscando opciones de seguro para un volkswagen gol del año 2017, código postal 98765",
-        "entities": [(42, 51, "MARCA"), (52, 55, "MODELO"), (64, 68, "AÑO"), (83, 88, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "saludos, necesito un seguro para mi automóvil marca bmw modelo serie 3 año 2016 cod postal 11223",
-        "entities": [(48, 51, "MARCA"), (59, 66, "MODELO"), (71, 75, "AÑO"), (86, 91, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "buenas noches, quisiera información para asegurar un kia rio del 2014, código postal 33445",
-        "entities": [(47, 50, "MARCA"), (51, 54, "MODELO"), (59, 63, "AÑO"), (80, 85, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "hola, necesito cotizar un seguro para mi coche marca hyundai modelo elantra del año 2022, vivo en el código postal 77889",
-        "entities": [(38, 44, "MARCA"), (52, 59, "MODELO"), (68, 72, "AÑO"), (91, 96, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "quiero un seguro para mi coche. Marca: Renault, Modelo: Kwid, Año: 2019. Código Postal: 67890.",
-        "entities": [(31, 38, "MARCA"), (48, 52, "MODELO"), (59, 63, "AÑO"), (79, 84, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "necesito un seguro para mi automóvil. marca mazda, modelo cx-5, año 2018, cp 11011",
-        "entities": [(38, 43, "MARCA"), (52, 55, "MODELO"), (61, 65, "AÑO"), (70, 75, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "hola, busco un seguro para un coche de marca suzuki modelo swift año 2016, código postal 12349",
-        "entities": [(39, 45, "MARCA"), (53, 58, "MODELO"), (63, 67, "AÑO"), (84, 89, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "cotización de seguro para automóvil marca mitsubishi, modelo lancer, año 2014, código postal 55555",
-        "entities": [(33, 42, "MARCA"), (51, 57, "MODELO"), (63, 67, "AÑO"), (84, 89, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "quiero cotizar seguro para mi auto marca fiat, modelo cronos, año 2021, mi código postal es 22334",
-        "entities": [(32, 36, "MARCA"), (45, 51, "MODELO"), (57, 61, "AÑO"), (82, 87, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "buenas, me interesa un seguro para mi auto fiat cronos 2020, vivo en el código postal 1414",
-        "entities": [(39, 43, "MARCA"), (44, 50, "MODELO"), (51, 55, "AÑO"), (77, 81, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "hola, quiero asegurar mi coche, que es un ford fiesta del 2018. código postal 5000.",
-        "entities": [(34, 38, "MARCA"), (39, 45, "MODELO"), (51, 55, "AÑO"), (72, 76, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "buenos días, quisiera cotizar un seguro para mi volkswagen gol 2017. mi código postal es 98765.",
-        "entities": [(42, 51, "MARCA"), (52, 55, "MODELO"), (56, 60, "AÑO"), (79, 84, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "necesito información para asegurar mi bmw serie 3 2016. Vivo en el código postal 11223.",
-        "entities": [(36, 39, "MARCA"), (40, 47, "MODELO"), (48, 52, "AÑO"), (72, 77, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "me gustaría cotizar un seguro para mi chevrolet spin del 2023, código postal 1414",
-        "entities": [(35, 45, "MARCA"), (46, 50, "MODELO"), (55, 59, "AÑO"), (74, 78, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "hola, busco asegurar mi coche toyota corolla año 2015 cp 28001",
-        "entities": [(29, 34, "MARCA"), (35, 42, "MODELO"), (47, 51, "AÑO"), (54, 59, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "saludos, quisiera asegurar mi auto nissan sentra 2018. Vivo en el código postal 12345",
-        "entities": [(33, 39, "MARCA"), (40, 46, "MODELO"), (47, 51, "AÑO"), (71, 76, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "buen día, necesito cotizar un seguro para mi auto peugeot 208 año 2021, cp 54321",
-        "entities": [(41, 48, "MARCA"), (49, 52, "MODELO"), (57, 61, "AÑO"), (66, 71, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "necesito un seguro para mi coche volkswagen gol 2017, código postal 98765",
-        "entities": [(29, 38, "MARCA"), (39, 42, "MODELO"), (43, 47, "AÑO"), (63, 68, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "quiero asegurar mi automóvil bmw serie 3 del 2016. Mi código postal es 11223.",
-        "entities": [(26, 29, "MARCA"), (30, 37, "MODELO"), (42, 46, "AÑO"), (66, 71, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "hola, necesito información sobre seguros para mi auto kia rio del 2014, vivo en el código postal 33445",
-        "entities": [(52, 55, "MARCA"), (56, 59, "MODELO"), (64, 68, "AÑO"), (85, 90, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "cotización de seguro para automóvil hyundai elantra 2022. Código postal 77889",
-        "entities": [(33, 39, "MARCA"), (40, 47, "MODELO"), (48, 52, "AÑO"), (66, 71, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "necesito asegurar mi coche renault kwid del 2019, cp 67890",
-        "entities": [(29, 36, "MARCA"), (37, 41, "MODELO"), (46, 50, "AÑO"), (55, 60, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "hola, quiero cotizar un seguro para mi auto fiat cronos 2021. Mi código postal es 22334",
-        "entities": [(39, 43, "MARCA"), (44, 50, "MODELO"), (51, 55, "AÑO"), (75, 80, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "necesito un seguro para mi automóvil, marca mazda, modelo cx-5, año 2018, cp 11011",
-        "entities": [(38, 43, "MARCA"), (52, 55, "MODELO"), (61, 65, "AÑO"), (70, 75, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "hola, busco un seguro para un coche de marca suzuki modelo swift año 2016, código postal 12349",
-        "entities": [(39, 45, "MARCA"), (53, 58, "MODELO"), (63, 67, "AÑO"), (84, 89, "COD_POSTAL")]}
-    ),
-    (
-        {"text": "quiero cotizar seguro para mi auto marca fiat, modelo cronos, año 2021, mi código postal es 22334",
-        "entities": [(32, 36, "MARCA"), (45, 51, "MODELO"), (57, 61, "AÑO"), (82, 87, "COD_POSTAL")]}
-    )
+({'text': 'buenas tardes, quisiera cotizar un seguro para mi auto por favor, envíenme las diferentes opciones que su compañia ofrece los datos de mi vehiculo son  marca chevrolet  modelo spin  año 2023 cod postal 1414  tengo cochera propia adjunto también foto de mi vehiculo para que se vea que está en perfectas condiciones muchas gracias', 'entities': [(158, 167, 'MARCA'), (176, 180, 'MODELO'), (186, 190, 'AÑO'), (202, 206, 'COD_POSTAL')]}),
+({'text': 'hola, necesito un seguro para mi auto marca ford modelo fiesta año 2019 código postal 5000 gracias', 'entities': [(44, 48, 'MARCA'), (56, 62, 'MODELO'), (67, 71, 'AÑO'), (86, 90, 'COD_POSTAL')]}),
+({'text': 'buen día, quisiera saber cuánto me cuesta un seguro para mi coche marca toyota modelo corolla año 2015 cod. postal 2442 gracias', 'entities': [(72, 78, 'MARCA'), (86, 93, 'MODELO'), (98, 102, 'AÑO'), (115, 119, 'COD_POSTAL')]}),  
+({'text': 'necesito asegurar mi vehículo, es un honda civic del año 2020, código postal 2420', 'entities': [(37, 42, 'MARCA'), (43, 48, 'MODELO'), (57, 61, 'AÑO'), (77, 81, 'COD_POSTAL')]}),
+({'text': 'buenos días, quisiera información sobre seguros para un nissan sentra del 2018, vivo en el código postal 12345', 'entities': [(56, 62, 'MARCA'), (63, 69, 'MODELO'), (74, 78, 'AÑO'), (105, 110, 'COD_POSTAL')]}),
+({'text': 'quiero asegurar un auto marca peugeot modelo 208 año 2021, mi código postal es 4321', 'entities': [(30, 37, 'MARCA'), (45, 48, 'MODELO'), (53, 57, 'AÑO'), (79, 83, 'COD_POSTAL')]}),
+({'text': 'hola, estoy buscando opciones de seguro para un volkswagen gol del año 2017, código postal 7651', 'entities': [(48, 58, 'MARCA'), (59, 62, 'MODELO'), (71, 75, 'AÑO'), (91, 95, 'COD_POSTAL')]}),
+({'text': 'saludos, necesito un seguro para mi automóvil marca bmw modelo serie 3 año 2016 cod postal 1134', 'entities': [(52, 55, 'MARCA'), (63, 70, 'MODELO'), (75, 79, 'AÑO'), (91, 95, 'COD_POSTAL')]}),
+({'text': 'buenas noches, quisiera información para asegurar un kia rio del 2014, código postal 3451', 'entities': [(57, 60, 'MODELO'), (65, 69, 'AÑO'), (85, 89, 'COD_POSTAL')]}),
+({'text': 'Hola, necesito asegurar un toyota corolla del 2018, mi código postal es 1425', 'entities': [(27, 33, 'MARCA'), (34, 41, 'MODELO'), (46, 50, 'AÑO'), (72, 76, 'COD_POSTAL')]}),
+({'text': 'Quisiera una cotización para asegurar un honda civic del 2020, código postal 1406', 'entities': [(41, 46, 'MARCA'), (47, 52, 'MODELO'), (57, 61, 'AÑO'), (77, 81, 'COD_POSTAL')]}),
+({'text': 'Buenas tardes, pueden darme información para asegurar un ford mustang del 2015, vivo en el área de código postal 1001', 'entities': [(57, 61, 'MARCA'), (62, 69, 'MODELO'), (74, 78, 'AÑO'), (113, 117, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1430, quiero asegurar un chevrolet onix del 2019', 'entities': [(45, 54, 'MARCA'), (55, 59, 'MODELO'), (64, 68, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Hola, necesito asegurar un toyota corolla del 2018, mi código postal es 1425', 'entities': [(27, 33, 'MARCA'), (34, 41, 'MODELO'), (46, 50, 'AÑO'), (72, 76, 'COD_POSTAL')]}),
+({'text': 'Quisiera una cotización para asegurar un honda civic del 2020, código postal 1406', 'entities': [(41, 46, 'MARCA'), (47, 52, 'MODELO'), (57, 61, 'AÑO'), (77, 81, 'COD_POSTAL')]}),
+({'text': 'Buenas tardes, pueden darme información para asegurar un ford mustang del 2015, vivo en el área de código postal 1001', 'entities': [(57, 61, 'MARCA'), (62, 69, 'MODELO'), (74, 78, 'AÑO'), (113, 117, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1430, quiero asegurar un chevrolet onix del 2019', 'entities': [(45, 54, 'MARCA'), (55, 59, 'MODELO'), (64, 68, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Necesito cotizar el seguro para un fiat punto del 2017, vivo en el código postal 1428', 'entities': [(35, 39, 'MARCA'), (40, 45, 'MODELO'), (50, 54, 'AÑO'), (81, 85, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1416 y necesito asegurar un renault clio del 2016', 'entities': [(48, 55, 'MARCA'), (56, 60, 'MODELO'), (65, 69, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1408, quisiera información para asegurar un peugeot 208 del 2018', 'entities': [(69, 76, 'MARCA'), (77, 80, 'MODELO'), (85, 89, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Quiero asegurar un volkswagen golf del 2020, mi código postal es 1440', 'entities': [(19, 29, 'MARCA'), (30, 34, 'MODELO'), (39, 43, 'AÑO'), (65, 69, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1429, estoy buscando asegurar un nissan versa del 2019', 'entities': [(53, 59, 'MARCA'), (60, 65, 'MODELO'), (70, 74, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Necesito información sobre el seguro para un bmw serie 3 del 2021, código postal 1414', 'entities': [(45, 48, 'MARCA'), (49, 56, 'MODELO'), (61, 65, 'AÑO'), (81, 85, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1405 y quiero asegurar un audi a4 del 2015', 'entities': [(51, 55, 'MARCA'), (56, 58, 'MODELO'), (63, 67, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1437, necesito asegurar un mercedes-benz clase c del 2017', 'entities': [(47, 60, 'MARCA'), (61, 68, 'MODELO'), (73, 77, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Hola, quiero cotizar el seguro para un hyundai tucson del 2018, mi código postal es 1424', 'entities': [(39, 46, 'MARCA'), (47, 53, 'MODELO'), (58, 62, 'AÑO'), (84, 88, 'COD_POSTAL')]}),
+({'text': 'Busco información para asegurar un citroën c3 del 2022, vivo en el código postal 1417', 'entities': [(35, 42, 'MARCA'), (43, 45, 'MODELO'), (50, 54, 'AÑO'), (81, 85, 'COD_POSTAL')]}),
+({'text': 'Código postal 1426, quiero asegurar un Ford Fiesta del 2017', 'entities': [(39, 43, 'MARCA'), (44, 50, 'MODELO'), (55, 59, 'AÑO'), (14, 18, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1407, necesito asegurar un toyota hilux del 2015', 'entities': [(52, 58, 'MARCA'), (59, 64, 'MODELO'), (69, 73, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Quiero asegurar un Renault Duster del 2020, mi código postal es 1420', 'entities': [(19, 26, 'MARCA'), (27, 33, 'MODELO'), (38, 42, 'AÑO'), (64, 68, 'COD_POSTAL')]}),
+({'text': 'Necesito cotizar el seguro para un kia sportage del 2018, vivo en el código postal 1418', 'entities': [(35, 38, 'MARCA'), (39, 47, 'MODELO'), (52, 56, 'AÑO'), (83, 87, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1431, quiero asegurar un Peugeot 308 del 2019', 'entities': [(45, 52, 'MARCA'), (53, 56, 'MODELO'), (61, 65, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1409 y quiero asegurar un ford focus del 2016', 'entities': [(51, 55, 'MARCA'), (56, 61, 'MODELO'), (66, 70, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Busco información para asegurar un Chevrolet Tracker del 2021, mi código postal es 1410', 'entities': [(35, 44, 'MARCA'), (45, 52, 'MODELO'), (57, 61, 'AÑO'), (83, 87, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1422, necesito asegurar un Honda CR-V del 2017', 'entities': [(47, 52, 'MARCA'), (53, 57, 'MODELO'), (62, 66, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Quiero asegurar un volkswagen t-cross del 2019, código postal 1412', 'entities': [(19, 29, 'MARCA'), (30, 37, 'MODELO'), (42, 46, 'AÑO'), (62, 66, 'COD_POSTAL')]}),
+({'text': 'Código postal 1442, necesito asegurar un Toyota RAV4 del 2020', 'entities': [(41, 47, 'MARCA'), (48, 52, 'MODELO'), (57, 61, 'AÑO'), (14, 18, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1435, quiero asegurar un fiat toro del 2018', 'entities': [(45, 49, 'MARCA'), (50, 54, 'MODELO'), (59, 63, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1421 y necesito asegurar un Nissan Sentra del 2016', 'entities': [(53, 59, 'MARCA'), (60, 66, 'MODELO'), (71, 75, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Busco información para asegurar un BMW X1 del 2019, mi código postal es 1404', 'entities': [(35, 38, 'MARCA'), (39, 41, 'MODELO'), (46, 50, 'AÑO'), (72, 76, 'COD_POSTAL')]}),
+({'text': 'Necesito asegurar un Audi Q3 del 2017, mi código postal es 1413', 'entities': [(21, 25, 'MARCA'), (26, 28, 'MODELO'), (33, 37, 'AÑO'), (59, 63, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1423, quiero asegurar un Citroën C4 del 2020', 'entities': [(45, 52, 'MARCA'), (53, 55, 'MODELO'), (60, 64, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Código postal 1434, necesito asegurar un Mercedes-Benz GLA del 2018', 'entities': [(41, 54, 'MARCA'), (55, 58, 'MODELO'), (63, 67, 'AÑO'), (14, 18, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1401, quiero asegurar un kia rio del 2015', 'entities': [(50, 53, 'MARCA'), (54, 57, 'MODELO'), (62, 66, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1436 y necesito asegurar un Renault Sandero del 2021', 'entities': [(48, 55, 'MARCA'), (56, 63, 'MODELO'), (68, 72, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Quiero asegurar un ford ranger del 2017, mi código postal es 1441', 'entities': [(19, 23, 'MARCA'), (24, 30, 'MODELO'), (35, 39, 'AÑO'), (61, 65, 'COD_POSTAL')]}),
+({'text': 'Busco información para asegurar un Peugeot 2008 del 2016, mi código postal es 1427', 'entities': [(35, 42, 'MARCA'), (43, 47, 'MODELO'), (52, 56, 'AÑO'), (78, 82, 'COD_POSTAL')]}),
+({'text': 'Código postal 1432, necesito asegurar un Hyundai Creta del 2019', 'entities': [(41, 48, 'MARCA'), (49, 54, 'MODELO'), (59, 63, 'AÑO'), (14, 18, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1403 y quiero asegurar un Volkswagen Tiguan del 2018', 'entities': [(51, 61, 'MARCA'), (62, 68, 'MODELO'), (73, 77, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1415, quiero asegurar un Audi A3 del 2015', 'entities': [(45, 49, 'MARCA'), (50, 52, 'MODELO'), (57, 61, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Busco información para asegurar un Ford Kuga del 2020, mi código postal es 1426', 'entities': [(35, 39, 'MARCA'), (40, 44, 'MODELO'), (49, 53, 'AÑO'), (75, 79, 'COD_POSTAL')]}),
+({'text': 'Quiero asegurar un toyota yaris del 2017, mi código postal es 1433', 'entities': [(19, 25, 'MARCA'), (26, 31, 'MODELO'), (36, 40, 'AÑO'), (62, 66, 'COD_POSTAL')]}),
+({'text': 'Código postal 1402, necesito asegurar un Kia Seltos del 2016', 'entities': [(41, 44, 'MARCA'), (45, 51, 'MODELO'), (56, 60, 'AÑO'), (14, 18, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1439, quiero asegurar un Renault Captur del 2018', 'entities': [(50, 57, 'MARCA'), (58, 64, 'MODELO'), (69, 73, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Busco información para asegurar un Volkswagen Jetta del 2017, mi código postal es 1443', 'entities': [(35, 45, 'MARCA'), (46, 51, 'MODELO'), (56, 60, 'AÑO'), (82, 86, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1419 y necesito asegurar un Peugeot 208 del 2019', 'entities': [(48, 55, 'MARCA'), (56, 59, 'MODELO'), (64, 68, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Quiero asegurar un Chevrolet Cruze del 2018, mi código postal es 1424', 'entities': [(19, 28, 'MARCA'), (29, 34, 'MODELO'), (39, 43, 'AÑO'), (65, 69, 'COD_POSTAL')]}),
+({'text': 'Código postal 1408, necesito asegurar un Mercedes-Benz Clase A del 2021', 'entities': [(41, 54, 'MARCA'), (55, 62, 'MODELO'), (67, 71, 'AÑO'), (14, 18, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1438, quiero asegurar un Nissan Kicks del 2020', 'entities': [(50, 56, 'MARCA'), (57, 62, 'MODELO'), (67, 71, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Busco información para asegurar un Ford EcoSport del 2017, mi código postal es 1405', 'entities': [(35, 39, 'MARCA'), (40, 48, 'MODELO'), (53, 57, 'AÑO'), (79, 83, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1421 y quiero asegurar un Renault Koleos del 2016', 'entities': [(46, 53, 'MARCA'), (54, 60, 'MODELO'), (65, 69, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Quiero asegurar un Volkswagen Passat del 2019, mi código postal es 1430', 'entities': [(19, 29, 'MARCA'), (30, 36, 'MODELO'), (41, 45, 'AÑO'), (67, 71, 'COD_POSTAL')]}),
+({'text': 'Código postal 1416, necesito asegurar un Peugeot 3008 del 2018', 'entities': [(41, 48, 'MARCA'), (49, 53, 'MODELO'), (58, 62, 'AÑO'), (14, 18, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1444, quiero asegurar un Audi Q5 del 2020', 'entities': [(50, 54, 'MARCA'), (55, 57, 'MODELO'), (62, 66, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Busco información para asegurar un Toyota Etios del 2017, mi código postal es 1420', 'entities': [(35, 41, 'MARCA'), (42, 47, 'MODELO'), (52, 56, 'AÑO'), (78, 82, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1406 y necesito asegurar un Nissan March del 2016', 'entities': [(48, 54, 'MARCA'), (55, 60, 'MODELO'), (65, 69, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Quiero asegurar un Ford Mondeo del 2018, mi código postal es 1417', 'entities': [(19, 23, 'MARCA'), (24, 30, 'MODELO'), (35, 39, 'AÑO'), (61, 65, 'COD_POSTAL')]}),
+({'text': 'Código postal 1431, necesito asegurar un Chevrolet Onix del 2021', 'entities': [(41, 50, 'MARCA'), (51, 55, 'MODELO'), (60, 64, 'AÑO'), (14, 18, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1445 y quiero asegurar un Kia Picanto del 2019', 'entities': [(51, 54, 'MARCA'), (55, 62, 'MODELO'), (67, 71, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Busco información para asegurar un Renault Kangoo del 2017, mi código postal es 1428', 'entities': [(35, 42, 'MARCA'), (43, 49, 'MODELO'), (54, 58, 'AÑO'), (80, 84, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1407 y quiero asegurar un Peugeot 208 del 2016', 'entities': [(46, 53, 'MARCA'), (54, 57, 'MODELO'), (62, 66, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Quiero asegurar un Ford Fiesta del 2019, mi código postal es 1418', 'entities': [(19, 23, 'MARCA'), (24, 30, 'MODELO'), (35, 39, 'AÑO'), (61, 65, 'COD_POSTAL')]}),
+({'text': 'Código postal 1432, necesito asegurar un Volkswagen Up del 2017', 'entities': [(41, 51, 'MARCA'), (52, 54, 'MODELO'), (59, 63, 'AÑO'), (14, 18, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1409, quiero asegurar un Toyota Corolla del 2018', 'entities': [(50, 56, 'MARCA'), (57, 64, 'MODELO'), (69, 73, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Busco información para asegurar un Honda Fit del 2016, mi código postal es 1425', 'entities': [(35, 40, 'MARCA'), (41, 44, 'MODELO'), (49, 53, 'AÑO'), (75, 79, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1440 y necesito asegurar un Chevrolet Spin del 2020', 'entities': [(48, 57, 'MARCA'), (58, 62, 'MODELO'), (67, 71, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Quiero asegurar un Renault Logan del 2017, mi código postal es 1411', 'entities': [(19, 26, 'MARCA'), (27, 32, 'MODELO'), (37, 41, 'AÑO'), (63, 67, 'COD_POSTAL')]}),
+({'text': 'Código postal 1433, necesito asegurar un Peugeot 408 del 2018', 'entities': [(41, 48, 'MARCA'), (49, 52, 'MODELO'), (57, 61, 'AÑO'), (14, 18, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1446 y quiero asegurar un Nissan Versa del 2021', 'entities': [(51, 57, 'MARCA'), (58, 63, 'MODELO'), (68, 72, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Busco información para asegurar un BMW Serie 1 del 2019, mi código postal es 1408', 'entities': [(35, 38, 'MARCA'), (39, 46, 'MODELO'), (51, 55, 'AÑO'), (77, 81, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1414 y quiero asegurar un Toyota Yaris del 2017', 'entities': [(46, 52, 'MARCA'), (53, 58, 'MODELO'), (63, 67, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Quiero asegurar un Mercedes-Benz Clase C del 2018, mi código postal es 1422', 'entities': [(19, 32, 'MARCA'), (33, 40, 'MODELO'), (45, 49, 'AÑO'), (71, 75, 'COD_POSTAL')]}),
+({'text': 'Código postal 1437, necesito asegurar un Kia Sportage del 2016', 'entities': [(41, 44, 'MARCA'), (45, 53, 'MODELO'), (58, 62, 'AÑO'), (14, 18, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1447, quiero asegurar un Ford Mustang del 2019', 'entities': [(50, 54, 'MARCA'), (55, 62, 'MODELO'), (67, 71, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Hola, quiero cotizar el seguro para un volkswagen gol del 2019, mi código postal es 1415', 'entities': [(39, 49, 'MARCA'), (50, 53, 'MODELO'), (58, 62, 'AÑO'), (84, 88, 'COD_POSTAL')]}),
+({'text': 'Quiero asegurar un toyota yaris del 2017, mi código postal es 1433', 'entities': [(19, 25, 'MARCA'), (26, 31, 'MODELO'), (36, 40, 'AÑO'), (62, 66, 'COD_POSTAL')]}),
+({'text': 'Código postal 1402, necesito asegurar un kia picanto del 2016', 'entities': [(41, 44, 'MARCA'), (45, 52, 'MODELO'), (57, 61, 'AÑO'), (14, 18, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1421 y quiero asegurar un renault koleos del 2016', 'entities': [(51, 58, 'MARCA'), (59, 65, 'MODELO'), (70, 74, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Busco información para asegurar un volkswagen t-cross del 2019, mi código postal es 1412', 'entities': [(35, 45, 'MARCA'), (46, 53, 'MODELO'), (58, 62, 'AÑO'), (84, 88, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1423, necesito asegurar un peugeot 308 del 2020', 'entities': [(47, 54, 'MARCA'), (55, 58, 'MODELO'), (63, 67, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Quiero asegurar un ford fiesta del 2019, mi código postal es 1418', 'entities': [(19, 23, 'MARCA'), (24, 30, 'MODELO'), (35, 39, 'AÑO'), (61, 65, 'COD_POSTAL')]}),
+({'text': 'Código postal 1427, necesito asegurar un hyundai creta del 2019', 'entities': [(41, 48, 'MARCA'), (49, 54, 'MODELO'), (59, 63, 'AÑO'), (14, 18, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1438 y quiero asegurar un renault sandero del 2018', 'entities': [(51, 58, 'MARCA'), (59, 66, 'MODELO'), (71, 75, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Busco información para asegurar un fiat toro del 2018, mi código postal es 1435', 'entities': [(35, 39, 'MARCA'), (40, 44, 'MODELO'), (49, 53, 'AÑO'), (75, 79, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1406, necesito asegurar un honda fit del 2016', 'entities': [(47, 52, 'MARCA'), (53, 56, 'MODELO'), (61, 65, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
+({'text': 'Quiero asegurar un chevrolet cruze del 2018, mi código postal es 1424', 'entities': [(19, 28, 'MARCA'), (29, 34, 'MODELO'), (39, 43, 'AÑO'), (65, 69, 'COD_POSTAL')]}),
+({'text': 'Código postal 1408, necesito asegurar un nissan kicks del 2020', 'entities': [(41, 47, 'MARCA'), (48, 53, 'MODELO'), (58, 62, 'AÑO'), (14, 18, 'COD_POSTAL')]}),
+({'text': 'Vivo en el código postal 1416 y quiero asegurar un ford focus del 2017', 'entities': [(51, 55, 'MARCA'), (56, 61, 'MODELO'), (66, 70, 'AÑO'), (25, 29, 'COD_POSTAL')]}),
+({'text': 'Busco información para asegurar un peugeot 2008 del 2016, mi código postal es 1420', 'entities': [(35, 42, 'MARCA'), (43, 47, 'MODELO'), (52, 56, 'AÑO'), (78, 82, 'COD_POSTAL')]}),
+({'text': 'Mi código postal es 1432, necesito asegurar un toyota etios del 2017', 'entities': [(47, 53, 'MARCA'), (54, 59, 'MODELO'), (64, 68, 'AÑO'), (20, 24, 'COD_POSTAL')]}),
 ]

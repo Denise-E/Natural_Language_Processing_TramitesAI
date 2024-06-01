@@ -91,13 +91,13 @@ class ValidacionTramites:
         
     @classmethod
     def predict(cls, sentece: str):
-        pass
+        print("predicting")
         """
             You need to save the trained model to disk. Then, instead of spacy.blank("en"), 
             you would use spacy.load("path/to/model/"). 
             Once you do that, you will be able to use the model you saved.
         """
-        nlp2 = spacy.load("train.spacy")
+        nlp2 = spacy.load("train.spacy") #OSError: [E053] Could not read meta.json from train.spacy
         for text, _ in sentece:
             doc = nlp2(text)
             print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
@@ -107,27 +107,9 @@ class ValidacionTramites:
         https://stackoverflow.com/questions/59877735/how-to-get-probability-of-prediction-per-entity-from-spacy-ner-model
         """
 
+print("PREV CLASS INITILIZATION")
 val = ValidacionTramites()
-
-
-'''print()
-print("********** Ejemplos póliza para el auto *************** ")
-print()
-print("CASE 1")
-input1 = "Buenas tardes, quisiera cotizar un seguro para mi auto. Por favor, envíenme las diferentes opciones que su compañia ofrece. Los datos de mi vehiculo son: \nMarca: Chevrolet \nModelo: Spin \nAño: 2023\nCod Postal: 1414 \nTengo cochera propia. Adjunto también foto de mi vehiculo para que se vea que está en perfectas condiciones.\nMuchas gracias"
-val.validate_tramit(2, input1)
-print()
-print("CASE 2")
-input2 = "Buenas tardes, quisiera cotizar un seguro para mi auto. Por favor, envíenme las diferentes opciones que su compañia ofrece. Los datos de mi vehiculo son: \nMarca Chevrolet \nModelo Spin \nAño 2023\nCod. Postal. 1414 \nTengo cochera propia. Adjunto también foto de mi vehiculo para que se vea que está en perfectas condiciones.\nMuchas gracias"
-val.validate_tramit(2, input2)
-print()
-print("CASE 3")
-input3 = "Buenas!! ¿Como estan? Los datos de mi vehiculo son: \nMarca Chevrolet \nModelo Spin \nAño: 2023\n cp. 1414 \nTengo cochera propia. Adjunto también foto de mi vehiculo para que se vea que está en perfectas condiciones.\nMuchas gracias"
-val.validate_tramit(2, input3)
-
-print()
-print("********** Ejemplos póliza del hogar *************** ")
-print()
-print("CASE 4")
-input4 = "Buenas tardes, quisiera cotizar un seguro para mi hogar. Por favor, envíenme las diferentes opciones que su compañía ofrece. Los datos de mi inmueble son: \nTipo de inmueble: Casa \nDirección: Calle Falsa 123, Ciudad \nCod Postal: 1414 \nSuperficie: 150 m² \nPoseo rejas en todas las ventanas y puertas. Adjunto también fotos del inmueble para que se vea su estado actual.\nMuchas gracias"
-val.validate_tramit(3, input4)'''
+print("POST CLASS INITILIZATION")
+sentencia = 'Busco información para asegurar un peugeot 2008 del 2016, mi código postal es 1420'
+val.predict(sentencia)
+print("POST PREDICTION")
