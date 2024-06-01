@@ -30,6 +30,10 @@ Info para mi (temporal):
     sm = small
     lg = large y es más preciso
 """
+from datetime import datetime
+import math
+import subprocess
+import sys
 from tramites_data.data import TRAIN_DATA
 from spacy.util import filter_spans
 from spacy.tokens import DocBin
@@ -41,11 +45,19 @@ class ValidacionTramites:
     
     @classmethod
     def __init__(cls):
-        nlp = spacy.load("es_core_news_sm")
-        cls.train_ner_model()
+        # Intentar cargar un modelo entrenado si es que existe
+        try:
+            cls.nlp = spacy.load("modelo_entrenado/model-best")
+        except OSError:
+            # Si el modelo no existe, inicializa un modelo base y lo entrena
+            cls.nlp = spacy.blank("es")
+            cls.prepare_model_data()
+            cls.train_model()
+            cls.nlp = spacy.load("modelo_entrenado/model-best")
+        
 
     @classmethod
-    def train_ner_model(cls):
+    def prepare_model_data(cls):
         training_data = TRAIN_DATA
 
         print(training_data[0]['entities'])
@@ -54,7 +66,6 @@ class ValidacionTramites:
         """
         SpaCy requiere que lso datos de entrenamiento deben ser del tipo docbin y deben guardarse en un archivo .spacy
         """
-        nlp = spacy.blank("es") # Se crea un nuevo modelo de SpaCy en español
         doc_bin = DocBin()
 
         # Recorremos nuestros datos de entrenamiento
@@ -64,15 +75,15 @@ class ValidacionTramites:
             # Obtenemos las entidades encontrada en esa sentencia, incluyendo el inicio y final de estos.
             labels = training_example['entities']
             # Crea un documento por cada dato de entrenamiento
-            doc = nlp.make_doc(text) 
+            doc = cls.nlp.make_doc(text) 
             ents = []
             
             # Cada laabel contiene un string y dos ints que marcan el inicio y el final del string en la sentencia
             for start, end, label in labels:
-                print("DATA", start, end, label)
+                #print("DATA", start, end, label)
                 # Le asignamos entidades a nuestro doc
                 span = doc.char_span(start, end, label=label, alignment_mode="contract")
-                print("SPAN", span)
+                #print("SPAN", span)
                 if span is None:
                     print("Skipping entity")
                 else:
@@ -83,33 +94,57 @@ class ValidacionTramites:
 
         doc_bin.to_disk("train.spacy") # Se pisa cada vez que re corre la línea de código
 
-        """
-        Para entrenar al modelo se debe correr el siguiente comando:
-
-        python -m spacy train config.cfg --paths.train ./train.spacy --paths.dev ./train.spacy
-        """
+    @classmethod
+    def train_model(cls):
+        # Para entrenar al modelo se debe ejecutar el comando de entrenamiento
+        print("Entrenando el modelo...")
+        subprocess.run([
+            sys.executable, "-m", "spacy", "train", "config.cfg",
+            "--output", "./modelo_entrenado",  # Directorio donde se guardará el modelo entrenado
+            "--paths.train", "./train.spacy", "--paths.dev", "./train.spacy"
+        ])
         
     @classmethod
-    def predict(cls, sentece: str):
-        print("predicting")
-        """
-            You need to save the trained model to disk. Then, instead of spacy.blank("en"), 
-            you would use spacy.load("path/to/model/"). 
-            Once you do that, you will be able to use the model you saved.
-        """
-        nlp2 = spacy.load("train.spacy") #OSError: [E053] Could not read meta.json from train.spacy
-        for text, _ in sentece:
-            doc = nlp2(text)
-            print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
-            print("Tokens", [(t.text, t.ent_type_, t.ent_iob) for t in doc])
-        """
-        Getting probabilities: 
-        https://stackoverflow.com/questions/59877735/how-to-get-probability-of-prediction-per-entity-from-spacy-ner-model
-        """
+    def predict(cls, sentences: list):
+        if cls.nlp is None:
+            raise ValueError("El modelo no está cargado.")
+        
+        res = []
+        for text in sentences:
+            text = text.lower()
+            doc = cls.nlp(text)
+            for ent in doc.ents:
+                #print("Text:", ent.text, "Label:", ent.label_)
+                res.append({ent.label_ : ent.text})
+        return res
 
-print("PREV CLASS INITILIZATION")
+inicio = datetime.now()
 val = ValidacionTramites()
-print("POST CLASS INITILIZATION")
+fin = datetime.now()
+tiempo_proceso_segs = fin - inicio
+# Obtener la diferencia en minutos
+tiempo_proceso_mins = math.trunc(tiempo_proceso_segs.total_seconds() / 60)
+print(f"El proceso completo demora {tiempo_proceso_mins} minutos.") 
 sentencia = 'Busco información para asegurar un peugeot 2008 del 2016, mi código postal es 1420'
-val.predict(sentencia)
-print("POST PREDICTION")
+prediction = val.predict([sentencia])
+print("FIELDS FINDED: ", prediction)
+
+
+""""
+Campos de los Resultados de Entrenamiento
+E: Número de época (Epoch). Una época se refiere a una pasada completa a través del conjunto de datos de entrenamiento.
+#: Número de iteración dentro de una época.
+LOSS TOK2VEC: Pérdida asociada al componente tok2vec de Spacy, que es responsable de convertir los tokens en vectores.
+LOSS NER: Pérdida asociada al componente NER. La pérdida (loss) es una medida de lo bien o mal que el modelo está funcionando. Menos pérdida indica un mejor rendimiento.
+ENTS_F: F-score de las entidades. El F-score es la media armónica de la precisión (precision) y el recall.
+ENTS_P: Precisión (Precision) de las entidades. La precisión es la proporción de entidades predichas correctamente entre todas las entidades predichas.
+ENTS_R: Recall (recuperación) de las entidades. El recall es la proporción de entidades predichas correctamente entre todas las entidades verdaderas en los datos.
+SCORE: Una puntuación general del modelo en base a sus predicciones. Generalmente, esta es una métrica global que combina diferentes aspectos del rendimiento del modelo.
+
+Época 51, Iteración 600 y Época 77, Iteración 800:
+
+LOSS TOK2VEC: 0.00
+LOSS NER: 0.00
+ENTS_F, ENTS_P, ENTS_R, SCORE: Todos en 100.00
+Las pérdidas se han reducido a cero y las métricas de rendimiento se mantienen en 100%, lo que indica que el modelo ha aprendido muy bien los datos de entrenamiento.
+"""
