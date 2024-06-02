@@ -11,17 +11,54 @@ Para correr el modelo de pólizas de autos, se debe correr el archivo tramites_n
 carpeta modelos > tramites
 """
 
-
 # Routes
 @app.route("/ping", methods=['GET']) 
 @cross_origin()
 def ping():
     try:
-        return {"msg": "pong"}, 200
+        return {"msj": "pong"}, 200
     except Exception as e:
-        msg = f"Error on ping pong route: {e}"
-        return jsonify({"msg": msg}), 400
+        return jsonify({"msj": 'Error'}), 400
 
+@app.route("/poliza_auto", methods=['GET']) 
+@cross_origin()
+def ping():
+    try:
+        return {"msj": "ruta no implementada"}, 200
+    except Exception as e:
+        return jsonify({"msj": "Error al evualuar póliza de auto"}), 400
+
+@app.route("/poliza_hogar", methods=['GET']) 
+@cross_origin()
+def ping():
+    try:
+        return {"msj": "ruta no implementada"}, 200
+    except Exception as e:
+        return jsonify({"msj": "Error al evualuar póliza del hogar"}), 400
+
+@app.route("/denuncia_siniestro", methods=['GET']) 
+@cross_origin()
+def ping():
+    try:
+        return {"msj": "ruta no implementada"}, 200
+    except Exception as e:
+        return jsonify({"msj": "Error al evualuar la denuncia de siniestro"}), 400
+
+@app.route("/carga_presupuesto", methods=['GET']) 
+@cross_origin()
+def ping():
+    try:
+        return {"msj": "ruta no implementada"}, 200
+    except Exception as e:
+        return jsonify({"msj": "Error al evualuar el presupuesto"}), 400
+
+@app.route("/evaluar_asunto", methods=['GET']) 
+@cross_origin()
+def ping():
+    try:
+        return {"msj": "ruta no implementada"}, 200
+    except Exception as e:
+        return jsonify({"msj": "Error al evualuar el asunto"}), 400
 
 if __name__ == '__main__':
     app.run(port=5000)
