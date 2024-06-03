@@ -15,7 +15,7 @@ carpeta modelos > tramites
 app = Flask(__name__) 
  
 
-# Se ejecutará automáticamente cada vez que se levante el proyectp
+# Se ejecutará automáticamente cada vez que se levante el proyecto
 POLIZA_AUTO_RUTA = os.getenv("POLIZA_AUTO_GUARDADO")
 TRAMITE_POLIZA_AUTO = Tramite(POLIZA_AUTO_RUTA, POLIZA_AUTO_DATOS)
 
@@ -25,6 +25,7 @@ TRAMITE_POLIZA_AUTO = Tramite(POLIZA_AUTO_RUTA, POLIZA_AUTO_DATOS)
 @cross_origin()
 def ping_pong():
     try:
+        # Respuesta temporal para uso del equipo
         return jsonify({
         "resultados": [
                 {
@@ -40,7 +41,9 @@ def ping_pong():
         }), 200
         #return {"msg": "pong"}, 200
     except Exception as e:
+        print("Error: ", e)
         return jsonify({"msg": 'Error'}), 400
+
 
 @app.route("/poliza_auto", methods=['POST']) 
 @cross_origin()
@@ -49,12 +52,12 @@ def poliza_auto():
         sentencias = request.json.get("textos")
         prediccion = []
         for sentencia in sentencias:
-            prediction = TRAMITE_POLIZA_AUTO.predict([sentencia])
+            resultado_predicciones = TRAMITE_POLIZA_AUTO.predict([sentencia])
             campos = {}
             
-            for predict in prediction:
-                for label, value in predict.items():
-                    campos[label] = value
+            for resultado in resultado_predicciones:
+                for etiqueta, valor in resultado.items():
+                    campos[etiqueta] = valor
             
             prediccion.append(
                 {
@@ -64,8 +67,9 @@ def poliza_auto():
             )
         return {"resultados": prediccion}, 200
     except Exception as e:
-        print(e)
+        print("Error: ", e)
         return jsonify({"msg": "Error al evualuar póliza de auto"}), 400
+
 
 @app.route("/poliza_hogar", methods=['POST']) 
 @cross_origin()
@@ -73,7 +77,9 @@ def poliza_hogar():
     try:
         return {"msg": "ruta no implementada"}, 200
     except Exception as e:
+        print("Error: ", e)
         return jsonify({"msg": "Error al evualuar póliza del hogar"}), 400
+
 
 @app.route("/denuncia_siniestro", methods=['POST']) 
 @cross_origin()
@@ -81,7 +87,9 @@ def denuncia_siniestro():
     try:
         return {"msg": "ruta no implementada"}, 200
     except Exception as e:
+        print("Error: ", e)
         return jsonify({"msg": "Error al evualuar la denuncia de siniestro"}), 400
+
 
 @app.route("/carga_presupuesto", methods=['POST']) 
 @cross_origin()
@@ -89,7 +97,9 @@ def carga_presupuesto():
     try:
         return {"msg": "ruta no implementada"}, 200
     except Exception as e:
+        print("Error: ", e)
         return jsonify({"msg": "Error al evualuar el presupuesto"}), 400
+
 
 @app.route("/evaluar_asunto", methods=['POST']) 
 @cross_origin()
@@ -97,7 +107,10 @@ def evaluar_asunto():
     try:
         return {"msg": "ruta no implementada"}, 200
     except Exception as e:
+        print("Error: ", e)
         return jsonify({"msg": "Error al evualuar el asunto"}), 400
+
 
 if __name__ == '__main__':
     app.run(port=5000)
+    
