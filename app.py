@@ -4,7 +4,14 @@ from flask import Flask, jsonify, request
 from flask_cors import cross_origin
 import os
 
-app = Flask(__name__)
+import collections
+# Parche temporal
+try:
+    collections.Iterable
+except AttributeError:
+    import collections.abc
+    collections.Iterable = collections.abc.Iterable
+    
 
 """
 Hasta la implementación de las rutas, para correr el modelo de asuntos se deberá correr el archivo main_asuntos.py,
@@ -13,17 +20,26 @@ el cuál se encuentra dentro de la carpeta modelos > asuntos.
 Para correr el modelo de pólizas de autos, se debe correr el archivo tramites_ner.py, el cuál se encuentra dentro de la
 carpeta modelos > tramites
 """
+
+app = Flask(__name__) #TODO - No funcionan los endpoints
+ 
+
 # Se ejecutará automáticamente cada vez que se levante el proyectp
 POLIZA_AUTO_RUTA = os.getenv("POLIZA_AUTO_GUARDADO")
 TRAMITE_POLIZA_AUTO = Tramite(POLIZA_AUTO_RUTA, POLIZA_AUTO_DATOS)
 
     
 # Routes
-@app.route("/heath", methods=['GET']) 
+@app.route("/ping", methods=['GET']) 
 @cross_origin()
-def health():
+def ping_pong():
     try:
-        return {"msj": "ok"}, 200
+        return jsonify({
+        "result": [
+                {'marca': 'ford'}, {'modelo': 'fiesta'}, {'año': '2018'}, {'cod_postal': '5000'}
+            ]
+        }), 200
+        #return {"msj": "pong"}, 200
     except Exception as e:
         return jsonify({"msj": 'Error'}), 400
 
