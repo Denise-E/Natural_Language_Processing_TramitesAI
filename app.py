@@ -4,15 +4,6 @@ from flask import Flask, jsonify, request
 from flask_cors import cross_origin
 import os
 
-import collections
-# Parche temporal
-try:
-    collections.Iterable
-except AttributeError:
-    import collections.abc
-    collections.Iterable = collections.abc.Iterable
-    
-
 """
 Hasta la implementación de las rutas, para correr el modelo de asuntos se deberá correr el archivo main_asuntos.py,
 el cuál se encuentra dentro de la carpeta modelos > asuntos.
@@ -21,7 +12,7 @@ Para correr el modelo de pólizas de autos, se debe correr el archivo tramites_n
 carpeta modelos > tramites
 """
 
-app = Flask(__name__) #TODO - No funcionan los endpoints
+app = Flask(__name__) 
  
 
 # Se ejecutará automáticamente cada vez que se levante el proyectp

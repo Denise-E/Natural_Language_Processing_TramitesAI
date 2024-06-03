@@ -1,12 +1,11 @@
 from spacy.util import filter_spans
 from spacy.tokens import DocBin
 from tqdm import tqdm
-from abc import ABC
 import subprocess
 import spacy
 import sys
 
-class Tramite(ABC):
+class Tramite():
     nlp = None
     url_modelo = None
     
