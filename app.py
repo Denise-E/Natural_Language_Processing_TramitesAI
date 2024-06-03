@@ -29,11 +29,11 @@ def ping_pong():
         return jsonify({
         "resultados": [
                 {
-                    "texto": "Hola quiero consultar por la póliza para un ford fiesta 2018, mi código posstal es 5000",
+                    "texto": "Hola quiero consultar por la póliza para un ford fiesta 2018, mi código postal es 5000",
                     "campos": {
                         'marca': 'ford',
                         'modelo': 'fiesta',
-                        'año': '2018',
+                        'anio': '2018',
                         'cod_postal': '5000'
                     }, 
                 }
