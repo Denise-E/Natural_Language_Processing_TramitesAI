@@ -35,59 +35,78 @@ TRAMITE_POLIZA_AUTO = Tramite(POLIZA_AUTO_RUTA, POLIZA_AUTO_DATOS)
 def ping_pong():
     try:
         return jsonify({
-        "result": [
-                {'marca': 'ford'}, {'modelo': 'fiesta'}, {'año': '2018'}, {'cod_postal': '5000'}
+        "resultados": [
+                {
+                    "texto": "Hola quiero consultar por la póliza para un ford fiesta 2018, mi código posstal es 5000",
+                    "campos": {
+                        'marca': 'ford',
+                        'modelo': 'fiesta',
+                        'año': '2018',
+                        'cod_postal': '5000'
+                    }, 
+                }
             ]
         }), 200
-        #return {"msj": "pong"}, 200
+        #return {"msg": "pong"}, 200
     except Exception as e:
-        return jsonify({"msj": 'Error'}), 400
+        return jsonify({"msg": 'Error'}), 400
 
-@app.route("/poliza_auto", methods=['GET']) 
+@app.route("/poliza_auto", methods=['POST']) 
 @cross_origin()
 def poliza_auto():
     try:
-        sentencias = request.get("textos")
+        sentencias = request.json.get("textos")
+        prediccion = []
         for sentencia in sentencias:
-            print(sentencia)
             prediction = TRAMITE_POLIZA_AUTO.predict([sentencia])
-            print(prediction)
-            print(" *************************************** ")
-        return {"msj": "ruta no implementada"}, 200
+            campos = {}
+            
+            for predict in prediction:
+                for label, value in predict.items():
+                    campos[label] = value
+            
+            prediccion.append(
+                {
+                    "texto": sentencia,
+                    "campos": campos
+                }
+            )
+        return {"resultados": prediccion}, 200
     except Exception as e:
-        return jsonify({"msj": "Error al evualuar póliza de auto"}), 400
+        print(e)
+        return jsonify({"msg": "Error al evualuar póliza de auto"}), 400
 
-@app.route("/poliza_hogar", methods=['GET']) 
+@app.route("/poliza_hogar", methods=['POST']) 
 @cross_origin()
 def poliza_hogar():
     try:
-        return {"msj": "ruta no implementada"}, 200
+        return {"msg": "ruta no implementada"}, 200
     except Exception as e:
-        return jsonify({"msj": "Error al evualuar póliza del hogar"}), 400
+        return jsonify({"msg": "Error al evualuar póliza del hogar"}), 400
 
-@app.route("/denuncia_siniestro", methods=['GET']) 
+@app.route("/denuncia_siniestro", methods=['POST']) 
 @cross_origin()
 def denuncia_siniestro():
     try:
-        return {"msj": "ruta no implementada"}, 200
+        return {"msg": "ruta no implementada"}, 200
     except Exception as e:
-        return jsonify({"msj": "Error al evualuar la denuncia de siniestro"}), 400
+        return jsonify({"msg": "Error al evualuar la denuncia de siniestro"}), 400
 
-@app.route("/carga_presupuesto", methods=['GET']) 
+@app.route("/carga_presupuesto", methods=['POST']) 
 @cross_origin()
 def carga_presupuesto():
     try:
-        return {"msj": "ruta no implementada"}, 200
+        return {"msg": "ruta no implementada"}, 200
     except Exception as e:
-        return jsonify({"msj": "Error al evualuar el presupuesto"}), 400
+        return jsonify({"msg": "Error al evualuar el presupuesto"}), 400
 
-@app.route("/evaluar_asunto", methods=['GET']) 
+@app.route("/evaluar_asunto", methods=['POST']) 
 @cross_origin()
 def evaluar_asunto():
     try:
-        return {"msj": "ruta no implementada"}, 200
+        return {"msg": "ruta no implementada"}, 200
     except Exception as e:
-        return jsonify({"msj": "Error al evualuar el asunto"}), 400
+        return jsonify({"msg": "Error al evualuar el asunto"}), 400
 
 if __name__ == '__main__':
     app.run(port=5000)
