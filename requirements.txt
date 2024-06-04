@@ -19,7 +19,7 @@ en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_
 es-core-news-sm @ https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-3.7.0/es_core_news_sm-3.7.0-py3-none-any.whl#sha256=61e6e5530941f5880166855f09f60d7e6ba79ec1e8e45f96244bdb1eb169eb1d
 etils==1.8.0
 Flask==3.0.3
-Flask-Cors==1.10.3
+Flask-Cors==4.0.1
 flatbuffers==24.3.25
 flax==0.8.3
 fonttools==4.51.0
