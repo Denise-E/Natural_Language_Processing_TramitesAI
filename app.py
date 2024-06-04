@@ -1,8 +1,6 @@
-from modelos.tramites.poliza_auto.tramites_data.data import TRAIN_DATA as POLIZA_AUTO_DATOS
-from modelos.tramites.tramites_clase import Tramite
 from flask import Flask, jsonify, request
 from flask_cors import cross_origin
-import os
+from modelos.servicios.servicio_base.servicio_modelos import ServicioModelos
 
 """
 Hasta la implementación de las rutas, para correr el modelo de asuntos se deberá correr el archivo main_asuntos.py,
@@ -13,11 +11,6 @@ carpeta modelos > tramites
 """
 
 app = Flask(__name__) 
- 
-
-# Se ejecutará automáticamente cada vez que se levante el proyecto
-POLIZA_AUTO_RUTA = os.getenv("POLIZA_AUTO_GUARDADO")
-TRAMITE_POLIZA_AUTO = Tramite(POLIZA_AUTO_RUTA, POLIZA_AUTO_DATOS)
 
     
 # Routes
@@ -50,21 +43,7 @@ def ping_pong():
 def poliza_auto():
     try:
         sentencias = request.json.get("textos")
-        prediccion = []
-        for sentencia in sentencias:
-            resultado_predicciones = TRAMITE_POLIZA_AUTO.predict([sentencia])
-            campos = {}
-            
-            for resultado in resultado_predicciones:
-                for etiqueta, valor in resultado.items():
-                    campos[etiqueta] = valor
-            
-            prediccion.append(
-                {
-                    "texto": sentencia,
-                    "campos": campos
-                }
-            )
+        prediccion = ServicioModelos.predecir_poliza_auto(sentencias)
         return {"resultados": prediccion}, 200
     except Exception as e:
         print("Error: ", e)
@@ -113,4 +92,3 @@ def evaluar_asunto():
 
 if __name__ == '__main__':
     app.run(port=5000)
-    
