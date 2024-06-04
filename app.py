@@ -35,6 +35,18 @@ def ping_pong():
         return jsonify({"msg": 'Error'}), 400
 
 
+@app.route("/evaluar_asunto", methods=['POST'])  # TODO por el momento devuelve simplemente los textos recibidos
+@cross_origin()
+def evaluar_asunto():
+    try:
+        textos = request.json.get('textos')
+        res = ServicioAsuntos.predecir(textos)
+        return jsonify({"resultados": res}), 200
+    except Exception as e:
+        print("Error: ", e)
+        return jsonify({"msg": "Error al evualuar el asunto"}), 400
+    
+    
 @app.route("/poliza_auto", methods=['POST']) 
 @cross_origin()
 def poliza_auto():
@@ -77,17 +89,6 @@ def carga_presupuesto():
         return jsonify({"msg": "Error al evualuar el presupuesto"}), 400
 
 
-@app.route("/evaluar_asunto", methods=['POST']) 
-@cross_origin()
-def evaluar_asunto():
-    try:
-        textos = request.json.get('textos')
-        res = ServicioAsuntos.predecir(textos)
-        return jsonify({"resultados": res}), 200
-    except Exception as e:
-        print("Error: ", e)
-        return jsonify({"msg": "Error al evualuar el asunto"}), 400
-
-
 if __name__ == '__main__':
     app.run(port=5000)
+    
