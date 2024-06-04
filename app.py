@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import cross_origin
+from modelos.servicios.servicio_asuntos import ServicioAsuntos
 from modelos.servicios.servicio_poliza_auto import ServicioPolizasAuto
 
 """
@@ -39,8 +40,8 @@ def ping_pong():
 def poliza_auto():
     try:
         sentencias = request.json.get("textos")
-        prediccion = ServicioPolizasAuto.predecir(sentencias)
-        return jsonify({"resultados": prediccion}), 200
+        res = ServicioPolizasAuto.predecir(sentencias)
+        return jsonify({"resultados": res}), 200
     except Exception as e:
         print("Error: ", e)
         return jsonify({"msg": "Error al evualuar póliza de auto"}), 400
@@ -80,7 +81,9 @@ def carga_presupuesto():
 @cross_origin()
 def evaluar_asunto():
     try:
-        return jsonify({"msg": "ruta no implementada"}), 200
+        textos = request.json.get('textos')
+        res = ServicioAsuntos.predecir(textos)
+        return jsonify({"resultados": res}), 200
     except Exception as e:
         print("Error: ", e)
         return jsonify({"msg": "Error al evualuar el asunto"}), 400
