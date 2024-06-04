@@ -1,17 +1,13 @@
 from flask import Flask, jsonify, request
 from flask_cors import cross_origin
-from modelos.servicios.servicio_base.servicio_modelos import ServicioModelos
+from modelos.servicios.servicio_poliza_auto import ServicioPolizasAuto
 
 """
 Hasta la implementación de las rutas, para correr el modelo de asuntos se deberá correr el archivo main_asuntos.py,
 el cuál se encuentra dentro de la carpeta modelos > asuntos.
-
-Para correr el modelo de pólizas de autos, se debe correr el archivo tramites_ner.py, el cuál se encuentra dentro de la
-carpeta modelos > tramites
 """
 
 app = Flask(__name__) 
-
     
 # Routes
 @app.route("/ping", methods=['GET']) 
@@ -43,7 +39,7 @@ def ping_pong():
 def poliza_auto():
     try:
         sentencias = request.json.get("textos")
-        prediccion = ServicioModelos.predecir_poliza_auto(sentencias)
+        prediccion = ServicioPolizasAuto.predecir(sentencias)
         return {"resultados": prediccion}, 200
     except Exception as e:
         print("Error: ", e)
