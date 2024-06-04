@@ -40,7 +40,7 @@ def poliza_auto():
     try:
         sentencias = request.json.get("textos")
         prediccion = ServicioPolizasAuto.predecir(sentencias)
-        return {"resultados": prediccion}, 200
+        return jsonify({"resultados": prediccion}), 200
     except Exception as e:
         print("Error: ", e)
         return jsonify({"msg": "Error al evualuar póliza de auto"}), 400
@@ -50,7 +50,7 @@ def poliza_auto():
 @cross_origin()
 def poliza_hogar():
     try:
-        return {"msg": "ruta no implementada"}, 200
+        return jsonify({"msg": "ruta no implementada"}), 200
     except Exception as e:
         print("Error: ", e)
         return jsonify({"msg": "Error al evualuar póliza del hogar"}), 400
@@ -60,7 +60,7 @@ def poliza_hogar():
 @cross_origin()
 def denuncia_siniestro():
     try:
-        return {"msg": "ruta no implementada"}, 200
+        return jsonify({"msg": "ruta no implementada"}), 200
     except Exception as e:
         print("Error: ", e)
         return jsonify({"msg": "Error al evualuar la denuncia de siniestro"}), 400
@@ -70,7 +70,7 @@ def denuncia_siniestro():
 @cross_origin()
 def carga_presupuesto():
     try:
-        return {"msg": "ruta no implementada"}, 200
+        return jsonify({"msg": "ruta no implementada"}), 200
     except Exception as e:
         print("Error: ", e)
         return jsonify({"msg": "Error al evualuar el presupuesto"}), 400
@@ -80,7 +80,7 @@ def carga_presupuesto():
 @cross_origin()
 def evaluar_asunto():
     try:
-        return {"msg": "ruta no implementada"}, 200
+        return jsonify({"msg": "ruta no implementada"}), 200
     except Exception as e:
         print("Error: ", e)
         return jsonify({"msg": "Error al evualuar el asunto"}), 400
