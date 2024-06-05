@@ -70,10 +70,9 @@ class Tramite():
     @classmethod
     def train_model(cls) -> None:
         # Para entrenar al modelo se debe ejecutar el comando de entrenamiento
-        # TODO Lo dejo así para no andar pasando paths (./poliza_auto)
         print("Entrenando el modelo...")
         subprocess.run([
-            sys.executable, "-m", "spacy", "train", "./spacy_config/config.cfg",
+            sys.executable, "-m", "spacy", "train", "./modelos/tramites/spacy_config/config.cfg",
             "--output", cls.url_modelo+"/modelo_entrenado",  # Directorio donde se guardará el modelo entrenado
             "--paths.train", cls.url_modelo+"/train.spacy", "--paths.dev", cls.url_modelo+"/train.spacy"
         ])

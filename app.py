@@ -1,7 +1,7 @@
+from modelos.servicios.servicio_poliza_auto import ServicioPolizasAuto
+from modelos.servicios.servicio_asuntos import ServicioAsuntos
 from flask import Flask, jsonify, request
 from flask_cors import cross_origin
-from modelos.servicios.servicio_asuntos import ServicioAsuntos
-from modelos.servicios.servicio_poliza_auto import ServicioPolizasAuto
 
 """
 Hasta la implementación de las rutas, para correr el modelo de asuntos se deberá correr el archivo main_asuntos.py,
