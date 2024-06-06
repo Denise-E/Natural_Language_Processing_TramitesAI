@@ -5,7 +5,7 @@ from keras.utils import to_categorical
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 
-class ModeloAsuntosMultiClases:
+class ModeloAsuntos:
     # Parámetros para la configuración del modelo
     TRUNC_TYPE='post'  # Tipo de truncado de las secuencias (después de alcanzar max_length).
     PADDING_TYPE='post'  # Tipo de padding (agregado de tokens al final de la secuencia).

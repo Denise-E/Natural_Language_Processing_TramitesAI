@@ -1,15 +1,41 @@
+Asuntos
+
+{
+    "textos": 
+    [
+        "siniestro a denunciar",
+        "denuncia siniestro urgente",
+        "auto cotizacion",
+        "envio presupuestos",
+        "solicitud cotizacion póliza del hogar",
+        "solicitud póliza del hogar",
+        "vacaciones en Mardel",
+        "descuento en la membresia del gimnasio, ¡No te la pierdas!",
+        "notificación membresía",
+        "cotizar vehículo",
+        "presupuestar por favor",
+        "presupuestación",
+        "¡Participá y obtené un premio!",
+        "inscribite al seminario web",
+        "¿Conocés los servicios de AWS?" 
+    ]
+}
+
+
 Pólizas del hogar
 
-sentencias = [
-    "Busco información para asegurar un peugeot 2008 del 2016, mi código postal es 1420",
-    "buenas noches, quisiera información para asegurar un kia rio del 2014, código postal 33445",
-    "hola, necesito cotizar un seguro para mi coche marca hyundai modelo elantra del año 2022, vivo en el código postal 77889",
-    "quiero un seguro para mi coche. Marca: Renault, Modelo: Kwid, Año: 2019. Código Postal: 67890.",
-    "necesito un seguro para mi automóvil. marca mazda, modelo cx-5, año 2018, cp 11011",
-    "hola, busco un seguro para un coche de marca suzuki modelo swift año 2016, código postal 12349",
-    "cotización de seguro para automóvil marca mitsubishi, modelo lancer, año 2014, código postal 55555",
-    "quiero cotizar seguro para mi auto marca fiat, modelo cronos, año 2021, mi código postal es 22334",
-    "buenas, me interesa un seguro para mi auto fiat cronos 2020, vivo en el código postal 1414",
-    "hola, quiero asegurar mi coche, que es un ford fiesta del 2018. código postal 5000.",
-    "buenos días, quisiera cotizar un seguro para mi volkswagen gol 2017. mi código postal es 98765."
-]
+{
+    "textos": [
+        "Busco información para asegurar un peugeot 2008 del 2016, mi código postal es 1420",
+        "buenas noches, quisiera información para asegurar un kia rio del 2014, código postal 33445",
+        "hola, necesito cotizar un seguro para mi coche marca hyundai modelo elantra del año 2022, vivo el código postal 77889",
+        "quiero un seguro para mi coche. Marca: Renault, Modelo: Kwid, Año: 2019. Código Postal: 67890.",
+        "necesito un seguro para mi automóvil. marca mazda, modelo cx-5, año 2018, cp 11011",
+        "hola, busco un seguro para un coche de marca suzuki modelo swift año 2016, código postal 12349",
+        "cotización de seguro para automóvil marca mitsubishi, modelo lancer, año 2014, código postal 55555",
+        "quiero cotizar seguro para mi auto marca fiat, modelo cronos, año 2021, mi código postal es 22334",
+        "buenas, me interesa un seguro para mi auto fiat cronos 2020, vivo en el código postal 1414",
+        "hola, quiero asegurar mi coche, que es un ford fiesta del 2018. código postal 5000.",
+        "buenos días, quisiera cotizar un seguro para mi volkswagen gol 2017. mi código postal es 98765."
+    ]
+}

@@ -1,10 +1,8 @@
 from modelos.servicios.servicio_base.servicio_modelos import ServicioModelos
-from modelos.asuntos.asuntos_multi_clases import ModeloAsuntosMultiClases
-from keras.preprocessing.sequence import pad_sequences
-import numpy as np
+from modelos.asuntos.modelo_asuntos import ModeloAsuntos
 
 class ServicioAsuntos(ServicioModelos):
-    modelo_suntos = ModeloAsuntosMultiClases(vocab_size=10000,embedding=16,max_length=10000, num_epochs=4000)   
+    modelo_suntos = ModeloAsuntos(vocab_size=10000,embedding=16,max_length=10000, num_epochs=4000)   
     
     @classmethod
     def predecir(cls, sentencias: list) -> list:
