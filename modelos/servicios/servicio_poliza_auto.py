@@ -19,7 +19,6 @@ class ServicioPolizasAuto(ServicioModelos):
             sentencia = sentencia.lower()
             resultado_predicciones = cls.tramite_poliza_auto.predict([sentencia])
             campos = {}
-            
             for resultado in resultado_predicciones:
                 if resultado:
                     for etiqueta, valor in resultado.items():

@@ -1,6 +1,10 @@
 from modelos.servicios.servicio_base.servicio_modelos import ServicioModelos
+from modelos.asuntos.asuntos_multi_clases import ModeloAsuntosMultiClases
+from keras.preprocessing.sequence import pad_sequences
+import numpy as np
 
 class ServicioAsuntos(ServicioModelos):
+    modelo_suntos = ModeloAsuntosMultiClases(vocab_size=10000,embedding=16,max_length=10000, num_epochs=4000)   
     
     @classmethod
     def predecir(cls, sentencias: list) -> list:
@@ -8,5 +12,10 @@ class ServicioAsuntos(ServicioModelos):
         Retorna una lista de diccionarios, cada diccionario contiene el un asunto y el resultado de su clasificación,
         es decir la clase que fue determinada para él por el modelo (valor de 0 a 4)
         """
-        return sentencias
+        predicciones = cls.modelo_suntos.predict(sentencias)
+        predicciones_int = []
+        for prediccion in predicciones:
+            predicciones_int.append(int(prediccion))
+        return predicciones_int
+ 
     
