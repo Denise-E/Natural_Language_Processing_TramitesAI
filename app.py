@@ -1,5 +1,5 @@
 from modelos.servicios.servicio_poliza_auto import ServicioPolizasAuto
-#from modelos.servicios.servicio_asuntos import ServicioAsuntos
+from modelos.servicios.servicio_asuntos import ServicioAsuntos
 from flask import Flask, jsonify, request
 from flask_cors import cross_origin
 
@@ -41,7 +41,7 @@ def evaluar_asunto():
     try:
         textos = request.json.get('textos')
         res = []
-        #res = ServicioAsuntos.predecir(textos)
+        res = ServicioAsuntos.predecir(textos)
         return jsonify({"resultados": res}), 200
     except Exception as e:
         print("Error: ", e)

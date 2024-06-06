@@ -1,9 +1,14 @@
+import logging
+import os
 import numpy as np
 import pandas as pd
 import tensorflow as tf
 from keras.utils import to_categorical
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
+
+# Suprimir advertencias
+logging.getLogger('tensorflow').setLevel(logging.ERROR)
 
 class ModeloAsuntos:
     # Parámetros para la configuración del modelo
@@ -23,15 +28,28 @@ class ModeloAsuntos:
     num_epochs: int = None # Cantidad de iteraciones que hará el modelo durante el entrenameinto
 
     @classmethod
-    def __init__(cls, vocab_size:int = 10000, embedding:int = 16,max_length: int = 10000, num_epochs:int = 3000):
+    def __init__(cls, model_path: str, vocab_size:int = 10000, embedding:int = 16,max_length: int = 10000, num_epochs:int = 3000):
+        cls.model_path = model_path
         cls.vocab_size = vocab_size
         cls.embedding_dim = embedding
         cls.max_length = max_length
         cls.num_epochs = num_epochs
-        # Obtiene los datos de capacitación y entrenamiento a partir de los datos guardados en el archivo csv precargado
+        '''# Obtiene los datos de capacitación y entrenamiento a partir de los datos guardados en el archivo csv precargado
         cls.get_data()
         # Inicializa la configuración y el entrenamiento del modelo al instanciarse la clase.
-        cls.model_config_and_training()
+        cls.model_config_and_training()'''
+        # Verificar si el modelo ya está entrenado y guardado
+        if os.path.exists(os.path.join(cls.model_path, 'saved_model')):
+            cls.model = tf.keras.models.load_model(os.path.join(cls.model_path, 'saved_model'))
+            print("Modelo pre existente cargado")
+        else:
+            # Obtener datos de entrenamiento
+            cls.get_data()
+            # Configurar y entrenar el modelo
+            cls.model_config_and_training()
+            # Guardar el modelo entrenado
+            cls.model.save(os.path.join(cls.model_path, 'saved_model'))
+            print("Modelo creado y guardado exitosamente")
         
     @classmethod
     def get_data(cls):
