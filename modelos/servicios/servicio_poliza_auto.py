@@ -7,6 +7,7 @@ POLIZA_AUTO_RUTA = os.getenv("POLIZA_AUTO_GUARDADO")
 
 class ServicioPolizasAuto(ServicioModelos):
     tramite_poliza_auto = Tramite(POLIZA_AUTO_RUTA, POLIZA_AUTO_DATOS)
+    ETIQUETAS = ['marca', 'modelo', 'anio', 'cod_postal']
     
     @classmethod
     def predecir(cls, sentencias: list) -> list:
@@ -14,7 +15,7 @@ class ServicioPolizasAuto(ServicioModelos):
         Retorna una lista de diccionarios, cada diccionario contiene la sentencia evaluada y las etiquetas
         que fueron encontradas en ella.
         """
-        prediccion = []
+        predicciones = []
         for sentencia in sentencias:
             sentencia = sentencia.lower()
             resultado_predicciones = cls.tramite_poliza_auto.predict([sentencia])
@@ -24,11 +25,24 @@ class ServicioPolizasAuto(ServicioModelos):
                     for etiqueta, valor in resultado.items():
                         campos[etiqueta] = valor
             
-            prediccion.append(
+            predicciones.append(
                 {
                     "texto": sentencia,
                     "campos": campos
                 }
             )
-        return prediccion
+        
+        cls.completar_etiquetas(predicciones)
+        return predicciones
+    
+    @classmethod
+    def completar_etiquetas(cls, predicciones: list) -> list:
+        
+        for prediccion in predicciones:
+            keys = prediccion['campos'].keys()
+            
+            if len(keys) != len(cls.ETIQUETAS):
+                for etiqueta in cls.ETIQUETAS:
+                    if etiqueta not in prediccion['campos']:
+                        prediccion['campos'][etiqueta] = None
     
