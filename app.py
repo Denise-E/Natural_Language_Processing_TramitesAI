@@ -35,7 +35,7 @@ def ping_pong():
         return jsonify({"msg": 'Error'}), 400
 
 
-@app.route("/evaluar_asunto", methods=['POST'])  # TODO por el momento devuelve simplemente los textos recibidos
+@app.route("/evaluar_asunto", methods=['POST'])  
 @cross_origin()
 def evaluar_asunto():
     try:
