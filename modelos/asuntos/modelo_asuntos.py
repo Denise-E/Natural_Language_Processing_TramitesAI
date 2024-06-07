@@ -34,11 +34,7 @@ class ModeloAsuntos:
         cls.embedding_dim = embedding
         cls.max_length = max_length
         cls.num_epochs = num_epochs
-        '''# Obtiene los datos de capacitación y entrenamiento a partir de los datos guardados en el archivo csv precargado
-        cls.get_data()
-        # Inicializa la configuración y el entrenamiento del modelo al instanciarse la clase.
-        cls.model_config_and_training()'''
-        # Verificar si el modelo ya está entrenado y guardado
+
         if os.path.exists(os.path.join(cls.model_path, 'saved_model')):
             cls.model = tf.keras.models.load_model(os.path.join(cls.model_path, 'saved_model'))
             print("Modelo pre existente cargado")

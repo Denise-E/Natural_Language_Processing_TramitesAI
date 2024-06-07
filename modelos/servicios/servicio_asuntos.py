@@ -5,7 +5,7 @@ from modelos.asuntos.modelo_asuntos import ModeloAsuntos
 
 MODELO_RUTA = os.getenv("MODELO_ASUNTO_GUARDADO")
 class ServicioAsuntos(ServicioModelos):
-    modelo_suntos = ModeloAsuntos(MODELO_RUTA, vocab_size=10000,embedding=16,max_length=10000, num_epochs=4) #4000   
+    modelo_suntos = ModeloAsuntos(MODELO_RUTA, vocab_size=10000,embedding=16,max_length=10000, num_epochs=4000)  
     
     @classmethod
     def predecir(cls, sentencias: list) -> list:
