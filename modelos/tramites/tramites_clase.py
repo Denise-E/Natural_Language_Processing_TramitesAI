@@ -20,14 +20,14 @@ class Tramite():
         cls.url_modelo = url
         try:
             cls.nlp = spacy.load(cls.url_modelo+"/modelo_entrenado/model-best")
-            print("Modelo pre existente")
+            print("Modelo póliza auto pre existente")
         except OSError:
             # Si el modelo no existe, inicializa un modelo base y lo entrena
             cls.nlp = spacy.blank("es")
             cls.prepare_model_data(training_data)
             cls.train_model()
             cls.nlp = spacy.load(cls.url_modelo+"/modelo_entrenado/model-best")
-            print("Modelo creado exitosamente")
+            print("Modelo póliza auto creado exitosamente")
     
     @classmethod
     def prepare_model_data(cls, training_data) -> None:

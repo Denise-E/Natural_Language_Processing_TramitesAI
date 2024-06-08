@@ -1,7 +1,5 @@
-import os
-from modelos.asuntos.modelo_asuntos import ModeloAsuntos
 from modelos.servicios.servicio_poliza_auto import ServicioPolizasAuto
-#from modelos.servicios.servicio_asuntos import ServicioAsuntos
+from modelos.servicios.servicio_asuntos import ServicioAsuntos
 from flask_swagger_ui import get_swaggerui_blueprint
 from flask import Flask, jsonify, request
 from utils.swagger import swagger_data
@@ -55,12 +53,9 @@ def ping_pong():
 @cross_origin()
 def evaluar_asunto():
     try:
-        MODELO_RUTA = os.getenv("MODELO_ASUNTO_GUARDADO")
-        ModeloAsuntos(MODELO_RUTA)
+        servicio_asuntos = ServicioAsuntos()
         textos = request.json.get('textos')
-        res = []
-        #res = ServicioAsuntos.predecir(textos)
-        res = ModeloAsuntos.predict(textos)
+        res = servicio_asuntos.predecir(textos)
         return jsonify({"resultados": res}), 200
     except Exception as e:
         print("Error: ", e)
