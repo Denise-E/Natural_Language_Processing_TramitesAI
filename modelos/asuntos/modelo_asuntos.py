@@ -34,6 +34,14 @@ class ModeloAsuntos:
         cls.embedding_dim = embedding
         cls.max_length = max_length
         cls.num_epochs = num_epochs
+        
+        '''        # Obtener datos de entrenamiento
+        cls.get_data()
+        # Configurar y entrenar el modelo
+        cls.model_config_and_training()
+        # Guardar el modelo entrenado
+        cls.model.save(os.path.join(cls.model_path, 'saved_model'))
+        print("Modelo creado y guardado exitosamente")'''
 
         if os.path.exists(os.path.join(cls.model_path, 'saved_model')):
             cls.model = tf.keras.models.load_model(os.path.join(cls.model_path, 'saved_model'))

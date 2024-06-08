@@ -1,9 +1,28 @@
 from modelos.servicios.servicio_poliza_auto import ServicioPolizasAuto
 from modelos.servicios.servicio_asuntos import ServicioAsuntos
+from flask_swagger_ui import get_swaggerui_blueprint
 from flask import Flask, jsonify, request
+from utils.swagger import swagger_data
 from flask_cors import cross_origin
 
 app = Flask(__name__) 
+
+# Swagger documentation
+@app.route('/swagger.json')
+def swagger():
+    return jsonify(swagger_data)
+
+SWAGGER_URL = '/swagger'
+API_URL = '/swagger.json'
+swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': "Tramites AI"
+    }
+)
+
+app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
     
 # Routes
 @app.route("/ping", methods=['GET']) 
@@ -59,7 +78,7 @@ def poliza_auto():
 @cross_origin()
 def poliza_hogar():
     try:
-        return jsonify({"msg": "ruta no implementada"}), 200
+        return jsonify({"msg": "ruta no implementada"}), 501
     except Exception as e:
         print("Error: ", e)
         return jsonify({"msg": "Error al evualuar póliza del hogar"}), 400
@@ -69,7 +88,7 @@ def poliza_hogar():
 @cross_origin()
 def denuncia_siniestro():
     try:
-        return jsonify({"msg": "ruta no implementada"}), 200
+        return jsonify({"msg": "ruta no implementada"}), 501
     except Exception as e:
         print("Error: ", e)
         return jsonify({"msg": "Error al evualuar la denuncia de siniestro"}), 400
@@ -79,7 +98,7 @@ def denuncia_siniestro():
 @cross_origin()
 def carga_presupuesto():
     try:
-        return jsonify({"msg": "ruta no implementada"}), 200
+        return jsonify({"msg": "ruta no implementada"}), 501
     except Exception as e:
         print("Error: ", e)
         return jsonify({"msg": "Error al evualuar el presupuesto"}), 400
