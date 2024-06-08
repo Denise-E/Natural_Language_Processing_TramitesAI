@@ -29,7 +29,7 @@ class ModeloAsuntos:
     num_epochs: int = None # Cantidad de iteraciones que hará el modelo durante el entrenameinto
 
     @classmethod
-    def __init__(cls, model_path: str, vocab_size:int = 10000, embedding:int = 16,max_length: int = 10000, num_epochs:int = 3000):
+    def __init__(cls, model_path: str, vocab_size:int = 10000, embedding:int = 16,max_length: int = 10000, num_epochs:int = 4000):
         cls.model_path = model_path
         cls.vocab_size = vocab_size
         cls.embedding_dim = embedding
@@ -195,5 +195,14 @@ class ModeloAsuntos:
         prediction = cls.model.predict(padded)
         #return [prediction.tolist() , np.argmax(prediction, axis=1)]
         res = np.argmax(prediction, axis=1) # Devuelve la clase predicha con mayor probabilidad.
-        return list(res)
+        predicciones = list(res)
+    
+        """
+        Retorna una lista de diccionarios, cada diccionario contiene el un asunto y el resultado de su clasificación,
+        es decir la clase que fue determinada para él por el modelo (valor de 0 a 4)
+        """
+        predicciones_int = []
+        for prediccion in predicciones:
+            predicciones_int.append(int(prediccion))
+        return predicciones_int
     
