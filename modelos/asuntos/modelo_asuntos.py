@@ -6,6 +6,7 @@ import tensorflow as tf
 from keras.utils import to_categorical
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
+from sklearn.model_selection import train_test_split, StratifiedKFold
 
 # Suprimir advertencias
 logging.getLogger('tensorflow').setLevel(logging.ERROR)
@@ -35,8 +36,9 @@ class ModeloAsuntos:
         cls.max_length = max_length
         cls.num_epochs = num_epochs
         
-        '''        # Obtener datos de entrenamiento
-        cls.get_data()
+        # Obtener datos de entrenamiento
+        '''cls.get_data()
+        cls.perform_cross_validation()
         # Configurar y entrenar el modelo
         cls.model_config_and_training()
         # Guardar el modelo entrenado
@@ -49,6 +51,7 @@ class ModeloAsuntos:
         else:
             # Obtener datos de entrenamiento
             cls.get_data()
+            cls.perform_cross_validation()
             # Configurar y entrenar el modelo
             cls.model_config_and_training()
             # Guardar el modelo entrenado
@@ -56,6 +59,44 @@ class ModeloAsuntos:
             print("Modelo creado y guardado exitosamente")
         
     @classmethod
+    def get_data(cls):
+        # Este método trabaja con Pandas para la obtención de los datos de entrenamiento y de prueba a partir de archivo csv
+        # Crea el dataframe a partir del csv
+        df = pd.read_csv('modelos/asuntos/asuntos_data/asuntos.csv')
+
+        # Separa las sentencias y las etiquetas
+        sentences = df['Sentencias'].tolist()
+        labels = df['Categoria'].tolist()
+
+        # Divide los datos en conjunto de entrenamiento y prueba con una proporción de 80/20
+        X_train, X_test, y_train, y_test = train_test_split(sentences, labels, test_size=0.2, stratify=labels)
+
+        # Asigna los datos de entrenamiento y prueba a las variables de clase
+        cls.training_sentences = X_train
+        cls.training_labels = y_train
+        cls.testing_sentences = X_test
+        cls.testing_labels = y_test
+
+        # Obtiene la cantidad de valores distintos en la columna 'Categoria'
+        cls.categories_quantity = df['Categoria'].nunique()
+
+    @classmethod
+    def perform_cross_validation(cls, k=5):
+        # Crea el objeto StratifiedKFold
+        skf = StratifiedKFold(n_splits=k)
+
+        # Itera sobre los folds generados por StratifiedKFold dentro del conjunto de entrenamiento
+        for train_index, val_index in skf.split(cls.training_sentences, cls.training_labels):
+            X_train_fold = [cls.training_sentences[i] for i in train_index]
+            X_val_fold = [cls.training_sentences[i] for i in val_index]
+            y_train_fold = [cls.training_labels[i] for i in train_index]
+            y_val_fold = [cls.training_labels[i] for i in val_index]
+            
+            # Aquí entrenarías y evaluarías tu modelo en cada fold
+            # Esto es solo un ejemplo de cómo iterar sobre los folds
+            print("Fold entrenamiento:", len(X_train_fold), "Fold validación:", len(X_val_fold))
+
+    '''@classmethod
     def get_data(cls):
         # Este metodo trabaja con Pandas para la obtención de los datso de entrenameinto y de prueba a partir de archivo csv
         # Crea el dataframe a partir del csv
@@ -74,7 +115,7 @@ class ModeloAsuntos:
         cls.testing_labels = testing_data['Categoria'].tolist()
         
         # Obtiene la cantidad de valores distintos en la columna 'Categoria'
-        cls.categories_quantity = df['Categoria'].nunique()
+        cls.categories_quantity = df['Categoria'].nunique()'''
 
         
     @classmethod

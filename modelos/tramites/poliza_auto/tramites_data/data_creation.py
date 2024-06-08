@@ -18,7 +18,8 @@ def encontrar_posicion_regex(input):#cadena, palabra
         labels = case[1]
         for label, palabra in labels.items():
             label = label.lower()
-            palabra = palabra.lower()
+            if type(palabra) != str:
+                palabra = str(palabra).lower()
             patron = re.escape(palabra)  # Escapar palabra para caracteres especiales
             coincidencia = re.search(patron, case[0].lower())
             if coincidencia:
@@ -26,18 +27,5 @@ def encontrar_posicion_regex(input):#cadena, palabra
           
         print(res)
 
-training_data = [
-    ["buenas tardes, quisiera cotizar un seguro para mi auto por favor, envíenme las diferentes opciones que su compañia ofrece los datos de mi vehiculo son  marca chevrolet  modelo spin  año 2023 cod postal 1414  tengo cochera propia adjunto también foto de mi vehiculo para que se vea que está en perfectas condiciones muchas gracias",
-    {'MARCA': 'chevrolet', 'MODELO':'spin', 'ANIO': '2023', 'COD_POSTAL':'1414'}]
-]
-
-print(len(training_data))
+training_data = []
 encontrar_posicion_regex(training_data)
-
-"""
-Formato 
- TRAIN_DATA = [(
-    {"text": "buenas tardes, quisiera cotizar un seguro para mi auto por favor, envíenme las diferentes opciones que su compañia ofrece los datos de mi vehiculo son  marca chevrolet  modelo spin  año 2023 cod postal 1414  tengo cochera propia adjunto también foto de mi vehiculo para que se vea que está en perfectas condiciones muchas gracias", 
-        "entities": [(108, 118, "MARCA"), (120, 124, "MODELO"), (126, 130, "AÑO"), (132, 140, "COD_POSTAL")]}
-    )],
-"""
