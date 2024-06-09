@@ -24,6 +24,8 @@ swaggerui_blueprint = get_swaggerui_blueprint(
 
 app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
     
+servicio_asuntos = ServicioAsuntos()
+
 # Routes
 @app.route("/ping", methods=['GET']) 
 @cross_origin()
@@ -53,7 +55,6 @@ def ping_pong():
 @cross_origin()
 def evaluar_asunto():
     try:
-        servicio_asuntos = ServicioAsuntos()
         textos = request.json.get('textos')
         res = servicio_asuntos.predecir(textos)
         return jsonify({"resultados": res}), 200

@@ -1,4 +1,5 @@
 import os
+import pickle
 from modelos.servicios.servicio_base.servicio_modelos import ServicioModelos
 import logging
 import numpy as np
@@ -12,10 +13,9 @@ from sklearn.model_selection import train_test_split, StratifiedKFold
 # Suprimir advertencias
 logging.getLogger('tensorflow').setLevel(logging.ERROR)
 
-
 MODELO_RUTA = os.getenv("MODELO_ASUNTO_GUARDADO")
+
 class ServicioAsuntos(ServicioModelos):
-    
     # Parámetros para la configuración del modelo
     TRUNC_TYPE='post'  # Tipo de truncado de las secuencias (después de alcanzar max_length).
     PADDING_TYPE='post'  # Tipo de padding (agregado de tokens al final de la secuencia).
@@ -34,28 +34,35 @@ class ServicioAsuntos(ServicioModelos):
     model_path = MODELO_RUTA 
     
     @classmethod
-    def __init__(cls, vocab_size:int = 10000, embedding:int = 16,max_length: int = 10000, num_epochs:int = 100): #4000
+    def __init__(cls, vocab_size:int = 10000, embedding:int = 16, max_length: int = 10000, num_epochs:int = 10):
         cls.vocab_size = vocab_size
         cls.embedding_dim = embedding
         cls.max_length = max_length
         cls.num_epochs = num_epochs
-    
 
-        if os.path.exists(os.path.join(cls.model_path, 'saved_model')):
-            cls.model = tf.keras.models.load_model(os.path.join(cls.model_path, 'saved_model'))
+        if os.path.exists(os.path.join(cls.model_path, 'modelo_asuntos_entrenado')):
+            cls.model = tf.keras.models.load_model(os.path.join(cls.model_path, 'modelo_asuntos_entrenado'))
+            with open(os.path.join(cls.model_path, 'tokenizer.pkl'), 'rb') as handle:
+                cls.tokenizer = pickle.load(handle)
+            with open(os.path.join(cls.model_path, 'training_sentences.pkl'), 'rb') as handle:
+                cls.training_sentences = pickle.load(handle)
             print("Modelo asuntos pre existente")
         else:
             # Obtener datos de entrenamiento
-            cls.get_data()
-            cls.perform_cross_validation()
+            cls.obtener_datos()
+            #cls.perform_cross_validation()
             # Configurar y entrenar el modelo
-            cls.model_config_and_training()
-            # Guardar el modelo entrenado
-            cls.model.save(os.path.join(cls.model_path, 'saved_model'))
+            cls.configuracion_entrenamiento_modelo()
+            # Guardar el modelo entrenado y el tokenizer
+            cls.model.save(os.path.join(cls.model_path, 'modelo_asuntos_entrenado'))
+            with open(os.path.join(cls.model_path, 'tokenizer.pkl'), 'wb') as handle:
+                pickle.dump(cls.tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
+            with open(os.path.join(cls.model_path, 'training_sentences.pkl'), 'wb') as handle:
+                pickle.dump(cls.training_sentences, handle, protocol=pickle.HIGHEST_PROTOCOL)
             print("Modelo asuntos creado exitosamente")
     
-    @classmethod
-    def get_data(cls):
+    '''@classmethod
+    def obtener_datos(cls):
         # Este método trabaja con Pandas para la obtención de los datos de entrenamiento y de prueba a partir de archivo csv
         # Crea el dataframe a partir del csv
         df = pd.read_csv('modelos/asuntos/asuntos_data/asuntos.csv')
@@ -92,8 +99,9 @@ class ServicioAsuntos(ServicioModelos):
             # Esto es solo un ejemplo de cómo iterar sobre los folds
             print("Fold entrenamiento:", len(X_train_fold), "Fold validación:", len(X_val_fold))
 
-    '''@classmethod
-    def get_data(cls):
+    '''
+    @classmethod
+    def obtener_datos(cls):
         # Este metodo trabaja con Pandas para la obtención de los datso de entrenameinto y de prueba a partir de archivo csv
         # Crea el dataframe a partir del csv
         df = pd.read_csv('modelos/asuntos/asuntos_data/asuntos.csv')
@@ -111,11 +119,11 @@ class ServicioAsuntos(ServicioModelos):
         cls.testing_labels = testing_data['Categoria'].tolist()
         
         # Obtiene la cantidad de valores distintos en la columna 'Categoria'
-        cls.categories_quantity = df['Categoria'].nunique()'''
+        cls.categories_quantity = df['Categoria'].nunique()
 
         
     @classmethod
-    def model_config_and_training(cls):
+    def configuracion_entrenamiento_modelo(cls):
         # 1. Tokenización de las sentencias
         """
         Tokenizer:
@@ -131,8 +139,7 @@ class ServicioAsuntos(ServicioModelos):
         cls.tokenizer = tokenizer
         word_indexed = tokenizer.word_index # Genera la lista de las palabras tokenizadas
         print("Indexed  WORDS", word_indexed)
-        
-        training_sentences = tokenizer.texts_to_sequences(cls.training_sentences) # Crea la secuencia de tokens para cada oración. Lista de listas.
+        training_sentences = cls.tokenizer.texts_to_sequences(cls.training_sentences) # Crea la secuencia de tokens para cada oración. Lista de listas.
         
         """
         pad_sequences:
@@ -188,18 +195,18 @@ class ServicioAsuntos(ServicioModelos):
         Retorna una lista de diccionarios, cada diccionario contiene el un asunto y el resultado de su clasificación,
         es decir la clase que fue determinada para él por el modelo (valor de 0 a 4)
         """
+        if cls.tokenizer is None:
+            raise ValueError("El tokenizer no está inicializado.")
+        
         # Procesamiento de los datos de entrada. Tokenización strings.
         sequences = cls.tokenizer.texts_to_sequences(sentencias)
         padded = pad_sequences(sequences, maxlen=cls.max_length, padding=cls.PADDING_TYPE, truncating=cls.TRUNC_TYPE)
+        
         # Con la sentencia recibida ya tokenizada, le pedimos al modelo que haga la predicción.
         prediction = cls.model.predict(padded)
-        #return [prediction.tolist() , np.argmax(prediction, axis=1)]
-        res = np.argmax(prediction, axis=1) # Devuelve la clase predicha con mayor probabilidad.
+        res = np.argmax(prediction, axis=1)  # Devuelve la clase predicha con mayor probabilidad.
         predicciones = list(res)
-
-        predicciones_int = []
-        for prediccion in predicciones:
-            predicciones_int.append(int(prediccion))
+        predicciones_int = [int(prediccion) for prediccion in predicciones]
+        
         return predicciones_int
- 
     
