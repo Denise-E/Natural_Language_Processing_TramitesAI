@@ -8,7 +8,8 @@ import tensorflow as tf
 from keras.utils import to_categorical
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
-from sklearn.model_selection import train_test_split, StratifiedKFold
+#from sklearn.model_selection import train_test_split, StratifiedKFold
+from keras.models import load_model
 
 # Suprimir advertencias
 logging.getLogger('tensorflow').setLevel(logging.ERROR)
@@ -40,8 +41,43 @@ class ServicioAsuntos(ServicioModelos):
         cls.max_length = max_length
         cls.num_epochs = num_epochs
 
-        if os.path.exists(os.path.join(cls.model_path, 'modelo_entrenado')):
-            cls.model = tf.keras.models.load_model(os.path.join(cls.model_path, 'modelo_entrenado'))
+        try:
+            if os.path.exists(os.path.join(cls.model_path, 'modelo_entrenado')):
+                cls.model = load_model(os.path.join(cls.model_path, 'modelo_entrenado'))
+                with open(os.path.join(cls.model_path, 'tokenizer.pkl'), 'rb') as handle:
+                    cls.tokenizer = pickle.load(handle)
+                with open(os.path.join(cls.model_path, 'training_sentences.pkl'), 'rb') as handle:
+                    cls.training_sentences = pickle.load(handle)
+                print("Modelo asuntos pre existente")
+            else:
+                # Obtener datos de entrenamiento
+                cls.obtener_datos()
+                #cls.perform_cross_validation()
+                # Configurar y entrenar el modelo
+                cls.configuracion_entrenamiento_modelo()
+                # Guardar el modelo entrenado y el tokenizer
+                cls.model.save(os.path.join(cls.model_path, 'modelo_entrenado'))
+                with open(os.path.join(cls.model_path, 'tokenizer.pkl'), 'wb') as handle:
+                    pickle.dump(cls.tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
+                with open(os.path.join(cls.model_path, 'training_sentences.pkl'), 'wb') as handle:
+                    pickle.dump(cls.training_sentences, handle, protocol=pickle.HIGHEST_PROTOCOL)
+                print("Modelo asuntos creado exitosamente")
+        except OSError:
+            # Obtener datos de entrenamiento
+            cls.obtener_datos()
+            #cls.perform_cross_validation()
+            # Configurar y entrenar el modelo
+            cls.configuracion_entrenamiento_modelo()
+            # Guardar el modelo entrenado y el tokenizer
+            cls.model.save(os.path.join(cls.model_path, 'modelo_entrenado'))
+            with open(os.path.join(cls.model_path, 'tokenizer.pkl'), 'wb') as handle:
+                pickle.dump(cls.tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
+            with open(os.path.join(cls.model_path, 'training_sentences.pkl'), 'wb') as handle:
+                pickle.dump(cls.training_sentences, handle, protocol=pickle.HIGHEST_PROTOCOL)
+            print("Modelo asuntos creado exitosamente")
+            
+        '''if os.path.exists(os.path.join(cls.model_path, 'modelo_entrenado')):
+            cls.model = load_model(os.path.join(cls.model_path, 'modelo_entrenado'))
             with open(os.path.join(cls.model_path, 'tokenizer.pkl'), 'rb') as handle:
                 cls.tokenizer = pickle.load(handle)
             with open(os.path.join(cls.model_path, 'training_sentences.pkl'), 'rb') as handle:
@@ -59,7 +95,7 @@ class ServicioAsuntos(ServicioModelos):
                 pickle.dump(cls.tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
             with open(os.path.join(cls.model_path, 'training_sentences.pkl'), 'wb') as handle:
                 pickle.dump(cls.training_sentences, handle, protocol=pickle.HIGHEST_PROTOCOL)
-            print("Modelo asuntos creado exitosamente")
+            print("Modelo asuntos creado exitosamente")'''
     
     '''@classmethod
     def obtener_datos(cls):
