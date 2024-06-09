@@ -34,14 +34,14 @@ class ServicioAsuntos(ServicioModelos):
     model_path = MODELO_RUTA 
     
     @classmethod
-    def __init__(cls, vocab_size:int = 10000, embedding:int = 16, max_length: int = 10000, num_epochs:int = 10):
+    def __init__(cls, vocab_size:int = 10000, embedding:int = 16, max_length: int = 10000, num_epochs:int = 4000):
         cls.vocab_size = vocab_size
         cls.embedding_dim = embedding
         cls.max_length = max_length
         cls.num_epochs = num_epochs
 
-        if os.path.exists(os.path.join(cls.model_path, 'modelo_asuntos_entrenado')):
-            cls.model = tf.keras.models.load_model(os.path.join(cls.model_path, 'modelo_asuntos_entrenado'))
+        if os.path.exists(os.path.join(cls.model_path, 'modelo_entrenado')):
+            cls.model = tf.keras.models.load_model(os.path.join(cls.model_path, 'modelo_entrenado'))
             with open(os.path.join(cls.model_path, 'tokenizer.pkl'), 'rb') as handle:
                 cls.tokenizer = pickle.load(handle)
             with open(os.path.join(cls.model_path, 'training_sentences.pkl'), 'rb') as handle:
@@ -54,7 +54,7 @@ class ServicioAsuntos(ServicioModelos):
             # Configurar y entrenar el modelo
             cls.configuracion_entrenamiento_modelo()
             # Guardar el modelo entrenado y el tokenizer
-            cls.model.save(os.path.join(cls.model_path, 'modelo_asuntos_entrenado'))
+            cls.model.save(os.path.join(cls.model_path, 'modelo_entrenado'))
             with open(os.path.join(cls.model_path, 'tokenizer.pkl'), 'wb') as handle:
                 pickle.dump(cls.tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
             with open(os.path.join(cls.model_path, 'training_sentences.pkl'), 'wb') as handle:
