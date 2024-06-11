@@ -69,26 +69,6 @@ class ServicioAsuntos(ServicioModelos):
             pickle.dump(cls.training_sentences, handle, protocol=pickle.HIGHEST_PROTOCOL)
         print("Modelo asuntos creado exitosamente")
             
-        '''if os.path.exists(os.path.join(cls.model_path, 'modelo_entrenado')):
-            cls.model = load_model(os.path.join(cls.model_path, 'modelo_entrenado'))
-            with open(os.path.join(cls.model_path, 'tokenizer.pkl'), 'rb') as handle:
-                cls.tokenizer = pickle.load(handle)
-            with open(os.path.join(cls.model_path, 'training_sentences.pkl'), 'rb') as handle:
-                cls.training_sentences = pickle.load(handle)
-            print("Modelo asuntos pre existente")
-        else:
-            # Obtener datos de entrenamiento
-            cls.obtener_datos()
-            #cls.perform_cross_validation()
-            # Configurar y entrenar el modelo
-            cls.configuracion_entrenamiento_modelo()
-            # Guardar el modelo entrenado y el tokenizer
-            cls.model.save(os.path.join(cls.model_path, 'modelo_entrenado'))
-            with open(os.path.join(cls.model_path, 'tokenizer.pkl'), 'wb') as handle:
-                pickle.dump(cls.tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
-            with open(os.path.join(cls.model_path, 'training_sentences.pkl'), 'wb') as handle:
-                pickle.dump(cls.training_sentences, handle, protocol=pickle.HIGHEST_PROTOCOL)
-            print("Modelo asuntos creado exitosamente")'''
     
     '''@classmethod
     def obtener_datos(cls):
