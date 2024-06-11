@@ -104,6 +104,43 @@ def carga_presupuesto():
         print("Error: ", e)
         return jsonify({"msg": "Error al evualuar el presupuesto"}), 400
 
+"""
+Formas de re entrenar:
+
+* Borrar archivos y re instanciar clases
+* Directamente re instanciarlas ya que lso archivos se pisan, o darle directamente al método de la clase ?
+"""
+@app.route("/entrenar/evaluar_asunto", methods=['GET'])  
+@cross_origin()
+def evaluar_asunto():
+    try:
+        try:
+            servicio_asuntos.crear_modelo()
+            res = True
+        except:
+            # Sumaría log
+            res = False
+        return jsonify({"resultado": res}), 200
+    except Exception as e:
+        print("Error: ", e)
+        return jsonify({"msg": "Error al evualuar el asunto"}), 400
+    
+    
+@app.route("/entrenar/poliza_auto", methods=['GET']) 
+@cross_origin()
+def poliza_auto():
+    try:
+        try:
+            ServicioPolizasAuto()
+            res = True
+        except:
+            # Sumaría log
+            res = False
+        return jsonify({"resultado": res}), 200
+    except Exception as e:
+        print("Error: ", e)
+        return jsonify({"msg": "Error al evualuar póliza de auto"}), 400
+
 
 if __name__ == '__main__':
     app.run(port=5000)
