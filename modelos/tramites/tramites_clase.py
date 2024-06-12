@@ -87,7 +87,6 @@ class Tramite():
         
         res = []
         for text in sentences:
-            text = text.lower()
             doc = cls.nlp(text)
             for ent in doc.ents:
                 res.append({ent.label_ : ent.text})
