@@ -10,6 +10,10 @@ class ServicioPolizasAuto(ServicioModelos):
     ETIQUETAS = ['marca', 'modelo', 'anio', 'cod_postal']
     
     @classmethod
+    def entrenar(cls):
+        cls.tramite_poliza_auto.entrenar(POLIZA_AUTO_DATOS)
+        
+    @classmethod
     def predecir(cls, sentencias: list) -> list:
         """
         Retorna una lista de diccionarios, cada diccionario contiene la sentencia evaluada y las etiquetas

@@ -22,13 +22,16 @@ class Tramite():
             cls.nlp = spacy.load(cls.url_modelo+"/modelo_entrenado/model-best")
             print("Modelo póliza auto pre existente")
         except OSError:
-            # Si el modelo no existe, inicializa un modelo base y lo entrena
-            cls.nlp = spacy.blank("es")
-            cls.prepare_model_data(training_data)
-            cls.train_model()
-            cls.nlp = spacy.load(cls.url_modelo+"/modelo_entrenado/model-best")
-            print("Modelo póliza auto creado exitosamente")
+            cls.entrenar(training_data)
     
+    @classmethod
+    def entrenar(cls, training_data: list) -> None:
+        cls.nlp = spacy.load("es_core_news_sm")
+        cls.prepare_model_data(training_data)
+        cls.train_model()
+        cls.nlp = spacy.load(cls.url_modelo+"/modelo_entrenado/model-best")
+        print("Modelo póliza auto creado exitosamente")
+        
     @classmethod
     def prepare_model_data(cls, training_data) -> None:
         training_data = training_data

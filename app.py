@@ -112,12 +112,12 @@ Formas de re entrenar:
 """
 @app.route("/entrenar/evaluar_asunto", methods=['GET'])  
 @cross_origin()
-def evaluar_asunto():
+def entrenar_modelo_asunto():
     try:
         try:
             servicio_asuntos.crear_modelo()
             res = True
-        except:
+        except Exception as e:
             # Sumaría log
             res = False
         return jsonify({"resultado": res}), 200
@@ -128,12 +128,12 @@ def evaluar_asunto():
     
 @app.route("/entrenar/poliza_auto", methods=['GET']) 
 @cross_origin()
-def poliza_auto():
+def entrenar_modelo_poliza_auto():
     try:
         try:
-            ServicioPolizasAuto()
+            ServicioPolizasAuto.entrenar()
             res = True
-        except:
+        except Exception as e:
             # Sumaría log
             res = False
         return jsonify({"resultado": res}), 200
