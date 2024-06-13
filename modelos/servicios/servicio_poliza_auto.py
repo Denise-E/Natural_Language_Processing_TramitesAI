@@ -8,7 +8,7 @@ POLIZA_AUTO_RUTA = os.getenv("POLIZA_AUTO_GUARDADO")
 
 class ServicioPolizasAuto(ServicioModelos):
     tramite_poliza_auto = Tramite(POLIZA_AUTO_RUTA, POLIZA_AUTO_DATOS)
-    ETIQUETAS = ['marca', 'modelo', 'anio', 'cod_postal']
+    ETIQUETAS = ['marca', 'cod_postal', 'modelo', 'anio']
     
     @classmethod
     def entrenar(cls):
@@ -52,7 +52,10 @@ class ServicioPolizasAuto(ServicioModelos):
                         # Obtener el método usando getattr
                         regex_method = getattr(cls, regex_method_name)
                         # Llamar al método y asignar el resultado
-                        prediccion['campos'][etiqueta] = regex_method(prediccion['texto']) 
+                        if etiqueta in ['anio', 'modelo']:
+                            prediccion['campos'][etiqueta] = regex_method(prediccion['texto'], prediccion['campos'])
+                        else:
+                            prediccion['campos'][etiqueta] = regex_method(prediccion['texto']) 
     
     @classmethod
     def regex_marca(cls, texto: str) -> str | None:
@@ -61,14 +64,22 @@ class ServicioPolizasAuto(ServicioModelos):
         return marca_match.group(0) if marca_match else None
     
     @classmethod
-    def regex_modelo(cls, texto: str) -> str | None:
+    def regex_modelo(cls, texto: str, campos_encontrados: dict = None) -> str | None:
         #print("REGEX modelo") 
         return None
    
     @classmethod
-    def regex_anio(cls, texto: str) -> str | None:
-        #print("REGEX anio") 
-        return None
+    def regex_anio(cls, texto: str, campos_encontrados: dict = None) -> str | None:
+        texto = texto.lower()
+        if campos_encontrados['cod_postal'] is not None:
+            texto = texto.replace(campos_encontrados['cod_postal'], '').strip()
+        anio_regex = r'(?:año[:\s,=]*|año es[:\s]*|del[:\s]*)([0-9]{4})'
+        anio_match = re.search(anio_regex, texto)
+        
+        if not anio_match:
+            anio_general_regex = r'([0-9]{4})'
+            anio_match = re.search(anio_general_regex, texto)
+        return anio_match.group(1) if anio_match else None
     
     @classmethod
     def regex_cod_postal(cls, texto: str) -> str | None:
