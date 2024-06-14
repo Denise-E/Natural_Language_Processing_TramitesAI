@@ -4,6 +4,8 @@ from flask_swagger_ui import get_swaggerui_blueprint
 from flask import Flask, jsonify, request
 from utils.swagger import swagger_data
 from flask_cors import cross_origin
+import shutil
+import os
 
 app = Flask(__name__) 
 
@@ -110,12 +112,24 @@ Formas de re entrenar:
 * Borrar archivos y re instanciar clases
 * Directamente re instanciarlas ya que lso archivos se pisan, o darle directamente al método de la clase ?
 """
-@app.route("/entrenar/evaluar_asunto", methods=['GET'])  
+@app.route("/entrenar/evaluar_asunto", methods=['POST'])  
 @cross_origin()
 def entrenar_modelo_asunto():
     try:
         try:
-            servicio_asuntos.crear_modelo()
+            MODELO_RUTA = os.getenv("MODELO_ASUNTO_GUARDADO")
+            ruta_carpeta = MODELO_RUTA+"/modelo_entrenado"
+            shutil.rmtree(ruta_carpeta)
+            data = request.json            
+            
+            vocab_size = data.get("vocab_size") if 'vocab_size' in data else 10000
+            embedding = data.get("embedding") if 'embedding' in data else 16
+            max_length = data.get("max_length") if 'max_length' in data else 10000
+            num_epochs = data.get("num_epochs") if 'num_epochs' in data else 4000
+            
+            ServicioAsuntos(
+                vocab_size=vocab_size, embedding=embedding, max_length=max_length, num_epochs=num_epochs
+            )
             res = True
         except Exception as e:
             # Sumaría log
