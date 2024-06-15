@@ -106,12 +106,6 @@ def carga_presupuesto():
         print("Error: ", e)
         return jsonify({"msg": "Error al evualuar el presupuesto"}), 400
 
-"""
-Formas de re entrenar:
-
-* Borrar archivos y re instanciar clases
-* Directamente re instanciarlas ya que lso archivos se pisan, o darle directamente al método de la clase ?
-"""
 @app.route("/entrenar/evaluar_asunto", methods=['POST'])  
 @cross_origin()
 def entrenar_modelo_asunto():
@@ -132,7 +126,7 @@ def entrenar_modelo_asunto():
             )
             res = True
         except Exception as e:
-            # Sumaría log
+            print("Error al entrenar modelo de asuntos: ", e)
             res = False
         return jsonify({"resultado": res}), 200
     except Exception as e:
@@ -149,6 +143,7 @@ def entrenar_modelo_poliza_auto():
             res = True
         except Exception as e:
             # Sumaría log
+            print("Error al entrenar modelo pílizas de auto: ", e)
             res = False
         return jsonify({"resultado": res}), 200
     except Exception as e:
