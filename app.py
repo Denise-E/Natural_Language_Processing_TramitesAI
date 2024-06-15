@@ -81,7 +81,7 @@ def poliza_auto():
 @cross_origin()
 def poliza_hogar():
     try:
-        return jsonify({"msg": "ruta no implementada"}), 501
+        return jsonify({"msg": "Ruta no implementada"}), 501
     except Exception as e:
         print("Error: ", e)
         return jsonify({"msg": "Error al evualuar póliza del hogar"}), 400
@@ -91,7 +91,7 @@ def poliza_hogar():
 @cross_origin()
 def denuncia_siniestro():
     try:
-        return jsonify({"msg": "ruta no implementada"}), 501
+        return jsonify({"msg": "Ruta no implementada"}), 501
     except Exception as e:
         print("Error: ", e)
         return jsonify({"msg": "Error al evualuar la denuncia de siniestro"}), 400
@@ -101,7 +101,7 @@ def denuncia_siniestro():
 @cross_origin()
 def carga_presupuesto():
     try:
-        return jsonify({"msg": "ruta no implementada"}), 501
+        return jsonify({"msg": "Ruta no implementada"}), 501
     except Exception as e:
         print("Error: ", e)
         return jsonify({"msg": "Error al evualuar el presupuesto"}), 400
@@ -124,14 +124,13 @@ def entrenar_modelo_asunto():
             ServicioAsuntos(
                 vocab_size=vocab_size, embedding=embedding, max_length=max_length, num_epochs=num_epochs
             )
-            res = True
+            return jsonify({"resultado": True}), 200
         except Exception as e:
             print("Error al entrenar modelo de asuntos: ", e)
-            res = False
-        return jsonify({"resultado": res}), 200
+            return jsonify({"msg": "Error al entrenar modelo asuntos"}), 400
     except Exception as e:
         print("Error: ", e)
-        return jsonify({"msg": "Error al evualuar el asunto"}), 400
+        return jsonify({"msg": "Error al entrenar modelo asuntos"}), 400
     
     
 @app.route("/entrenar/poliza_auto", methods=['GET']) 
@@ -140,15 +139,14 @@ def entrenar_modelo_poliza_auto():
     try:
         try:
             ServicioPolizasAuto.entrenar()
-            res = True
+            return jsonify({"resultado": True}), 200
         except Exception as e:
             # Sumaría log
             print("Error al entrenar modelo pílizas de auto: ", e)
-            res = False
-        return jsonify({"resultado": res}), 200
+            return jsonify({"msg": "Error al entrenar el modelo de pólizas de auto"}), 400
     except Exception as e:
         print("Error: ", e)
-        return jsonify({"msg": "Error al evualuar póliza de auto"}), 400
+        return jsonify({"msg": "Error al entrenar el modelo de pólizas de auto"}), 400
 
 
 if __name__ == '__main__':

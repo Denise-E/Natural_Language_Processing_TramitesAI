@@ -3,7 +3,7 @@ swagger_data = {
     "info": {
         "version": "1.0.0",
         "title": "Documentación Tramites AI",
-        "description": "Detalle de las rutas definidas en el proyecto",
+        "description": "Detalle de las rutas definidas en el proyecto para BDT Global",
     },
     "host": "localhost:5000",
     "basePath": "",
@@ -14,10 +14,10 @@ swagger_data = {
         "/ping": {
             "get": {
                 "tags": ["Ping"],
-                "summary": "Ruta ping pong para verificar que está levantada",
+                "summary": "Ruta ping pong para verificar que está levantada la API",
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "Petición procesada exitosamente",
                         "schema": {
                             "type": "object",
                             "properties": {
@@ -29,7 +29,7 @@ swagger_data = {
                         }
                     },
                     "400": {
-                        "description": "Error response",
+                        "description": "Petición incorrecta",
                         "schema": {
                             "type": "object",
                             "properties": {
@@ -68,7 +68,7 @@ swagger_data = {
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "Petición procesada exitosamente",
                         "schema": {
                             "type": "object",
                             "properties": {
@@ -95,7 +95,7 @@ swagger_data = {
                         }
                     },
                     "400": {
-                        "description": "Error response",
+                        "description": "Petición incorrecta",
                         "schema": {
                             "type": "object",
                             "properties": {
@@ -125,7 +125,7 @@ swagger_data = {
                                     "type": "array",
                                     "items": {
                                         "type": "string",
-                                        "example": "siniestro a denunciar"
+                                        "example": "busco información para asegurar un peugeot 2008 del 2016, mi código postal es 1420"
                                     }
                                 }
                             }
@@ -134,7 +134,7 @@ swagger_data = {
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "Petición procesada exitosamente",
                         "schema": {
                             "type": "object",
                             "properties": {
@@ -175,7 +175,7 @@ swagger_data = {
                         }
                     },
                     "400": {
-                        "description": "Error response",
+                        "description": "Petición incorrecta",
                         "schema": {
                             "type": "object",
                             "properties": {
@@ -195,7 +195,7 @@ swagger_data = {
                 "summary": "Obtiene los datos recibidos para una póliza de Hogar",
                 "responses": {
                     "400": {
-                        "description": "Error response",
+                        "description": "Petición incorrecta",
                         "schema": {
                             "type": "object",
                             "properties": {
@@ -207,13 +207,13 @@ swagger_data = {
                         }
                     },
                     "501": {
-                        "description": "Not implemented",
+                        "description": "Ruta no implementada",
                         "schema": {
                             "type": "object",
                             "properties": {
                                 "msg": {
                                     "type": "string",
-                                    "example": "ruta no implementada"
+                                    "example": "Ruta no implementada"
                                 }
                             }
                         }
@@ -227,7 +227,7 @@ swagger_data = {
                 "summary": "Obtiene los datos recibidos para la denuncia de un siniestro",
                 "responses": {
                     "400": {
-                        "description": "Error response",
+                        "description": "Petición incorrecta",
                         "schema": {
                             "type": "object",
                             "properties": {
@@ -239,13 +239,13 @@ swagger_data = {
                         }
                     },
                     "501": {
-                        "description": "Not implemented",
+                        "description": "Ruta no implementada",
                         "schema": {
                             "type": "object",
                             "properties": {
                                 "msg": {
                                     "type": "string",
-                                    "example": "ruta no implementada"
+                                    "example": "Ruta no implementada"
                                 }
                             }
                         }
@@ -259,7 +259,7 @@ swagger_data = {
                 "summary": "Obtiene los datos recibidos para la carga de presupuestos",
                 "responses": {
                     "400": {
-                        "description": "Error response",
+                        "description": "Petición incorrecta",
                         "schema": {
                             "type": "object",
                             "properties": {
@@ -271,13 +271,129 @@ swagger_data = {
                         }
                     },
                     "501": {
-                        "description": "Not implemented",
+                        "description": "Ruta no implementada",
                         "schema": {
                             "type": "object",
                             "properties": {
                                 "msg": {
                                     "type": "string",
-                                    "example": "ruta no implementada"
+                                    "example": "Ruta no implementada"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/entrenar/poliza_auto": {
+            "get": {
+                "tags": ["Pólizas de auto"],
+                "summary": "Entrena el modelo para pólizas de auto",
+                "responses": {
+                   "200": {
+                        "description": "Petición procesada exitosamente",
+                        "examples": {
+                            "application/json": [
+                                { "resultado": True },
+                                { "resultado": False }
+                            ]
+                        },
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "resultado": {
+                                    "type": "boolean",
+                                    "example": True
+                                }
+                            }
+                        }
+                    },
+                    "200":   {
+                            "description": "Entrenamiento exitoso",
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "resultado": {
+                                        "type": "boolean",
+                                        "example": True
+                                    }
+                                }
+                            }
+                        },
+                    "400": {
+                        "description": "Petición incorrecta",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "msg": {
+                                    "type": "string",
+                                    "example": "Error al entrenar el modelo de pólizas de auto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/entrenar/evaluar_asunto": {
+            "post": {
+                "tags": ["Asuntos"],
+                "summary": "Entrena el modelo para asuntos",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": False,
+                        "description": "Todos los campos son opcionales. Puede enviarse un JSON vacío. Los valores mostrados son los definidos por defecto en el código.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "vocab_size": {
+                                    "type": "integer",
+                                    "example": 10000,
+                                    "description": "Tamaño del vocabulario (por defecto: 10000)"
+                                },
+                                "embedding": {
+                                    "type": "integer",
+                                    "example": 16,
+                                    "description": "Tamaño del embedding (por defecto: 16)"
+                                },
+                                "max_length": {
+                                    "type": "integer",
+                                    "example": 10000,
+                                    "description": "Longitud máxima (por defecto: 10000)"
+                                },
+                                "num_epochs": {
+                                    "type": "integer",
+                                    "example": 4000,
+                                    "description": "Número de épocas (por defecto: 4000)"
+                                }
+                            },
+                            "additionalProperties": False
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Entrenamiento exitoso",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "resultado": {
+                                    "type": "boolean",
+                                    "example": True
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Petición incorrecta",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "msg": {
+                                    "type": "string",
+                                    "example": "Error al entrenar modelo asuntos"
                                 }
                             }
                         }
