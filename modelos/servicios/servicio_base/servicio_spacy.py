@@ -10,12 +10,39 @@ class ServicioSpacy(ServicioModelos, ABC):
         pass
     
     @abstractmethod
-    def predecir(cls, textos: list) -> list:
+    def predecir(cls, sentencias: list) -> list:
         pass
     
     @abstractmethod
     def completar_etiquetas(cls, predicciones: list) -> list:
         pass
+    
+    @classmethod
+    def hacer_predecccion(cls, textos: list, model_class) -> list:
+        """
+        Retorna una lista de diccionarios, cada diccionario contiene la sentencia evaluada y las etiquetas
+        que fueron encontradas en ella.
+        
+        params:
+        model_class: Clase del modelo de SpaCy a utilizar para predecir
+        """
+        predicciones = []
+        for sentencia in textos:
+            resultado_predicciones = model_class.predict([sentencia])
+            campos = {}
+            for resultado in resultado_predicciones:
+                if resultado:
+                    for etiqueta, valor in resultado.items():
+                        campos[etiqueta] = valor
+            
+            predicciones.append(
+                {
+                    "texto": sentencia,
+                    "campos": campos
+                }
+            )
+        return predicciones
+    
     
     @classmethod
     def regex_marca(cls, texto: str, campos_encontrados: dict = None) -> str | None:

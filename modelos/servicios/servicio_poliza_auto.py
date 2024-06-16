@@ -15,26 +15,7 @@ class ServicioPolizasAuto(ServicioSpacy):
         
     @classmethod
     def predecir(cls, sentencias: list) -> list:
-        """
-        Retorna una lista de diccionarios, cada diccionario contiene la sentencia evaluada y las etiquetas
-        que fueron encontradas en ella.
-        """
-        predicciones = []
-        for sentencia in sentencias:
-            resultado_predicciones = cls.tramite_poliza_auto.predict([sentencia])
-            campos = {}
-            for resultado in resultado_predicciones:
-                if resultado:
-                    for etiqueta, valor in resultado.items():
-                        campos[etiqueta] = valor
-            
-            predicciones.append(
-                {
-                    "texto": sentencia,
-                    "campos": campos
-                }
-            )
-        
+        predicciones = ServicioSpacy.hacer_predecccion(sentencias, cls.tramite_poliza_auto)
         cls.completar_etiquetas(predicciones)
         return predicciones
     
