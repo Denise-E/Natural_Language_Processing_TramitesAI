@@ -65,8 +65,14 @@ class ServicioPolizasAuto(ServicioModelos):
     
     @classmethod
     def regex_modelo(cls, texto: str, campos_encontrados: dict = None) -> str | None:
-        #print("REGEX modelo") 
-        return None
+        modelo_regex = r'(?:marca[:\s,=]*|marca es[:\s]*)([a-zA-Z\s]+)'
+        modelo_match = re.search(modelo_regex, texto, re.IGNORECASE)
+        if not modelo_match and campos_encontrados['marca'] is not None:
+            palabra_clave = campos_encontrados['marca'] 
+            palabras_excluidas = r'\b(de|para|como|por|si|pero|no|posible|posiblemente)\b'
+            modelo_regex = rf'{palabra_clave}\s+((?!{palabras_excluidas})[a-zA-Z\s]+)'
+            modelo_match = re.search(modelo_regex, texto, re.IGNORECASE)
+        return modelo_match.group(1) if modelo_match else None
    
     @classmethod
     def regex_anio(cls, texto: str, campos_encontrados: dict = None) -> str | None:
