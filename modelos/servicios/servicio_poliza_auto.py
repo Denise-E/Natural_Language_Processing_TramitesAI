@@ -65,7 +65,7 @@ class ServicioPolizasAuto(ServicioModelos):
     
     @classmethod
     def regex_modelo(cls, texto: str, campos_encontrados: dict = None) -> str | None:
-        modelo_regex = r'(?:marca[:\s,=]*|marca es[:\s]*)([a-zA-Z\s]+)'
+        modelo_regex = r'(?:marca[:\s,=]*|marca es[:\s]*|modelo\s+)([a-zA-Z\s]+)'
         modelo_match = re.search(modelo_regex, texto, re.IGNORECASE)
         if not modelo_match and campos_encontrados['marca'] is not None:
             palabra_clave = campos_encontrados['marca'] 
