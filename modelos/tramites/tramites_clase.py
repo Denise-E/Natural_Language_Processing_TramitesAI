@@ -4,5 +4,5 @@ class Tramite(ModelosSpacy):
     
     @classmethod
     def __init__(cls, url: str, training_data: list) -> None:
-        ModelosSpacy.initialize(url, training_data)
+        ModelosSpacy.inicilizacion(url, training_data)
     

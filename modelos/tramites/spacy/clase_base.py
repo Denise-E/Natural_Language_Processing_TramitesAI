@@ -1,4 +1,3 @@
-#from abc import ABC, abstractmethod
 from spacy.util import filter_spans
 from spacy.tokens import DocBin
 from tqdm import tqdm
@@ -11,7 +10,7 @@ class ModelosSpacy():
     url_modelo = None
     
     @classmethod
-    def initialize(cls, url: str, training_data: list) -> None:
+    def inicilizacion(cls, url: str, training_data: list) -> None:
         cls.url_modelo = url
         try:
             cls.nlp = spacy.load(url+"/modelo_entrenado/model-best")
