@@ -65,6 +65,6 @@ La documentación del proyecto está disponible en la ruta /swagger. Puedes acce
 
 ### Descripción del Proyecto
 
-Este proyecto utiliza la biblioteca **Pandas** para la obtención de datos a partir de archivos CSV y luego **TensorFlow** para la creación de modelos de procesamiento de lenguaje natural. Además, se utiliza **SpaCy** para la creación de modelos NER (Reconocimiento de Entidades Nombradas).
+Este proyecto utiliza la biblioteca **Pandas** para la obtención de datos a partir de archivos CSV y luego **TensorFlow** para la creación de modelos PLN (Procesamiento de Lenguaje Natural). Además, se utiliza **SpaCy** para la creación de modelos NER (Reconocimiento de Entidades Nombradas).
 
 **Pandas** es una biblioteca que proporciona estructuras de datos de alto rendimiento y herramientas de análisis de datos, mientras que **TensorFlow** es una plataforma de código abierto para el aprendizaje automático desarrollada por Google. **SpaCy** es una biblioteca de procesamiento de lenguaje natural de código abierto diseñada para la producción de software.
