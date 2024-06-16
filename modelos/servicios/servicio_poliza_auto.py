@@ -1,16 +1,16 @@
+from modelos.servicios.servicio_base.servicio_spacy import ServicioSpacy
 from modelos.tramites.poliza_auto.tramites_data.data import TRAIN_DATA as POLIZA_AUTO_DATOS
-from modelos.servicios.servicio_base.servicio_modelos import ServicioModelos
 from modelos.tramites.tramites_clase import Tramite
 import os
 
 POLIZA_AUTO_RUTA = os.getenv("POLIZA_AUTO_GUARDADO")
 
-class ServicioPolizasAuto(ServicioModelos):
+class ServicioPolizasAuto(ServicioSpacy):
     tramite_poliza_auto = Tramite(POLIZA_AUTO_RUTA, POLIZA_AUTO_DATOS)
     ETIQUETAS = ['marca', 'cod_postal', 'modelo', 'anio']
     
     @classmethod
-    def entrenar(cls):
+    def entrenar(cls) -> None :
         cls.tramite_poliza_auto.entrenar(POLIZA_AUTO_DATOS)
         
     @classmethod
@@ -49,10 +49,7 @@ class ServicioPolizasAuto(ServicioModelos):
                         # Construir el nombre del método
                         regex_method_name = f"regex_{etiqueta}"
                         # Obtener el método usando getattr
-                        regex_method = getattr(ServicioModelos, regex_method_name)
-                        # Llamar al método y asignar el resultado
-                        if etiqueta in ['anio', 'modelo']:
-                            prediccion['campos'][etiqueta] = regex_method(prediccion['texto'], prediccion['campos'])
-                        else:
-                            prediccion['campos'][etiqueta] = regex_method(prediccion['texto']) 
+                        regex_method = getattr(ServicioSpacy, regex_method_name)
+                        prediccion['campos'][etiqueta] = regex_method(prediccion['texto'], prediccion['campos'])
+
     
