@@ -1,5 +1,5 @@
 # Natural_Language_Processing_TramitesAI
- Processamiento de Lenguaje Natural con TensorFlow en python, para BDT Global
+ Processamiento de Lenguaje Natural con TensorFlow y SpaCy en python, para BDT Global.
 
 ## Requisitos
 
@@ -48,18 +48,23 @@ pip install -r requirements.txt
 cd ruta/Natural_Language_Processing_TramitesAI
 ```
 
-### Paso 2: Ejecutar el Archivo `main.py`
+### Paso 2: Levantar el proyecto de Flask
 
-```bash
-python main.py 
-
-o
-
-py main.py
+```command prompt
+flask run
 ```
+Para que el servidor recargue automáticamente cuando se realicen cambios en el código, se lo puede correr con el siguiente comando: 
+
+```command prompt
+flask run --reload
+```
+
+### Documentación
+
+La documentación del proyecto está disponible en la ruta /swagger. Puedes acceder a ella navegando a http://localhost:5000/swagger una vez que el servidor esté en funcionamiento.
 
 ### Descripción del Proyecto
 
-Este proyecto utiliza la biblioteca **Pandas** para la obtención de datos a partir de archivos CSV y luego **TensorFlow** para la creación de modelos de procesamiento de lenguaje natural. 
+Este proyecto utiliza la biblioteca **Pandas** para la obtención de datos a partir de archivos CSV y luego **TensorFlow** para la creación de modelos de procesamiento de lenguaje natural. Además, se utiliza **SpaCy** para la creación de modelos NER (Reconocimiento de Entidades Nombradas).
 
-**Pandas** es una biblioteca que proporciona estructuras de datos de alto rendimiento y herramientas de análisis de datos, mientras que **TensorFlow** es una plataforma de código abierto para el aprendizaje automático desarrollada por Google.
+**Pandas** es una biblioteca que proporciona estructuras de datos de alto rendimiento y herramientas de análisis de datos, mientras que **TensorFlow** es una plataforma de código abierto para el aprendizaje automático desarrollada por Google. **SpaCy** es una biblioteca de procesamiento de lenguaje natural de código abierto diseñada para la producción de software.
