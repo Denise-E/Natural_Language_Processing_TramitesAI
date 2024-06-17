@@ -34,7 +34,7 @@ class ModelosSpacy():
         print(training_data[0]['text'])
 
         """
-        SpaCy requiere que lso datos de entrenamiento deben ser del tipo docbin y deben guardarse en un archivo .spacy
+        SpaCy requiere que los datos de entrenamiento deben ser del tipo docbin y deben guardarse en un archivo .spacy
         """
         doc_bin = DocBin()
 
