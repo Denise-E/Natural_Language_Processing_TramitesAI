@@ -13,12 +13,34 @@ class ServicioSpacy(ServicioModelos, ABC):
     def predecir(cls, sentencias: list) -> list:
         pass
     
-    @abstractmethod
-    def completar_etiquetas(cls, predicciones: list) -> list:
-        pass
+    @classmethod
+    def completar_etiquetas(cls, predicciones: list, etiquetas: list) -> list:
+        print("Predicciones etiquetas", type(predicciones), etiquetas)
+        for prediccion in predicciones:
+            keys = prediccion['campos'].keys()
+            print("1")
+            if len(keys) != len(etiquetas):
+                print("2")
+                for etiqueta in etiquetas:
+                    print("3", etiqueta)
+                    if etiqueta not in prediccion['campos']:
+                        # Construir el nombre del método
+                        regex_method_name = f"regex_{etiqueta}"
+                        print("4")
+                        # Verifica que existe un método de regex para ese atributo
+                        if hasattr(cls, regex_method_name):
+                            print("5")
+                            # Obtener el método usando getattr
+                            regex_method = getattr(cls, regex_method_name)
+                            print("6")
+                            prediccion['campos'][etiqueta] = regex_method(prediccion['texto'])
+                            print("7")
+                        else:
+                            print("8")
+                            print(f"El método {regex_method_name} no existe en {cls.__name__}")
     
     @classmethod
-    def hacer_predecccion(cls, textos: list, model_class) -> list:
+    def hacer_predecccion(cls, textos: list, model_class, etiquetas:list) -> list:
         """
         Retorna una lista de diccionarios, cada diccionario contiene la sentencia evaluada y las etiquetas
         que fueron encontradas en ella.
@@ -41,6 +63,7 @@ class ServicioSpacy(ServicioModelos, ABC):
                     "campos": campos
                 }
             )
+        cls.completar_etiquetas(predicciones, etiquetas)
         return predicciones
     
     
@@ -54,7 +77,7 @@ class ServicioSpacy(ServicioModelos, ABC):
     def regex_modelo(cls, texto: str, campos_encontrados: dict = None) -> str | None:
         modelo_regex = r'(?:marca[:\s,=]*|marca es[:\s]*|modelo\s+)([a-zA-Z\s]+)'
         modelo_match = re.search(modelo_regex, texto, re.IGNORECASE)
-        if not modelo_match and 'marca' in campos_encontrados and campos_encontrados['marca'] is not None:
+        if not modelo_match and campos_encontrados is not None and 'marca' in campos_encontrados and campos_encontrados['marca'] is not None:
             palabra_clave = campos_encontrados['marca'] 
             palabras_excluidas = r'\b(de|para|como|por|si|pero|no|posible|posiblemente)\b'
             modelo_regex = rf'{palabra_clave}\s+((?!{palabras_excluidas})[a-zA-Z\s]+)'
@@ -64,7 +87,7 @@ class ServicioSpacy(ServicioModelos, ABC):
     @classmethod
     def regex_anio(cls, texto: str, campos_encontrados: dict = None) -> str | None:
         texto = texto.lower()
-        if 'cod_postal' in campos_encontrados and campos_encontrados['cod_postal'] is not None:
+        if campos_encontrados is not None and 'cod_postal' in campos_encontrados and campos_encontrados['cod_postal'] is not None:
             texto = texto.replace(campos_encontrados['cod_postal'], '').strip()
         anio_regex = r'(?:año[:\s,=]*|año es[:\s]*|del[:\s]*)([0-9]{4})'
         anio_match = re.search(anio_regex, texto)

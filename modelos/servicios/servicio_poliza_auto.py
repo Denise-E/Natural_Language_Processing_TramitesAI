@@ -15,22 +15,7 @@ class ServicioPolizasAuto(ServicioSpacy):
         
     @classmethod
     def predecir(cls, sentencias: list) -> list:
-        predicciones = ServicioSpacy.hacer_predecccion(sentencias, cls.tramite_poliza_auto)
-        cls.completar_etiquetas(predicciones)
+        predicciones = ServicioSpacy.hacer_predecccion(sentencias, cls.tramite_poliza_auto, cls.ETIQUETAS)
         return predicciones
     
-    @classmethod
-    def completar_etiquetas(cls, predicciones: list) -> list:
-        for prediccion in predicciones:
-            keys = prediccion['campos'].keys()
-            
-            if len(keys) != len(cls.ETIQUETAS):
-                for etiqueta in cls.ETIQUETAS:
-                    if etiqueta not in prediccion['campos']:
-                        # Construir el nombre del método
-                        regex_method_name = f"regex_{etiqueta}"
-                        # Obtener el método usando getattr
-                        regex_method = getattr(ServicioSpacy, regex_method_name)
-                        prediccion['campos'][etiqueta] = regex_method(prediccion['texto'], prediccion['campos'])
-
     

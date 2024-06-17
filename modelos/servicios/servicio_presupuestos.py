@@ -5,8 +5,5 @@ class ServicioPresupuestos(ServicioSpacy):
     @classmethod
     def predecir(cls, sentencias: list) -> list:
         pass
-    
-    @classmethod
-    def completar_etiquetas(cls, predicciones: list) -> list:
-        pass
+
     
