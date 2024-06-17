@@ -15,28 +15,20 @@ class ServicioSpacy(ServicioModelos, ABC):
     
     @classmethod
     def completar_etiquetas(cls, predicciones: list, etiquetas: list) -> list:
-        print("Predicciones etiquetas", type(predicciones), etiquetas)
         for prediccion in predicciones:
             keys = prediccion['campos'].keys()
-            print("1")
             if len(keys) != len(etiquetas):
-                print("2")
                 for etiqueta in etiquetas:
-                    print("3", etiqueta)
                     if etiqueta not in prediccion['campos']:
                         # Construir el nombre del método
                         regex_method_name = f"regex_{etiqueta}"
-                        print("4")
                         # Verifica que existe un método de regex para ese atributo
                         if hasattr(cls, regex_method_name):
-                            print("5")
                             # Obtener el método usando getattr
                             regex_method = getattr(cls, regex_method_name)
-                            print("6")
                             prediccion['campos'][etiqueta] = regex_method(prediccion['texto'])
-                            print("7")
                         else:
-                            print("8")
+                            prediccion['campos'][etiqueta] = None
                             print(f"El método {regex_method_name} no existe en {cls.__name__}")
     
     @classmethod
