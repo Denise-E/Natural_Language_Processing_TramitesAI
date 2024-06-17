@@ -62,7 +62,7 @@ def evaluar_asunto():
         return jsonify({"resultados": res}), 200
     except Exception as e:
         print("Error: ", e)
-        return jsonify({"msg": "Error al evualuar el asunto"}), 400
+        return jsonify({"msg": "Error al evaluar el asunto"}), 400
     
     
 @app.route("/poliza_auto", methods=['POST']) 
@@ -74,7 +74,7 @@ def poliza_auto():
         return jsonify({"resultados": res}), 200
     except Exception as e:
         print("Error: ", e)
-        return jsonify({"msg": "Error al evualuar póliza de auto"}), 400
+        return jsonify({"msg": "Error al evaluar póliza de auto"}), 400
 
 
 @app.route("/poliza_hogar", methods=['POST']) 
@@ -84,7 +84,7 @@ def poliza_hogar():
         return jsonify({"msg": "Ruta no implementada"}), 501
     except Exception as e:
         print("Error: ", e)
-        return jsonify({"msg": "Error al evualuar póliza del hogar"}), 400
+        return jsonify({"msg": "Error al evaluar póliza del hogar"}), 400
 
 
 @app.route("/denuncia_siniestro", methods=['POST']) 
@@ -94,7 +94,7 @@ def denuncia_siniestro():
         return jsonify({"msg": "Ruta no implementada"}), 501
     except Exception as e:
         print("Error: ", e)
-        return jsonify({"msg": "Error al evualuar la denuncia de siniestro"}), 400
+        return jsonify({"msg": "Error al evaluar la denuncia de siniestro"}), 400
 
 
 @app.route("/carga_presupuesto", methods=['POST']) 
@@ -104,7 +104,7 @@ def carga_presupuesto():
         return jsonify({"msg": "Ruta no implementada"}), 501
     except Exception as e:
         print("Error: ", e)
-        return jsonify({"msg": "Error al evualuar el presupuesto"}), 400
+        return jsonify({"msg": "Error al evaluar el presupuesto"}), 400
 
 @app.route("/entrenar/evaluar_asunto", methods=['POST'])  
 @cross_origin()
