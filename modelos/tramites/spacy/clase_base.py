@@ -14,7 +14,7 @@ class ModelosSpacy():
         cls.url_modelo = url
         try:
             cls.nlp = spacy.load(url+"/modelo_entrenado/model-best")
-            print("Modelo póliza auto pre existente")
+            print("Modelo pre existente")
         except OSError:
             cls.entrenar(training_data)
     
@@ -24,7 +24,7 @@ class ModelosSpacy():
         cls.prepare_model_data(training_data)
         cls.train_model()
         cls.nlp = spacy.load(cls.url_modelo+"/modelo_entrenado/model-best")
-        print("Modelo póliza auto creado exitosamente")
+        print("Modelo creado exitosamente")
     
     @classmethod
     def prepare_model_data(cls, training_data) -> None:

@@ -1,5 +1,5 @@
-from modelos.servicios.servicio_poliza_auto import ServicioPolizasAuto
-from modelos.servicios.servicio_asuntos import ServicioAsuntos
+from modelos.servicios.tramites.servicio_poliza_auto import ServicioPolizasAuto
+from modelos.servicios.asuntos.servicio_asuntos import ServicioAsuntos
 from flask_swagger_ui import get_swaggerui_blueprint
 from flask import Flask, jsonify, request
 from utils.swagger import swagger_data
