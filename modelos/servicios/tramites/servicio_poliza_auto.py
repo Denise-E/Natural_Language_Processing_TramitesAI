@@ -1,11 +1,12 @@
 from modelos.servicios.servicio_base.servicio_spacy import ServicioSpacy
+from modelos.servicios.servicio_base.servicio_tensorflow import ServicioModelos
 from modelos.tramites.poliza_auto.data.data import TRAIN_DATA as POLIZA_AUTO_DATOS
 from modelos.tramites.tramites_clase import Tramite
 import os
 
 POLIZA_AUTO_RUTA = os.getenv("POLIZA_AUTO_GUARDADO")
 
-class ServicioPolizasAuto(ServicioSpacy):
+class ServicioPolizasAuto(ServicioModelos, ServicioSpacy):
     tramite_poliza_auto = Tramite(POLIZA_AUTO_RUTA, POLIZA_AUTO_DATOS)
     ETIQUETAS = ['marca', 'cod_postal', 'modelo', 'anio']
     

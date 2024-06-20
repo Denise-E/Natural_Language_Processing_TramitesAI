@@ -1,17 +1,7 @@
 from abc import ABC, abstractmethod
 import re
 
-from modelos.servicios.servicio_base.servicio_modelos import ServicioModelos
-
-class ServicioSpacy(ServicioModelos, ABC):
-    
-    @abstractmethod
-    def entrenar(cls) -> None :
-        pass
-    
-    @abstractmethod
-    def predecir(cls, sentencias: list) -> list:
-        pass
+class ServicioSpacy(ABC):
     
     @classmethod
     def completar_etiquetas(cls, predicciones: list, etiquetas: list) -> list:
