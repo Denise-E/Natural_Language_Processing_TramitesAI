@@ -1,4 +1,4 @@
-from modelos.modelos_base.modelo_spacy import ModelosSpacy
+from modelos.modelos_base.spacy.modelo_spacy import ModelosSpacy
 
 class Tramite(ModelosSpacy):
     
