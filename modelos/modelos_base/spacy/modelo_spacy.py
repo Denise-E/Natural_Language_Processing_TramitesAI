@@ -67,7 +67,7 @@ class ModelosSpacy():
         # Para entrenar al modelo se debe ejecutar el comando de entrenamiento
         print("Entrenando el modelo...")
         subprocess.run([
-            sys.executable, "-m", "spacy", "train", "./modelos/tramites/spacy_config/config.cfg",
+            sys.executable, "-m", "spacy", "train", "./modelos/modelos_base/spacy/spacy_config/config.cfg",
             "--output", cls.url_modelo+"/modelo_entrenado",  # Directorio donde se guardará el modelo entrenado
             "--paths.train", cls.url_modelo+"/train.spacy", "--paths.dev", cls.url_modelo+"/train.spacy"
         ])
