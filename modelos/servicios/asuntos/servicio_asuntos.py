@@ -10,19 +10,19 @@ logging.getLogger('tensorflow').setLevel(logging.ERROR)
 MODELO_RUTA = os.getenv("MODELO_ASUNTO_GUARDADO")
 
 class ServicioAsuntos(ServicioModelos):    
-    modelo_asuntos = ModeloTensorFlow(vocab_size=10000, embedding=16, max_length=10000, num_epochs=4000, model_path=MODELO_RUTA)
+    modelo_asuntos = ModeloTensorFlow(max_tokens=10000, dim_vector=16, long_sentencias=10000, iteraciones=4000, ruta_modelo=MODELO_RUTA)
     
     @classmethod
     def entrenar(cls, data: dict) -> None :
         ruta_carpeta = MODELO_RUTA+"/modelo_entrenado"
         shutil.rmtree(ruta_carpeta)         
             
-        vocab_size = data.get("vocab_size") if 'vocab_size' in data else 10000
-        embedding = data.get("embedding") if 'embedding' in data else 16
-        max_length = data.get("max_length") if 'max_length' in data else 10000
-        num_epochs = data.get("num_epochs") if 'num_epochs' in data else 4000
+        max_tokens = data.get("max_tokens") if 'max_tokens' in data else 10000
+        dim_vector = data.get("dim_vector") if 'dim_vector' in data else 16
+        long_sentencias = data.get("long_sentencias") if 'long_sentencias' in data else 10000
+        iteraciones = data.get("iteraciones") if 'iteraciones' in data else 4000
             
-        cls.modelo_asuntos = ModeloTensorFlow(vocab_size=vocab_size, embedding=embedding, max_length=max_length, num_epochs=num_epochs, model_path=MODELO_RUTA)
+        cls.modelo_asuntos = ModeloTensorFlow(max_tokens=max_tokens, dim_vector=dim_vector, long_sentencias=long_sentencias, iteraciones=iteraciones, ruta_modelo=MODELO_RUTA)
         
     @classmethod
     def predecir(cls, sentencias: list) -> list:

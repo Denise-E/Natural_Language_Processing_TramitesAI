@@ -348,25 +348,25 @@ swagger_data = {
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "vocab_size": {
+                                "max_tokens": {
                                     "type": "integer",
                                     "example": 10000,
                                     "description": "Tamaño del vocabulario (por defecto: 10000)"
                                 },
-                                "embedding": {
+                                "dim_vector": {
                                     "type": "integer",
                                     "example": 16,
-                                    "description": "Tamaño del embedding (por defecto: 16)"
+                                    "description": "Tamaño del vector (por defecto: 16)"
                                 },
-                                "max_length": {
+                                "long_sentencias": {
                                     "type": "integer",
                                     "example": 10000,
-                                    "description": "Longitud máxima (por defecto: 10000)"
+                                    "description": "Longitud máxima de las secuencias de entrada (por defecto: 10000)"
                                 },
-                                "num_epochs": {
+                                "iteraciones": {
                                     "type": "integer",
                                     "example": 4000,
-                                    "description": "Número de épocas (por defecto: 4000)"
+                                    "description": "Cantidad de iteraciones para el entrenamiento (por defecto: 4000)"
                                 }
                             },
                             "additionalProperties": False
