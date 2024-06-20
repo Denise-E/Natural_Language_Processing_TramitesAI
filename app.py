@@ -4,8 +4,6 @@ from flask_swagger_ui import get_swaggerui_blueprint
 from flask import Flask, jsonify, request
 from utils.swagger import swagger_data
 from flask_cors import cross_origin
-import shutil
-import os
 
 app = Flask(__name__) 
 
@@ -25,8 +23,6 @@ swaggerui_blueprint = get_swaggerui_blueprint(
 )
 
 app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
-    
-servicio_asuntos = ServicioAsuntos()
 
 # Routes
 @app.route("/ping", methods=['GET']) 
@@ -58,7 +54,7 @@ def ping_pong():
 def evaluar_asunto():
     try:
         textos = request.json.get('textos')
-        res = servicio_asuntos.predecir(textos)
+        res = ServicioAsuntos.predecir(textos)
         return jsonify({"resultados": res}), 200
     except Exception as e:
         print("Error: ", e)
@@ -111,19 +107,8 @@ def carga_presupuesto():
 def entrenar_modelo_asunto():
     try:
         try:
-            MODELO_RUTA = os.getenv("MODELO_ASUNTO_GUARDADO")
-            ruta_carpeta = MODELO_RUTA+"/modelo_entrenado"
-            shutil.rmtree(ruta_carpeta)
-            data = request.json            
-            
-            vocab_size = data.get("vocab_size") if 'vocab_size' in data else 10000
-            embedding = data.get("embedding") if 'embedding' in data else 16
-            max_length = data.get("max_length") if 'max_length' in data else 10000
-            num_epochs = data.get("num_epochs") if 'num_epochs' in data else 4000
-            
-            ServicioAsuntos(
-                vocab_size=vocab_size, embedding=embedding, max_length=max_length, num_epochs=num_epochs
-            )
+            data = request.json
+            ServicioAsuntos.entrenar(data)
             return jsonify({"resultado": True}), 200
         except Exception as e:
             print("Error al entrenar modelo de asuntos: ", e)
