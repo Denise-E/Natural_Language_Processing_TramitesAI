@@ -1,28 +1,17 @@
 from modelos.servicios.tramites.servicio_poliza_auto import ServicioPolizasAuto
 from modelos.servicios.asuntos.servicio_asuntos import ServicioAsuntos
-from flask_swagger_ui import get_swaggerui_blueprint
+from utils.swagger import swagger_data, swaggerui_blueprint, SWAGGER_URL
 from flask import Flask, jsonify, request
-from utils.swagger import swagger_data
 from flask_cors import cross_origin
 
 app = Flask(__name__) 
 
 # Swagger - documentación
+app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
+
 @app.route('/swagger.json')
 def swagger():
     return jsonify(swagger_data)
-
-SWAGGER_URL = '/swagger'
-API_URL = '/swagger.json'
-swaggerui_blueprint = get_swaggerui_blueprint(
-    SWAGGER_URL,
-    API_URL,
-    config={
-        'app_name': "Tramites AI"
-    }
-)
-
-app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
 # Routes
 @app.route("/ping", methods=['GET']) 
