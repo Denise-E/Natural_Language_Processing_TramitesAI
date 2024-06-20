@@ -36,9 +36,9 @@ class ModelosSpacy():
         # Recorremos nuestros datos de entrenamiento
         for dato  in tqdm(datos): 
             # Obtenemos los textos / las sentencias de entrenamiento
-            texto = dato['text']
+            texto = dato['texto']
             # Obtenemos las entidades encontrada en esa sentencia, incluyendo el inicio y final de estos.
-            etiquetas = dato['entities']
+            etiquetas = dato['entidades']
             # Crea un documento por cada dato de entrenamiento
             doc = cls.pln.make_doc(texto) 
             entidades = []

@@ -1,5 +1,5 @@
 from modelos.tramites.poliza_auto.data.data import TRAIN_DATA as POLIZA_AUTO_DATOS
-from modelos.servicios.servicio_base.servicio_tensorflow import ServicioModelos
+from modelos.servicios.servicio_base.servicio_modelos import ServicioModelos
 from modelos.servicios.servicio_base.servicio_spacy import ServicioSpacy
 from modelos.tramites.tramites_clase import Tramite
 import os

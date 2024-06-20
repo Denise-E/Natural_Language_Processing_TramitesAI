@@ -1,4 +1,4 @@
-from modelos.servicios.servicio_base.servicio_tensorflow import ServicioModelos
+from modelos.servicios.servicio_base.servicio_modelos import ServicioModelos
 from modelos.modelos_base.modelo_tensorflow import ModeloTensorFlow
 import logging
 import shutil
