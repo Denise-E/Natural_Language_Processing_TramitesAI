@@ -88,9 +88,9 @@ class ModeloTensorFlow():
         cls.cantidad_categorias = df['Categoria'].nunique()
 
     @classmethod
-    def particionar_datos(cls, k=5):
+    def particionar_datos(cls):
         # Crea el objeto StratifiedKFold
-        skf = StratifiedKFold(n_splits=k)
+        skf = StratifiedKFold(n_splits=cls.cantidad_categorias)
 
         # Itera sobre los folds generados por StratifiedKFold dentro del conjunto de entrenamiento
         for train_index, val_index in skf.split(cls.sentencias_entrenameinto, cls.etiquetas_entrenameinto):
@@ -98,6 +98,9 @@ class ModeloTensorFlow():
             X_val_fold = [cls.sentencias_entrenameinto[i] for i in val_index]
             y_train_fold = [cls.etiquetas_entrenameinto[i] for i in train_index]
             y_val_fold = [cls.etiquetas_entrenameinto[i] for i in val_index]
+        
+        print("SENTENCIAS ENTRENAMIENTO", len(cls.sentencias_entrenameinto))
+        print("SENTENCIAS PRUEBAS", len(cls.sentencias_prueba))
             
  
     @classmethod
