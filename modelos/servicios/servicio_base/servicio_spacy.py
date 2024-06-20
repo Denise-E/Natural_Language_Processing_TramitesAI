@@ -1,38 +1,37 @@
-from abc import ABC, abstractmethod
 import re
 
-class ServicioSpacy(ABC):
+class ServicioSpacy():
     
     @classmethod
     def completar_etiquetas(cls, predicciones: list, etiquetas: list) -> list:
         for prediccion in predicciones:
-            keys = prediccion['campos'].keys()
-            if len(keys) != len(etiquetas):
+            claves = prediccion['campos'].keys()
+            if len(claves) != len(etiquetas):
                 for etiqueta in etiquetas:
                     if etiqueta not in prediccion['campos']:
                         # Construir el nombre del método
-                        regex_method_name = f"regex_{etiqueta}"
+                        metodo_regex_nombre = f"regex_{etiqueta}"
                         # Verifica que existe un método de regex para ese atributo
-                        if hasattr(cls, regex_method_name):
+                        if hasattr(cls, metodo_regex_nombre):
                             # Obtener el método usando getattr
-                            regex_method = getattr(cls, regex_method_name)
-                            prediccion['campos'][etiqueta] = regex_method(prediccion['texto'])
+                            metodo_regex = getattr(cls, metodo_regex_nombre)
+                            prediccion['campos'][etiqueta] = metodo_regex(prediccion['texto'])
                         else:
                             prediccion['campos'][etiqueta] = None
-                            print(f"El método {regex_method_name} no existe en {cls.__name__}")
+                            print(f"El método {metodo_regex_nombre} no existe en {cls.__name__}")
     
     @classmethod
-    def hacer_predecccion(cls, textos: list, model_class, etiquetas:list) -> list:
+    def hacer_predecccion(cls, textos: list, etiquetas:list, modelo) -> list:
         """
         Retorna una lista de diccionarios, cada diccionario contiene la sentencia evaluada y las etiquetas
         que fueron encontradas en ella.
         
-        params:
-        model_class: Clase del modelo de SpaCy a utilizar para predecir
+        Parámetros:
+        modelo: Clase del modelo de SpaCy a utilizar para predecir
         """
         predicciones = []
         for sentencia in textos:
-            resultado_predicciones = model_class.predict([sentencia])
+            resultado_predicciones = modelo.predecir([sentencia])
             campos = {}
             for resultado in resultado_predicciones:
                 if resultado:

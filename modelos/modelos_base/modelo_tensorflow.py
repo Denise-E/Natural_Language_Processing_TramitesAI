@@ -53,7 +53,7 @@ class ModeloTensorFlow():
     def crear_modelo(cls):
         # Obtener datos de entrenamiento
         cls.obtener_datos()
-        cls.perform_cross_validation()
+        cls.particionar_datos()
         # Configurar y entrenar el modelo
         cls.configuracion_entrenamiento_modelo()
         # Guardar el modelo entrenado y el tokenizer
@@ -69,7 +69,7 @@ class ModeloTensorFlow():
     def obtener_datos(cls):
         # Este método trabaja con Pandas para la obtención de los datos de entrenamiento y de prueba a partir de archivo csv
         # Crea el dataframe a partir del csv
-        df = pd.read_csv(f'{cls.model_path}/asuntos_data/asuntos.csv')
+        df = pd.read_csv(f'{cls.model_path}/datos/datos.csv')
 
         # Separa las sentencias y las etiquetas
         sentences = df['Sentencias'].tolist()
@@ -88,7 +88,7 @@ class ModeloTensorFlow():
         cls.categories_quantity = df['Categoria'].nunique()
 
     @classmethod
-    def perform_cross_validation(cls, k=5):
+    def particionar_datos(cls, k=5):
         # Crea el objeto StratifiedKFold
         skf = StratifiedKFold(n_splits=k)
 
@@ -99,32 +99,7 @@ class ModeloTensorFlow():
             y_train_fold = [cls.training_labels[i] for i in train_index]
             y_val_fold = [cls.training_labels[i] for i in val_index]
             
-            # Aquí entrenarías y evaluarías tu modelo en cada fold
-            # Esto es solo un ejemplo de cómo iterar sobre los folds
-            print("Fold entrenamiento:", len(X_train_fold), "Fold validación:", len(X_val_fold))
-
-    '''
-    @classmethod
-    def obtener_datos(cls):
-        # Este metodo trabaja con Pandas para la obtención de los datso de entrenameinto y de prueba a partir de archivo csv
-        # Crea el dataframe a partir del csv
-        df = pd.read_csv(f'{cls.model_path}/asuntos_data/asuntos.csv')
-        #print(df)
-        
-        # Es importante que no hayan espacios en lso títulos, para que puedan encontrarse las columnas. Por ejemplo "Uso" y no " Uso "
-        # Filtra los datos de capacitación y testeo
-        training_data = df[df['Uso'] == 'C']
-        testing_data = df[df['Uso'] == 'T']
-
-        # Separa las sentencias de la respuesta esperada
-        cls.training_sentences = training_data['Sentencias'].tolist()
-        cls.training_labels = training_data['Categoria'].tolist()
-        cls.testing_sentences = testing_data['Sentencias'].tolist()
-        cls.testing_labels = testing_data['Categoria'].tolist()
-        
-        # Obtiene la cantidad de valores distintos en la columna 'Categoria'
-        cls.categories_quantity = df['Categoria'].nunique()
-    '''
+ 
     @classmethod
     def configuracion_entrenamiento_modelo(cls):
         # 1. Tokenización de las sentencias

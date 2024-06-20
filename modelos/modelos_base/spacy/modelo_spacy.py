@@ -6,64 +6,59 @@ import spacy
 import sys
 
 class ModelosSpacy():
-    nlp = None
+    pln = None # Avrebiatura de Procesamiento de Lenguaje Natural
     url_modelo = None
     
     @classmethod
     def inicilizacion(cls, url: str, training_data: list) -> None:
         cls.url_modelo = url
         try:
-            cls.nlp = spacy.load(url+"/modelo_entrenado/model-best")
+            cls.pln = spacy.load(url+"/modelo_entrenado/model-best")
             print("Modelo pre existente")
         except OSError:
             cls.entrenar(training_data)
     
     @classmethod
     def entrenar(cls, training_data: list) -> None:
-        cls.nlp = spacy.load("es_core_news_sm")
-        cls.prepare_model_data(training_data)
-        cls.train_model()
-        cls.nlp = spacy.load(cls.url_modelo+"/modelo_entrenado/model-best")
+        cls.pln = spacy.load("es_core_news_sm")
+        cls.preparar_datos(training_data)
+        cls.entrenar_modelo()
+        cls.pln = spacy.load(cls.url_modelo+"/modelo_entrenado/model-best")
         print("Modelo creado exitosamente")
     
     @classmethod
-    def prepare_model_data(cls, training_data) -> None:
-        training_data = training_data
-
-        print(training_data[0]['entities'])
-        print(training_data[0]['text'])
-
+    def preparar_datos(cls, datos: list) -> None:
         """
         SpaCy requiere que los datos de entrenamiento deben ser del tipo docbin y deben guardarse en un archivo .spacy
         """
         doc_bin = DocBin()
 
         # Recorremos nuestros datos de entrenamiento
-        for training_example  in tqdm(training_data): 
+        for dato  in tqdm(datos): 
             # Obtenemos los textos / las sentencias de entrenamiento
-            text = training_example['text']
+            texto = dato['text']
             # Obtenemos las entidades encontrada en esa sentencia, incluyendo el inicio y final de estos.
-            labels = training_example['entities']
+            etiquetas = dato['entities']
             # Crea un documento por cada dato de entrenamiento
-            doc = cls.nlp.make_doc(text) 
-            ents = []
+            doc = cls.pln.make_doc(texto) 
+            entidades = []
             
-            # Cada laabel contiene un string y dos ints que marcan el inicio y el final del string en la sentencia
-            for start, end, label in labels:
-                #print("DATA", start, end, label)
+            # Cada etiqueta contiene un string y dos ints que marcan el inicio y el final del string en la sentencia
+            for principio, fin, etiqueta in etiquetas:
+                #print("DATA", principio, fin, etiqueta)
                 # Le asignamos entidades a nuestro doc
-                span = doc.char_span(start, end, label=label, alignment_mode="contract")
+                span = doc.char_span(principio, fin, label=etiqueta, alignment_mode="contract")
                 #print("SPAN", span)
                 if span is not None:
-                    ents.append(span)
-            filtered_ents = filter_spans(ents)
-            doc.ents = filtered_ents 
+                    entidades.append(span)
+            entidades_filtradas = filter_spans(entidades)
+            doc.ents = entidades_filtradas 
             doc_bin.add(doc)
 
         doc_bin.to_disk(cls.url_modelo+"/train.spacy") # Se pisa cada vez que re corre la línea de código
     
     @classmethod
-    def train_model(cls) -> None:
+    def entrenar_modelo(cls) -> None:
         # Para entrenar al modelo se debe ejecutar el comando de entrenamiento
         print("Entrenando el modelo...")
         subprocess.run([
@@ -73,13 +68,13 @@ class ModelosSpacy():
         ])
     
     @classmethod
-    def predict(cls, sentences: list) -> list:
-        if cls.nlp is None:
+    def predecir(cls, sentencias: list) -> list:
+        if cls.pln is None:
             raise ValueError("El modelo no está cargado.")
         
         res = []
-        for text in sentences:
-            doc = cls.nlp(text)
+        for sentencia in sentencias:
+            doc = cls.pln(sentencia)
             for ent in doc.ents:
                 res.append({ent.label_ : ent.text})
         return res

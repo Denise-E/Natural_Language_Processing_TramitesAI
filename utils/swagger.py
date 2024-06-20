@@ -294,14 +294,14 @@ swagger_data = {
                         "description": "Petición procesada exitosamente",
                         "examples": {
                             "application/json": [
-                                { "resultado": True },
-                                { "resultado": False }
+                                { "msg": True },
+                                { "msg": False }
                             ]
                         },
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "resultado": {
+                                "msg": {
                                     "type": "boolean",
                                     "example": True
                                 }
@@ -313,7 +313,7 @@ swagger_data = {
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "resultado": {
+                                    "msg": {
                                         "type": "boolean",
                                         "example": True
                                     }
@@ -379,7 +379,7 @@ swagger_data = {
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "resultado": {
+                                "msg": {
                                     "type": "boolean",
                                     "example": True
                                 }

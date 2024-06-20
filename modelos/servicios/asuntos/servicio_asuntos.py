@@ -4,7 +4,7 @@ import logging
 import shutil
 import os
 
-# Suprimir logs de tensorflow
+# Suprime logs de tensorflow
 logging.getLogger('tensorflow').setLevel(logging.ERROR)
 
 MODELO_RUTA = os.getenv("MODELO_ASUNTO_GUARDADO")

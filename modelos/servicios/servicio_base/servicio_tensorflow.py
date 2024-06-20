@@ -1,12 +1,12 @@
 from abc import ABC, abstractmethod
-import re
 
 class ServicioModelos(ABC):
     
     @abstractmethod
-    def entrenar(cls) -> None :
+    def entrenar(cls) -> None:
         pass
     
     @abstractmethod
     def predecir(cls, sentencias: list) -> list:
         pass
+    

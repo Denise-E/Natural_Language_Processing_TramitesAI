@@ -7,7 +7,7 @@ from flask_cors import cross_origin
 
 app = Flask(__name__) 
 
-# Swagger documentation
+# Swagger - documentación
 @app.route('/swagger.json')
 def swagger():
     return jsonify(swagger_data)
@@ -29,21 +29,7 @@ app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 @cross_origin()
 def ping_pong():
     try:
-        # Respuesta temporal para uso del equipo
-        return jsonify({
-        "resultados": [
-                {
-                    "texto": "Hola quiero consultar por la póliza para un ford fiesta 2018, mi código postal es 5000",
-                    "campos": {
-                        'marca': 'ford',
-                        'modelo': 'fiesta',
-                        'anio': '2018',
-                        'cod_postal': '5000'
-                    }, 
-                }
-            ]
-        }), 200
-        #return {"msg": "pong"}, 200
+        return {"msg": "pong"}, 200
     except Exception as e:
         print("Error: ", e)
         return jsonify({"msg": 'Error'}), 400
@@ -109,7 +95,7 @@ def entrenar_modelo_asunto():
         try:
             data = request.json
             ServicioAsuntos.entrenar(data)
-            return jsonify({"resultado": True}), 200
+            return jsonify({"msg": True}), 200
         except Exception as e:
             print("Error al entrenar modelo de asuntos: ", e)
             return jsonify({"msg": "Error al entrenar modelo asuntos"}), 400
@@ -124,7 +110,7 @@ def entrenar_modelo_poliza_auto():
     try:
         try:
             ServicioPolizasAuto.entrenar()
-            return jsonify({"resultado": True}), 200
+            return jsonify({"msg": True}), 200
         except Exception as e:
             # Sumaría log
             print("Error al entrenar modelo pílizas de auto: ", e)
