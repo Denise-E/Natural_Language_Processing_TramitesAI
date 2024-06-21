@@ -46,6 +46,7 @@ class ServicioSpacy(ServicioModelos):
             for resultado in resultado_predicciones:
                 if resultado:
                     for etiqueta, valor in resultado.items():
+                        etiqueta = etiqueta.lower()
                         campos[etiqueta] = valor
             
             predicciones.append(
