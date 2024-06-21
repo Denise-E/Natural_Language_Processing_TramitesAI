@@ -5,7 +5,7 @@ import subprocess
 import spacy
 import sys
 
-class ModelosSpacy():
+class ModeloSpacy():
     pln = None # Avrebiatura de Procesamiento de Lenguaje Natural
     url_modelo = None
     

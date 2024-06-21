@@ -1,8 +1,8 @@
-from modelos.modelos_base.spacy.modelo_spacy import ModelosSpacy
+from modelos.modelos_base.spacy.modelo_spacy import ModeloSpacy
 
-class Tramite(ModelosSpacy):
+class Tramite(ModeloSpacy):
     
     @classmethod
     def __init__(cls, url: str, training_data: list) -> None:
-        ModelosSpacy.inicilizacion(url, training_data)
+        ModeloSpacy.inicilizacion(url, training_data)
     
