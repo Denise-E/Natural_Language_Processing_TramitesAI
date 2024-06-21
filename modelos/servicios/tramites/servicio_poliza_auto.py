@@ -6,7 +6,7 @@ import os
 
 POLIZA_AUTO_RUTA = os.getenv("POLIZA_AUTO_GUARDADO")
 
-class ServicioPolizasAuto(ServicioModelos, ServicioSpacy):
+class ServicioPolizasAuto(ServicioSpacy):
     modelo_poliza_auto = Tramite(POLIZA_AUTO_RUTA, POLIZA_AUTO_DATOS)
     ETIQUETAS = ['marca', 'cod_postal', 'modelo', 'anio']
     

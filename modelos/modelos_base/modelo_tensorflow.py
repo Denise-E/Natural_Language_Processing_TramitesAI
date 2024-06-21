@@ -1,14 +1,14 @@
-import os
-import pickle
-import logging
-import numpy as np
-import pandas as pd
-import tensorflow as tf
-from keras.utils import to_categorical
-from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split, StratifiedKFold
+from keras.preprocessing.sequence import pad_sequences
+from keras.preprocessing.text import Tokenizer
+from keras.utils import to_categorical
 from keras.models import load_model
+import tensorflow as tf
+import pandas as pd
+import numpy as np
+import pickle
+import shutil
+import os
 
 class ModeloTensorFlow():
     # Parámetros para la configuración del modelo
@@ -190,4 +190,18 @@ class ModeloTensorFlow():
         predicciones_int = [int(prediccion) for prediccion in predicciones]
         
         return predicciones_int
+    
+    @classmethod
+    def re_entrenar(cls, data: dict) -> None:
+        # Elimina el modelo ya creado
+        ruta_modelo = cls.ruta_modelo+"/modelo_entrenado"
+        shutil.rmtree(ruta_modelo) 
+        
+        # Actualiza las variables de clase según los datos recibidos
+        cls.max_tokens = data['max_tokens']
+        cls.dim_vector = data['dim_vector']
+        cls.long_sentencias = data['long_sentencias']
+        cls.iteraciones = data['iteraciones']
+        # Vuelve a crear el modelo
+        cls.crear_modelo()
     
