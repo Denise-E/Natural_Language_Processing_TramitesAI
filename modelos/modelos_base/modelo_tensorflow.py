@@ -6,9 +6,13 @@ from keras.models import load_model
 import tensorflow as tf
 import pandas as pd
 import numpy as np
+import logging
 import pickle
 import shutil
 import os
+
+# Suprime logs de tensorflow
+logging.getLogger('tensorflow').setLevel(logging.ERROR)
 
 class ModeloTensorFlow():
     # Parámetros para la configuración del modelo
@@ -54,8 +58,6 @@ class ModeloTensorFlow():
         # Obtener datos de entrenamiento
         cls.obtener_datos()
         cls.particionar_datos()
-        # Configurar y entrenar el modelo
-        cls.configuracion_entrenamiento_modelo()
         # Guardar el modelo entrenado y el tokenizador
         cls.model.save(os.path.join(cls.ruta_modelo, 'modelo_entrenado'))
         with open(os.path.join(cls.ruta_modelo, 'tokenizer.pkl'), 'wb') as handle:
@@ -86,6 +88,7 @@ class ModeloTensorFlow():
 
         # Obtiene la cantidad de valores distintos en la columna 'Categoria'
         cls.cantidad_categorias = df['Categoria'].nunique()
+        
 
     @classmethod
     def particionar_datos(cls):
@@ -101,9 +104,40 @@ class ModeloTensorFlow():
         
         print("SENTENCIAS ENTRENAMIENTO", len(cls.sentencias_entrenameinto))
         print("SENTENCIAS PRUEBAS", len(cls.sentencias_prueba))
+        # Configurar y entrenar el modelo
+        cls.configuracion_entrenamiento_modelo(X_train_fold, y_train_fold, X_val_fold, y_val_fold)
             
- 
     @classmethod
+    def configuracion_entrenamiento_modelo(cls, X_train, y_train, X_val, y_val):
+        # Aquí se configura el modelo antes del entrenamiento
+        cls.tokenizador = Tokenizer(num_words=cls.max_tokens, oov_token=cls.OOV_TOKEN)
+        cls.tokenizador.fit_on_texts(X_train)
+
+        X_train_sequences = cls.tokenizador.texts_to_sequences(X_train)
+        X_val_sequences = cls.tokenizador.texts_to_sequences(X_val)
+
+        X_train_padded = pad_sequences(X_train_sequences, maxlen=cls.long_sentencias, padding=cls.RELLENO, truncating=cls.TIPO_TRUNCADO)
+        X_val_padded = pad_sequences(X_val_sequences, maxlen=cls.long_sentencias, padding=cls.RELLENO, truncating=cls.TIPO_TRUNCADO)
+
+        cls.model = tf.keras.Sequential([
+            tf.keras.layers.Embedding(cls.max_tokens, cls.dim_vector, input_length=cls.long_sentencias),
+            tf.keras.layers.GlobalAveragePooling1D(),
+            tf.keras.layers.Dense(24, activation='relu'),
+            tf.keras.layers.Dense(cls.cantidad_categorias, activation='softmax')
+        ])
+
+        cls.model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+        X_train_padded = np.array(X_train_padded)
+        y_train = np.array(y_train)
+        X_val_padded = np.array(X_val_padded)
+        y_val = np.array(y_val)
+        
+        print("SENTENCIAS PRUEBA", len(X_val_padded))
+        print("SENTENCIAS ENTRENAMIENTO", len(X_train_padded), X_train_padded)
+        cls.model.fit(X_train_padded, y_train, epochs=cls.iteraciones, validation_data=(X_val_padded, y_val))
+        # history = model.fit(training_padded, etiquetas_entrenameinto, epochs=cls.iteraciones, validation_data=(testing_padded, etiquetas_prueba), verbose=2)
+        
+    '''@classmethod
     def configuracion_entrenamiento_modelo(cls):
         # 1. Tokenización de las sentencias
         """
@@ -169,7 +203,7 @@ class ModeloTensorFlow():
         accuracy = relacionado a los datos de entrenameinto 
         val_accuracy = relacionado a los datos de prueba / testeo
         """
-        
+     '''   
     @classmethod
     def predecir(cls, sentencias: list) -> list:
         """

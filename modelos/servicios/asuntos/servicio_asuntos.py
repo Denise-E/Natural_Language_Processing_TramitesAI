@@ -1,12 +1,7 @@
 from modelos.servicios.servicio_base.servicio_tensorflow import ServicioTensorFlow
 from modelos.servicios.servicio_base.servicio_modelos import ServicioModelos
 from modelos.modelos_base.modelo_tensorflow import ModeloTensorFlow
-import logging
 import os
-
-
-# Suprime logs de tensorflow
-logging.getLogger('tensorflow').setLevel(logging.ERROR)
 
 MODELO_RUTA = os.getenv("MODELO_ASUNTO_GUARDADO")
 LONG_SENTENCIAS = 10000
