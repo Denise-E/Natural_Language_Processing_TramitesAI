@@ -16,7 +16,7 @@ class ServicioPolizasAuto(ServicioSpacy):
         
     @classmethod
     def predecir(cls, sentencias: list) -> list:
-        predicciones = ServicioSpacy.hacer_predecccion(sentencias, cls.modelo_poliza_auto, cls.ETIQUETAS)
+        predicciones = ServicioSpacy.hacer_predecccion(sentencias, cls.ETIQUETAS, cls.modelo_poliza_auto)
         return predicciones
     
     
