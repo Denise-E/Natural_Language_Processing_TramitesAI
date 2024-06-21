@@ -216,7 +216,7 @@ Categoria,Sentencias
 2,necesito cotización póliza auto
 2,cotización seguro de auto
 2,solicitar presupuesto de póliza de auto
-2,presupuesto seguro auto
+2,presupuesto póliza seguro auto
 2,precio seguro de auto
 2,tarifa seguro de auto
 2,valor seguro de auto
@@ -347,13 +347,13 @@ Categoria,Sentencias
 3,cotizacion de póliza del hogar
 3,cotizacion póliza hogar
 3,cotizacion poliza hogar
-3,solicitud de presupuesto para hogar
+3,solicitud de presupuesto póliza para hogar
 3,cotización de seguro de vivienda
 3,pedir presupuesto de póliza de hogar
 3,pedido hogar por favor cotizar
-3,solicitar presupuesto seguro hogar
+3,solicitar presupuesto para póliza del hogar
 3,necesito cotización seguro vivienda
-3,presupuesto seguro casa
+3,presupuesto póliza para la casa
 3,precio seguro hogar
 3,tarifa seguro vivienda
 3,valor seguro hogar
@@ -783,7 +783,7 @@ Categoria,Sentencias
 1,me ha ocurrido un accidente doy aviso
 1,me ha ocurrido un accidente
 1,aviso accidente ocurrido
-1,denuncio accidente sucedido
+1,denuncio un accidente sucedido
 2,hola pido cotización para la póliza del auto
 2,necesito pedir cotización para la póliza del auto
 2,coticen póliza del auto
@@ -931,3 +931,31 @@ Categoria,Sentencias
 0,Te damos una demo para que nos conozcas
 0,Registrate gratis
 0,¡Imperdible!
+0,Inscribite en nuestra página
+0,Inscribite y ganá
+0,Inscribite y no te pierdas de las novedades
+0,"No te pierdas las última noticias, suscribite"
+0,suscribite a nuestro newsletter
+0,inscribite y enterate primero
+0,No te lo poder perder
+0,increible oportunidad
+0,que esperás para inscribirte
+1,pruebas siniestro denuncia 
+1,reporte siniestro
+1,aviso ocurrió un accidente 
+1,choque informe
+1,grave accidente 
+1,siniestro denuncia
+1,siniestro ocurrido hay heridos
+2,cotización póliza del auto
+2,cotización póliza del auto requerida
+2,cotización póliza del auto envio datos
+2,cotización póliza del auto envio info
+2,cotización póliza del auto envio información
+2,deso cotización póliza del auto
+3,cotización póliza del hogar
+3,cotización póliza para mi hogar
+3,cotización póliza para el hogar
+3,póliza del hogar cotización
+3,póliza del hogar por favor cotizar
+3,póliza para el hogar pedido cotización
