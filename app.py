@@ -1,6 +1,6 @@
 from modelos.servicios.tramites.servicio_poliza_auto import ServicioPolizasAuto
 from modelos.servicios.asuntos.servicio_asuntos import ServicioAsuntos
-from utils.swagger import swagger_data, swaggerui_blueprint, SWAGGER_URL
+from utiles.swagger import swagger_data, swaggerui_blueprint, SWAGGER_URL
 from flask import Flask, jsonify, request
 from flask_cors import cross_origin
 
