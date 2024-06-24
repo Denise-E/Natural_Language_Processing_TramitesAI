@@ -1,14 +1,13 @@
 from sklearn.model_selection import train_test_split, StratifiedKFold
 from keras.preprocessing.sequence import pad_sequences
 from keras.preprocessing.text import Tokenizer
-from keras.utils import to_categorical
 from keras.models import load_model
 import tensorflow as tf
 import pandas as pd
 import numpy as np
 import logging
-import pickle
 import shutil
+import pickle
 import os
 
 # Suprime logs de tensorflow
@@ -109,37 +108,7 @@ class ModeloTensorFlow():
             
     @classmethod
     def configuracion_entrenamiento_modelo(cls, X_train, y_train, X_val, y_val):
-        # Aquí se configura el modelo antes del entrenamiento
-        cls.tokenizador = Tokenizer(num_words=cls.max_tokens, oov_token=cls.OOV_TOKEN)
-        cls.tokenizador.fit_on_texts(X_train)
-
-        X_train_sequences = cls.tokenizador.texts_to_sequences(X_train)
-        X_val_sequences = cls.tokenizador.texts_to_sequences(X_val)
-
-        X_train_padded = pad_sequences(X_train_sequences, maxlen=cls.long_sentencias, padding=cls.RELLENO, truncating=cls.TIPO_TRUNCADO)
-        X_val_padded = pad_sequences(X_val_sequences, maxlen=cls.long_sentencias, padding=cls.RELLENO, truncating=cls.TIPO_TRUNCADO)
-
-        cls.model = tf.keras.Sequential([
-            tf.keras.layers.Embedding(cls.max_tokens, cls.dim_vector, input_length=cls.long_sentencias),
-            tf.keras.layers.GlobalAveragePooling1D(),
-            tf.keras.layers.Dense(24, activation='relu'),
-            tf.keras.layers.Dense(cls.cantidad_categorias, activation='softmax')
-        ])
-
-        cls.model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-        X_train_padded = np.array(X_train_padded)
-        y_train = np.array(y_train)
-        X_val_padded = np.array(X_val_padded)
-        y_val = np.array(y_val)
-        
-        print("SENTENCIAS PRUEBA", len(X_val_padded))
-        print("SENTENCIAS ENTRENAMIENTO", len(X_train_padded), X_train_padded)
-        cls.model.fit(X_train_padded, y_train, epochs=cls.iteraciones, validation_data=(X_val_padded, y_val))
-        # history = model.fit(training_padded, etiquetas_entrenameinto, epochs=cls.iteraciones, validation_data=(testing_padded, etiquetas_prueba), verbose=2)
-        
-    '''@classmethod
-    def configuracion_entrenamiento_modelo(cls):
-        # 1. Tokenización de las sentencias
+        # 1. Tokenización de las sentencias y tratamiento de los datos
         """
         Tokenizador:
         
@@ -149,13 +118,12 @@ class ModeloTensorFlow():
         - El valor dado al parámetro oov_token es el identificador que se usará para luego para tokenizar palabras que no se encontraban, o no fueron tokenizados, al procesarse los datos de capacitación. 
         El token '0' guardará este valor, en nuetsro caso {0: "<OOV>"}
         """
-        tokenizador = Tokenizer(num_words=cls.max_tokens, oov_token=cls.OOV_TOKEN) 
-        tokenizador.fit_on_texts(cls.sentencias_entrenameinto)
-        cls.tokenizador = tokenizador
-        word_indexed = tokenizador.word_index # Genera la lista de las palabras tokenizadas
-        print("Indexed  WORDS", word_indexed)
-        sentencias_entrenameinto = cls.tokenizador.texts_to_sequences(cls.sentencias_entrenameinto) # Crea la secuencia de tokens para cada oración. Lista de listas.
-        
+        cls.tokenizador = Tokenizer(num_words=cls.max_tokens, oov_token=cls.OOV_TOKEN)
+        cls.tokenizador.fit_on_texts(X_train)
+
+        X_train_sequences = cls.tokenizador.texts_to_sequences(X_train)
+        X_val_sequences = cls.tokenizador.texts_to_sequences(X_val)
+
         """
         pad_sequences:
         
@@ -164,46 +132,29 @@ class ModeloTensorFlow():
         - Se completará con el OOV_TOKEN al final, dado por el valor 'post' del parámetro padding.
         Por ejemplo, en una oración de 3 palabras que deba llevarse a una longitud de 5 palabras, quedará [1,2,3,<OOV>,<OOV>]
         """
-        training_padded = pad_sequences(sentencias_entrenameinto,maxlen=cls.long_sentencias, padding='post')  
-        etiquetas_entrenameinto = to_categorical(cls.etiquetas_entrenameinto, num_classes=cls.cantidad_categorias)
-        #print("PADDED SHAPE", training_padded.shape) #Filas x columns - muestra cantidades
-        
+        X_train_padded = pad_sequences(X_train_sequences, maxlen=cls.long_sentencias, padding=cls.RELLENO, truncating=cls.TIPO_TRUNCADO)
+        X_val_padded = pad_sequences(X_val_sequences, maxlen=cls.long_sentencias, padding=cls.RELLENO, truncating=cls.TIPO_TRUNCADO)
+
         # 2. Creación y configuración del modelo de red neuronal
-        model = tf.keras.Sequential([
+        cls.model = tf.keras.Sequential([
             tf.keras.layers.Embedding(cls.max_tokens, cls.dim_vector, input_length=cls.long_sentencias),
             tf.keras.layers.GlobalAveragePooling1D(),
             tf.keras.layers.Dense(24, activation='relu'),
-            tf.keras.layers.Dense(cls.cantidad_categorias, activation='softmax') # Para trabajar con múltiples clases
+            tf.keras.layers.Dense(cls.cantidad_categorias, activation='softmax')
         ])
 
         # Configuración del modelo
         # El valor del parámetro loss es debido a estar trabajndo con múltiples clases
-        model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
-        model.summary()
-        # Guardamos el modelo en la variable de clase, ya que será necesario para luego realizar las predicciones
-        cls.model = model
-
-        # Datos de prueba para el modelo
-        sentencias_prueba = tokenizador.texts_to_sequences(cls.sentencias_prueba)
-        testing_padded = pad_sequences(sentencias_prueba, maxlen=cls.long_sentencias, padding='post') 
-        etiquetas_prueba = to_categorical(cls.etiquetas_prueba, num_classes=cls.cantidad_categorias)
-
+        cls.model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         # A partir de la versión 2 de tf (TensorFlow), el modelo debe recibir datos del tipo de numpy (np) y no tipos de datos nativos de python
-        training_padded = np.array(training_padded)
-        etiquetas_entrenameinto = np.array(etiquetas_entrenameinto)
-        testing_padded = np.array(testing_padded)
-        etiquetas_prueba = np.array(etiquetas_prueba)
-
-        print("TEST RESULTS")
-        # Entrenamiento del modelo con los datos de entrenamiento y de prueba.
-        history = model.fit(training_padded, etiquetas_entrenameinto, epochs=cls.iteraciones, validation_data=(testing_padded, etiquetas_prueba), verbose=2)
-        """
-        Resultados model.fit:
+        X_train_padded = np.array(X_train_padded)
+        y_train = np.array(y_train)
+        X_val_padded = np.array(X_val_padded)
+        y_val = np.array(y_val)
         
-        accuracy = relacionado a los datos de entrenameinto 
-        val_accuracy = relacionado a los datos de prueba / testeo
-        """
-     '''   
+        # Entrenamiento del modelo con los datos de entrenamiento y de prueba
+        cls.model.fit(X_train_padded, y_train, epochs=cls.iteraciones, validation_data=(X_val_padded, y_val))
+
     @classmethod
     def predecir(cls, sentencias: list) -> list:
         """
