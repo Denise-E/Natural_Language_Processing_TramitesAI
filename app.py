@@ -30,6 +30,7 @@ def evaluar_asunto():
     try:
         textos = request.json.get('textos')
         res = ServicioAsuntos.predecir(textos)
+        print("Resultados: ", res)
         return jsonify({"resultados": res}), 200
     except Exception as e:
         print("Error: ", e)
