@@ -7,6 +7,7 @@
 - pip (Administrador de paquetes de Python)
 
 ## Configuración del Entorno de Desarrollo
+Para este proyecto, utilizar la consola Command Prompt para correr los siguientes comandos.
 
 ### Paso 1: Crear y Activar el Entorno Virtual
 
